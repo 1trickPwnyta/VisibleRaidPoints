@@ -14,11 +14,11 @@ namespace VisibleRaidPoints
         {
             foreach (CodeInstruction instruction in instructions)
             {
-                if (instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_FloatRange_get_RandomInRange)
+                if (instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == Refs.m_FloatRange_get_RandomInRange)
                 {
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_StorytellerRandomFactor);
+                    yield return new CodeInstruction(OpCodes.Stsfld, Refs.f_ThreatPointsBreakdown_StorytellerRandomFactor);
                 }
                 else
                 {

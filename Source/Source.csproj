@@ -61,7 +61,7 @@
     <Compile Include="ThreatPointsBreakdown.cs" />
     <Compile Include="VisibleRaidPointsMod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VisibleRaidPointsRefs.cs" />
+    <Compile Include="Refs.cs" />
     <Compile Include="VisibleRaidPointsSettings.cs" />
   </ItemGroup>
   <ItemGroup>

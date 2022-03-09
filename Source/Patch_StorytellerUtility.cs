@@ -23,6 +23,8 @@ namespace VisibleRaidPoints
             AdaptationFactor,
             GraceFactor,
             PreClamp,
+            ClampMin,
+            ClampMax,
             Done
         }
 
@@ -30,7 +32,7 @@ namespace VisibleRaidPoints
         {
             LocalBuilder pawn = il.DeclareLocal(typeof(Pawn));
 
-            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_Clear);
+            yield return new CodeInstruction(OpCodes.Call, Refs.m_ThreatPointsBreakdown_Clear);
 
             Step step = Step.PlayerWealthForStoryteller;
 
@@ -40,11 +42,11 @@ namespace VisibleRaidPoints
                 {
 
                     case Step.PlayerWealthForStoryteller:
-                        if (instruction.opcode == OpCodes.Callvirt && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_IIncidentTarget_get_PlayerWealthForStoryteller)
+                        if (instruction.opcode == OpCodes.Callvirt && (MethodInfo)instruction.operand == Refs.m_IIncidentTarget_get_PlayerWealthForStoryteller)
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PlayerWealthForStoryteller);
+                            yield return new CodeInstruction(OpCodes.Stsfld, Refs.f_ThreatPointsBreakdown_PlayerWealthForStoryteller);
                             step = Step.PointsFromWealth;
                         } 
                         else
@@ -54,11 +56,11 @@ namespace VisibleRaidPoints
                         break;
 
                     case Step.PointsFromWealth:
-                        if (instruction.opcode == OpCodes.Callvirt && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_SimpleCurve_Evaluate)
+                        if (instruction.opcode == OpCodes.Callvirt && (MethodInfo)instruction.operand == Refs.m_SimpleCurve_Evaluate)
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PointsFromWealth);
+                            yield return new CodeInstruction(OpCodes.Stsfld, Refs.f_ThreatPointsBreakdown_PointsFromWealth);
                             step = Step.PlayerPawnsForStoryteller;
                         } 
                         else
@@ -68,7 +70,7 @@ namespace VisibleRaidPoints
                         break;
 
                     case Step.PlayerPawnsForStoryteller:
-                        if (instruction.opcode == OpCodes.Callvirt && (MethodInfo) instruction.operand == VisibleRaidPointsRefs.m_IIncidentTarget_get_PlayerPawnsForStoryteller)
+                        if (instruction.opcode == OpCodes.Callvirt && (MethodInfo) instruction.operand == Refs.m_IIncidentTarget_get_PlayerPawnsForStoryteller)
                         {
                             yield return instruction;
                             step = Step.PointsPerPawnName;
@@ -80,7 +82,7 @@ namespace VisibleRaidPoints
                         break;
 
                     case Step.PointsPerPawnName:
-                        if (instruction.opcode == OpCodes.Callvirt && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_IEnumeratorPawn_get_Current)
+                        if (instruction.opcode == OpCodes.Callvirt && (MethodInfo)instruction.operand == Refs.m_IEnumeratorPawn_get_Current)
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
@@ -89,8 +91,8 @@ namespace VisibleRaidPoints
                         else if (instruction.opcode == OpCodes.Ldc_R4 && instruction.operand.ToString() == "0")
                         {
                             yield return new CodeInstruction(OpCodes.Ldloc_S, pawn);
-                            yield return new CodeInstruction(OpCodes.Callvirt, VisibleRaidPointsRefs.m_Pawn_get_LabelShort);
-                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPawnPointsName);
+                            yield return new CodeInstruction(OpCodes.Callvirt, Refs.m_Pawn_get_LabelShort);
+                            yield return new CodeInstruction(OpCodes.Call, Refs.m_ThreatPointsBreakdown_SetPawnPointsName);
                             yield return instruction;
                             step = Step.PointsPerPawnPoints;
                         }
@@ -104,14 +106,14 @@ namespace VisibleRaidPoints
                         if (instruction.opcode == OpCodes.Ldc_R4 && instruction.operand.ToString() == "0")
                         {
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPawnPointsPoints);
+                            yield return new CodeInstruction(OpCodes.Call, Refs.m_ThreatPointsBreakdown_SetPawnPointsPoints);
                             yield return instruction;
                         }
-                        else if (instruction.opcode == OpCodes.Call && (MethodInfo) instruction.operand == VisibleRaidPointsRefs.m_Mathf_Lerp_float_float_float)
+                        else if (instruction.opcode == OpCodes.Call && (MethodInfo) instruction.operand == Refs.m_Mathf_Lerp_float_float_float)
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPawnPointsPoints);
+                            yield return new CodeInstruction(OpCodes.Call, Refs.m_ThreatPointsBreakdown_SetPawnPointsPoints);
                             step = Step.PointsFromPawns;
                         }
                         else
@@ -125,7 +127,7 @@ namespace VisibleRaidPoints
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PointsFromPawns);
+                            yield return new CodeInstruction(OpCodes.Stsfld, Refs.f_ThreatPointsBreakdown_PointsFromPawns);
                             step = Step.RandomFactor;
                         } 
                         else
@@ -135,11 +137,11 @@ namespace VisibleRaidPoints
                         break;
 
                     case Step.RandomFactor:
-                        if (instruction.opcode == OpCodes.Call && (MethodInfo) instruction.operand == VisibleRaidPointsRefs.m_FloatRange_get_RandomInRange)
+                        if (instruction.opcode == OpCodes.Call && (MethodInfo) instruction.operand == Refs.m_FloatRange_get_RandomInRange)
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_TargetRandomFactor);
+                            yield return new CodeInstruction(OpCodes.Stsfld, Refs.f_ThreatPointsBreakdown_TargetRandomFactor);
                             step = Step.AdaptationFactor;
                         }
                         else
@@ -149,11 +151,11 @@ namespace VisibleRaidPoints
                         break;
 
                     case Step.AdaptationFactor:
-                        if (instruction.opcode == OpCodes.Call && (MethodInfo) instruction.operand == VisibleRaidPointsRefs.m_Mathf_Lerp_float_float_float)
+                        if (instruction.opcode == OpCodes.Call && (MethodInfo) instruction.operand == Refs.m_Mathf_Lerp_float_float_float)
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_AdaptationFactor);
+                            yield return new CodeInstruction(OpCodes.Stsfld, Refs.f_ThreatPointsBreakdown_AdaptationFactor);
                             step = Step.GraceFactor;
                         }
                         else
@@ -163,11 +165,11 @@ namespace VisibleRaidPoints
                         break;
 
                     case Step.GraceFactor:
-                        if (instruction.opcode == OpCodes.Callvirt && (MethodInfo) instruction.operand == VisibleRaidPointsRefs.m_SimpleCurve_Evaluate)
+                        if (instruction.opcode == OpCodes.Callvirt && (MethodInfo) instruction.operand == Refs.m_SimpleCurve_Evaluate)
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_GraceFactor);
+                            yield return new CodeInstruction(OpCodes.Stsfld, Refs.f_ThreatPointsBreakdown_GraceFactor);
                             step = Step.PreClamp;
                         }
                         else
@@ -181,13 +183,35 @@ namespace VisibleRaidPoints
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PreClamp);
-                            step = Step.Done;
+                            yield return new CodeInstruction(OpCodes.Stsfld, Refs.f_ThreatPointsBreakdown_PreClamp);
+                            step = Step.ClampMin;
                         }
                         else
                         {
                             yield return instruction;
                         }
+                        break;
+
+                    case Step.ClampMin:
+                        if (instruction.opcode == OpCodes.Ldc_R4)
+                        {
+                            ThreatPointsBreakdown.ClampMin = instruction.operand as float?;
+                            step = Step.ClampMax;
+                        }
+                        yield return instruction;
+                        break;
+
+                    case Step.ClampMax:
+                        if (instruction.opcode == OpCodes.Ldc_R4)
+                        {
+                            ThreatPointsBreakdown.ClampMax = instruction.operand as float?;
+                            step = Step.Done;
+                        }
+                        else if (instruction.opcode == OpCodes.Call)
+                        {
+                            step = Step.Done;
+                        }
+                        yield return instruction;
                         break;
 
                     case Step.Done:

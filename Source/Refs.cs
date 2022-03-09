@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using Verse;
-using static VisibleRaidPoints.ThreatPointsBreakdown;
 
 namespace VisibleRaidPoints
 {
-    public static class VisibleRaidPointsRefs
+    public static class Refs
     {
         public static readonly MethodInfo m_ThreatPointsBreakdown_Clear = AccessTools.Method(typeof(ThreatPointsBreakdown), "Clear");
         public static readonly MethodInfo m_IIncidentTarget_get_PlayerWealthForStoryteller = AccessTools.Method(typeof(IIncidentTarget), "get_PlayerWealthForStoryteller");
@@ -20,6 +19,8 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_ThreatPointsBreakdown_SetPawnPointsPoints = AccessTools.Method(typeof(ThreatPointsBreakdown), "SetPawnPointsPoints");
         public static readonly MethodInfo m_Mathf_Lerp_float_float_float = AccessTools.Method(typeof(Mathf), "Lerp", new[] { typeof(float), typeof(float), typeof(float) });
         public static readonly MethodInfo m_FloatRange_get_RandomInRange = AccessTools.Method(typeof(FloatRange), "get_RandomInRange");
+        public static readonly MethodInfo m_Mathf_Clamp = SymbolExtensions.GetMethodInfo(() => Mathf.Clamp(0f, 0f, 0f));
+        public static readonly MethodInfo m_Mathf_Min = SymbolExtensions.GetMethodInfo(() => Mathf.Min(0f, 0f));
 
         public static readonly FieldInfo f_ThreatPointsBreakdown_PlayerWealthForStoryteller = AccessTools.Field(typeof(ThreatPointsBreakdown), "PlayerWealthForStoryteller");
         public static readonly FieldInfo f_ThreatPointsBreakdown_PointsFromWealth = AccessTools.Field(typeof(ThreatPointsBreakdown), "PointsFromWealth");

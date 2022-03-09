@@ -3,6 +3,7 @@ using RimWorld;
 using HarmonyLib;
 using static VisibleRaidPoints.ThreatPointsBreakdown;
 using UnityEngine;
+using System.Linq;
 
 namespace VisibleRaidPoints
 {
@@ -18,7 +19,7 @@ namespace VisibleRaidPoints
                 Debug.Log("No IncidentParms available. Cannot determine threat points. This should never happen.");
                 return;
             }
-
+            
             if (__instance is IncidentWorker_RaidEnemy || 
                 __instance is IncidentWorker_Infestation || 
                 __instance is IncidentWorker_CrashedShipPart || 
@@ -41,7 +42,7 @@ namespace VisibleRaidPoints
                 {
                     if (ThreatPointsBreakdown.PointsPerPawn == null)
                     {
-                        Debug.Log("Points per pawn not initialized. Cannot provide threat points breakdown. Harmony transpiler patch probably failed.");
+                        Debug.Log("Points per pawn not initialized. Cannot provide threat points breakdown. Harmony transpiler patch probably failed, or a specific point value was used for this incident.");
                         return;
                     }
 
@@ -50,9 +51,6 @@ namespace VisibleRaidPoints
                         Debug.Log("Storyteller or difficulty settings not available. Cannot provide threat points breakdown. This shouldn't happen unless version < 1.3.");
                         return;
                     }
-
-                    float clampLow = 35f;
-                    float clampHigh = 10000f;
 
                     baseLetterText += $"\n\n=== {"VisibleRaidPoints_PointsBreakdown".Translate()} ===";
                     
@@ -91,14 +89,14 @@ namespace VisibleRaidPoints
                     baseLetterText += $"\n\n{"VisibleRaidPoints_RunningTotalPreClampDesc".Translate()}";
                     baseLetterText += $"\n({((int)ThreatPointsBreakdown.PointsFromWealth).ToString().Colorize(ColoredText.FactionColor_Hostile)} + {((int)ThreatPointsBreakdown.PointsFromPawns).ToString().Colorize(ColoredText.FactionColor_Hostile)}) {(ThreatPointsBreakdown.TargetRandomFactor != 1f? $"x {ThreatPointsBreakdown.TargetRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} ": "")}x {ThreatPointsBreakdown.AdaptationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} x {Find.Storyteller.difficulty.threatScale.ToString("0.00").Colorize(ColoredText.ImpactColor)} {(ThreatPointsBreakdown.GraceFactor != 1f? $"x {ThreatPointsBreakdown.GraceFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} ": "")}= {((int) ThreatPointsBreakdown.PreClamp).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
                     
-                    if (ThreatPointsBreakdown.PreClamp < clampLow)
+                    if (ThreatPointsBreakdown.ClampMin != null && ThreatPointsBreakdown.PreClamp < ThreatPointsBreakdown.ClampMin)
                     {
-                        baseLetterText += $"\n\n{"VisibleRaidPoints_BreakdownClampLowDesc".Translate(clampLow)}";
+                        baseLetterText += $"\n\n{"VisibleRaidPoints_BreakdownClampLowDesc".Translate((float)ThreatPointsBreakdown.ClampMin)}";
                     }
 
-                    if (ThreatPointsBreakdown.PreClamp > clampHigh)
+                    if (ThreatPointsBreakdown.ClampMax != null && ThreatPointsBreakdown.PreClamp > ThreatPointsBreakdown.ClampMax)
                     {
-                        baseLetterText += $"\n\n{"VisibleRaidPoints_BreakdownClampHighDesc".Translate(clampHigh)}";
+                        baseLetterText += $"\n\n{"VisibleRaidPoints_BreakdownClampHighDesc".Translate((float)ThreatPointsBreakdown.ClampMax)}";
                     }
 
                     if (ThreatPointsBreakdown.StorytellerRandomFactor > 0f)
@@ -120,7 +118,16 @@ namespace VisibleRaidPoints
                     {
                         // Running total pre-final
                         baseLetterText += $"\n\n{"VisibleRaidPoints_RunningTotalPreClampDesc".Translate()}";
-                        baseLetterText += $"\n{((int)Mathf.Clamp(ThreatPointsBreakdown.PreClamp, clampLow, clampHigh)).ToString().Colorize(ColoredText.FactionColor_Hostile)} {(ThreatPointsBreakdown.StorytellerRandomFactor > 0f ? $"x {ThreatPointsBreakdown.StorytellerRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}{(ThreatPointsBreakdown.RaidArrivalModeFactor > 0f ? $"x {ThreatPointsBreakdown.RaidArrivalModeFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}{(ThreatPointsBreakdown.RaidStrategyFactor > 0f ? $"x {ThreatPointsBreakdown.RaidStrategyFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}= {((int)parms.points).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+                        int preFinal = (int)ThreatPointsBreakdown.PreClamp;
+                        if (ThreatPointsBreakdown.ClampMax != null && ThreatPointsBreakdown.ClampMin != null) 
+                        {
+                            preFinal = (int)Mathf.Clamp(ThreatPointsBreakdown.PreClamp, (float)ThreatPointsBreakdown.ClampMin, (float)ThreatPointsBreakdown.ClampMax);
+                        }
+                        else if (ThreatPointsBreakdown.ClampMin != null)
+                        {
+                            preFinal = (int)Mathf.Max(ThreatPointsBreakdown.PreClamp, (float)ThreatPointsBreakdown.ClampMin);
+                        }
+                        baseLetterText += $"\n{preFinal.ToString().Colorize(ColoredText.FactionColor_Hostile)} {(ThreatPointsBreakdown.StorytellerRandomFactor > 0f ? $"x {ThreatPointsBreakdown.StorytellerRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}{(ThreatPointsBreakdown.RaidArrivalModeFactor > 0f ? $"x {ThreatPointsBreakdown.RaidArrivalModeFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}{(ThreatPointsBreakdown.RaidStrategyFactor > 0f ? $"x {ThreatPointsBreakdown.RaidStrategyFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}= {((int)parms.points).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
                     }
 
                     baseLetterText += "\n\n----------------------";

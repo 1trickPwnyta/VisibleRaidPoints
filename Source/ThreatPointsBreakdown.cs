@@ -23,6 +23,8 @@ namespace VisibleRaidPoints
         public static string RaidArrivalModeDesc;
         public static float RaidStrategyFactor;
         public static string RaidStrategyDesc;
+        public static float? ClampMin;
+        public static float? ClampMax;
 
         public static void Clear()
         {
