@@ -20,6 +20,7 @@ Note: The current version of this mod is no longer compatible with version 1.2 o
 Note: The threat points breakdown feature of this mod is not compatibile with my other mod, Unlimited Threat Scale (https://steamcommunity.com/sharedfiles/filedetails/?id=2562732435). For a compatibile version of the mod, you can download it from the "uts-compatibility" branch on GitHub: https://github.com/1trickPwnyta/VisibleRaidPoints/tree/uts-compatibility You will also need to download the compatible version of Unlimited Threat Scale at https://github.com/1trickPwnyta/UnlimitedThreatScale/tree/vrp-compatibility
 
 === Updates ===
+07/11/2023: Fixed points breakdown for children and slaves
 10/26/2022: Updated to 1.4
 03/09/2022: Created alternate version of the mod for compatibility with Unlimited Threat Scale
 09/28/2021: Added extra error logging.
