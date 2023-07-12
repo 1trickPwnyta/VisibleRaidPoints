@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection.Emit;
 using System.Reflection;
 using Verse;
+using System.Linq;
 
 namespace VisibleRaidPoints
 {
@@ -18,7 +19,6 @@ namespace VisibleRaidPoints
             PlayerPawnsForStoryteller,
             PointsPerPawnName,
             PointsPerPawnPoints,
-            PointsFromPawns,
             RandomFactor,
             AdaptationFactor,
             GraceFactor,
@@ -34,8 +34,11 @@ namespace VisibleRaidPoints
 
             Step step = Step.PlayerWealthForStoryteller;
 
-            foreach (CodeInstruction instruction in instructions)
+            List<CodeInstruction> instructionsList = instructions.ToList();
+            for (int i = 0; i < instructionsList.Count; i++)
             {
+                CodeInstruction instruction = instructionsList[i];
+
                 switch (step)
                 {
 
@@ -101,33 +104,22 @@ namespace VisibleRaidPoints
                         break;
 
                     case Step.PointsPerPawnPoints:
+                        CodeInstruction nextInstruction = instructionsList[i + 1];
                         if (instruction.opcode == OpCodes.Ldc_R4 && instruction.operand.ToString() == "0")
                         {
                             yield return new CodeInstruction(OpCodes.Dup);
                             yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPawnPointsPoints);
                             yield return instruction;
                         }
-                        else if (instruction.opcode == OpCodes.Call && (MethodInfo) instruction.operand == VisibleRaidPointsRefs.m_Mathf_Lerp_float_float_float)
+                        else if (instruction.opcode == OpCodes.Add && nextInstruction.opcode == OpCodes.Stloc_2)
                         {
-                            yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
                             yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPawnPointsPoints);
-                            step = Step.PointsFromPawns;
-                        }
-                        else
-                        {
-                            yield return instruction;
-                        }
-                        break;
-
-                    case Step.PointsFromPawns:
-                        if (instruction.opcode == OpCodes.Add)
-                        {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
                             yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PointsFromPawns);
                             step = Step.RandomFactor;
-                        } 
+                        }
                         else
                         {
                             yield return instruction;
