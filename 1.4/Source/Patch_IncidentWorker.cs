@@ -68,7 +68,7 @@ namespace VisibleRaidPoints
                     {
                         if (p.Points > 0f)
                         {
-                            baseLetterText += $"\n  {p.Name}: {((int)p.Points).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+                            baseLetterText += $"\n  {p.Name}: {p.Points.ToString(".0").Colorize(ColoredText.FactionColor_Hostile)}";
                         }
                     }
                     baseLetterText += $"\n{"VisibleRaidPoints_BreakdownPointsFromPawnsDesc".Translate()}: {((int)ThreatPointsBreakdown.PointsFromPawns).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
