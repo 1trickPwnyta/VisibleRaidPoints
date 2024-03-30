@@ -36,6 +36,23 @@ namespace VisibleRaidPoints
                         yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_RaidStrategyDesc);
                     }
                 }
+                else if (instruction.opcode == OpCodes.Ldfld && (FieldInfo)instruction.operand == VisibleRaidPointsRefs.f_RaidAgeRestrictionDef_threatPointsFactor)
+                {
+                    yield return instruction;
+                    yield return new CodeInstruction(OpCodes.Dup);
+                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_RaidAgeRestrictionFactor);
+                    yield return new CodeInstruction(OpCodes.Ldarg_S, 5);
+                    yield return new CodeInstruction(OpCodes.Ldfld, VisibleRaidPointsRefs.f_Def_defName);
+                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_RaidAgeRestrictionDesc);
+                }
+                else if (instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_Mathf_Max)
+                {
+                    yield return instruction;
+                    yield return new CodeInstruction(OpCodes.Dup);
+                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PreMiscCalcs);
+                    yield return new CodeInstruction(OpCodes.Dup);
+                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_FinalResult);
+                }
                 else
                 {
                     yield return instruction;

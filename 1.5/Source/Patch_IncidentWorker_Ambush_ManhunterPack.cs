@@ -2,23 +2,22 @@
 using HarmonyLib;
 using System.Collections.Generic;
 using System.Reflection.Emit;
-using System.Reflection;
 
 namespace VisibleRaidPoints
 {
-    [HarmonyPatch(typeof(StorytellerComp_RandomMain))]
-    [HarmonyPatch("GenerateParms")]
-    public static class Patch_StorytellerComp_RandomMain_GenerateParms
+    [HarmonyPatch(typeof(IncidentWorker_Ambush_ManhunterPack))]
+    [HarmonyPatch("AdjustedPoints")]
+    public static class Patch_IncidentWorker_Ambush_ManhunterPack_AdjustedPoints
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
         {
             foreach (CodeInstruction instruction in instructions)
             {
-                if (instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_FloatRange_get_RandomInRange)
+                if (instruction.opcode == OpCodes.Ldc_R4)
                 {
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_StorytellerRandomFactor);
+                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_AmbushManhunterFactor);
                 }
                 else if (instruction.opcode == OpCodes.Mul)
                 {

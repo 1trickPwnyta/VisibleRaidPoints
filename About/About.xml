@@ -18,7 +18,7 @@ Korean translation by PenguinsCanFly.
 
 Note: The current version of this mod is no longer compatible with version 1.2 of the game. For a 1.2-compatible version of the mod with reduced functionality, you can download it from the "1.2-compatibility" branch on GitHub: https://github.com/1trickPonyta/VisibleRaidPoints/tree/1.2-compatibility
 
-Note: The threat points breakdown feature of this mod is not compatibile with my other mod, Unlimited Threat Scale: https://steamcommunity.com/sharedfiles/filedetails/?id=2562732435. For a compatibile version of the mod, you can download it from the "uts-compatibility" branch on GitHub: https://github.com/1trickPwnyta/VisibleRaidPoints/tree/uts-compatibility You will also need to download the compatible version of Unlimited Threat Scale at https://github.com/1trickPwnyta/UnlimitedThreatScale/tree/vrp-compatibility
+Note: This mod is now fully compatible with my other mod, Unlimited Threat Scale: https://steamcommunity.com/sharedfiles/filedetails/?id=2562732435 in version 1.5+ of RimWorld. Unlimited Threat Scale must be before this mod in the mod order list.
 
 === Updates ===
 03/14/2024: Updated to 1.5
@@ -44,4 +44,9 @@ https://ko-fi.com/1trickpwnyta
 			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
 		</li>
 	</modDependencies>
+	<loadAfterByVersion>
+		<v1.5>
+			<li>unlimitedthreatscale.1trickPwnyta</li>
+		</v1.5>
+	</loadAfterByVersion>
 </ModMetaData>

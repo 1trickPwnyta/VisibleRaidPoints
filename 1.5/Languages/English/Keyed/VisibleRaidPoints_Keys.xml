@@ -4,6 +4,40 @@
 	<VisibleRaidPoints_ShowPointsInLetterLabel>Show points in letter label</VisibleRaidPoints_ShowPointsInLetterLabel>
 	<VisibleRaidPoints_ShowPointsInLetterText>Show points in letter text</VisibleRaidPoints_ShowPointsInLetterText>
 	<VisibleRaidPoints_ShowBreakdownInLetterText>Show points breakdown in letter text</VisibleRaidPoints_ShowBreakdownInLetterText>
+	<VisibleRaidPoints_IncidentWorkerTypes>Enabled event types</VisibleRaidPoints_IncidentWorkerTypes>
+	<VisibleRaidPoints_Modify>Modify</VisibleRaidPoints_Modify>
+	<VisibleRaidPoints_AggressiveAnimals>Manhunter pack</VisibleRaidPoints_AggressiveAnimals>
+	<VisibleRaidPoints_AmbushEnemyFaction>Caravan ambush (human)</VisibleRaidPoints_AmbushEnemyFaction>
+	<VisibleRaidPoints_AmbushManhunterPack>Caravan ambush (animals)</VisibleRaidPoints_AmbushManhunterPack>
+	<VisibleRaidPoints_AnimalInsanityMass>Mad animals</VisibleRaidPoints_AnimalInsanityMass>
+	<VisibleRaidPoints_CaravanDemand>Caravan demand</VisibleRaidPoints_CaravanDemand>
+	<VisibleRaidPoints_ChimeraAssault>Chimera assault</VisibleRaidPoints_ChimeraAssault>
+	<VisibleRaidPoints_CrashedShipPart>Psychic/defoliator ship</VisibleRaidPoints_CrashedShipPart>
+	<VisibleRaidPoints_CropBlight>Crop blight</VisibleRaidPoints_CropBlight>
+	<VisibleRaidPoints_DeepDrillInfestation>Too deep: Infestation</VisibleRaidPoints_DeepDrillInfestation>
+	<VisibleRaidPoints_DevourerAssault>Devourer assault</VisibleRaidPoints_DevourerAssault>
+	<VisibleRaidPoints_DevourerWaterAssault>Devourer water assault</VisibleRaidPoints_DevourerWaterAssault>
+	<VisibleRaidPoints_EntitySwarm>Entity swarm</VisibleRaidPoints_EntitySwarm>
+	<VisibleRaidPoints_FleshbeastAttack>Fleshbeast attack</VisibleRaidPoints_FleshbeastAttack>
+	<VisibleRaidPoints_FleshmassHeart>Fleshmass heart</VisibleRaidPoints_FleshmassHeart>
+	<VisibleRaidPoints_GhoulAttack>Ghoul attack</VisibleRaidPoints_GhoulAttack>
+	<VisibleRaidPoints_GiveQuest>Quest</VisibleRaidPoints_GiveQuest>
+	<VisibleRaidPoints_GorehulkAssault>Gorehulk assault</VisibleRaidPoints_GorehulkAssault>
+	<VisibleRaidPoints_HateChanters>Hate chanters</VisibleRaidPoints_HateChanters>
+	<VisibleRaidPoints_Infestation>Infestation</VisibleRaidPoints_Infestation>
+	<VisibleRaidPoints_InsectJelly>Insect jelly</VisibleRaidPoints_InsectJelly>
+	<VisibleRaidPoints_MechCluster>Mech cluster</VisibleRaidPoints_MechCluster>
+	<VisibleRaidPoints_PsychicEmanation>Psychic soothe/drone</VisibleRaidPoints_PsychicEmanation>
+	<VisibleRaidPoints_PsychicRitualSiege>Psychic ritual siege</VisibleRaidPoints_PsychicRitualSiege>
+	<VisibleRaidPoints_RaidEnemy>Raid</VisibleRaidPoints_RaidEnemy>
+	<VisibleRaidPoints_RaidFriendly>Friendlies</VisibleRaidPoints_RaidFriendly>
+	<VisibleRaidPoints_ShamblerAssault>Shambler assault</VisibleRaidPoints_ShamblerAssault>
+	<VisibleRaidPoints_SightstealerArrival>Sightstealer arrival</VisibleRaidPoints_SightstealerArrival>
+	<VisibleRaidPoints_SightstealerSwarm>Sightstealer swarm</VisibleRaidPoints_SightstealerSwarm>
+	<VisibleRaidPoints_TraderCaravanArrival>Trade caravan</VisibleRaidPoints_TraderCaravanArrival>
+	<VisibleRaidPoints_TravelerGroup>Travelers</VisibleRaidPoints_TravelerGroup>
+	<VisibleRaidPoints_VisitorGroup>Visitors</VisibleRaidPoints_VisitorGroup>
+	<VisibleRaidPoints_WastepackInfestation>Wastepack infestation</VisibleRaidPoints_WastepackInfestation>
 	<VisibleRaidPoints_PointsBreakdown>Threat Points Breakdown</VisibleRaidPoints_PointsBreakdown>
 	<VisibleRaidPoints_BreakdownPlayerWealthForStorytellerDesc>Player wealth for storyteller</VisibleRaidPoints_BreakdownPlayerWealthForStorytellerDesc>
 	<VisibleRaidPoints_BreakdownPlayerWealthForStorytellerExpl>TotalWealth - (BuildingWealth / 2)</VisibleRaidPoints_BreakdownPlayerWealthForStorytellerExpl>
@@ -22,5 +56,9 @@
 	<VisibleRaidPoints_StorytellerRandomFactorDesc>Randy Random factor</VisibleRaidPoints_StorytellerRandomFactorDesc>
 	<VisibleRaidPoints_RaidArrivalModeFactorDesc>Raid arrival mode factor</VisibleRaidPoints_RaidArrivalModeFactorDesc>
 	<VisibleRaidPoints_RaidStrategyFactorDesc>Raid strategy factor</VisibleRaidPoints_RaidStrategyFactorDesc>
+	<VisibleRaidPoints_RaidAgeRestrictionFactorDesc>Raid age restriction factor</VisibleRaidPoints_RaidAgeRestrictionFactorDesc>
+	<VisibleRaidPoints_AmbushManhunterFactorDesc>Caravan ambush (animals) factor</VisibleRaidPoints_AmbushManhunterFactorDesc>
 	<VisibleRaidPoints_RunningTotalPreClampDesc>Intermediate total</VisibleRaidPoints_RunningTotalPreClampDesc>
+	<VisibleRaidPoints_RunningTotalPreFinalDesc>Intermediate total</VisibleRaidPoints_RunningTotalPreFinalDesc>
+	<VisibleRaidPoints_AnimalInsanityMassCalcDesc>Mad animals adjustment</VisibleRaidPoints_AnimalInsanityMassCalcDesc>
 </LanguageData>

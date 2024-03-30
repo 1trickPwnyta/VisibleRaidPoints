@@ -18,11 +18,18 @@ namespace VisibleRaidPoints
         public static float AdaptationFactor;
         public static float GraceFactor;
         public static float PreClamp;
+        public static float PostClamp;
         public static float StorytellerRandomFactor;
         public static float RaidArrivalModeFactor;
         public static string RaidArrivalModeDesc;
         public static float RaidStrategyFactor;
         public static string RaidStrategyDesc;
+        public static float RaidAgeRestrictionFactor;
+        public static string RaidAgeRestrictionDesc;
+        public static float AmbushManhunterFactor;
+        public static float PreMiscCalcs;
+        public static bool AnimalInsanityMassCalc;
+        public static float FinalResult;
 
         public static void Clear()
         {
@@ -34,11 +41,18 @@ namespace VisibleRaidPoints
             AdaptationFactor = 0f;
             GraceFactor = 0f;
             PreClamp = 0f;
+            PostClamp = 0f;
             StorytellerRandomFactor = 0f;
             RaidArrivalModeFactor = 0f;
             RaidArrivalModeDesc = null;
             RaidStrategyFactor = 0f;
             RaidStrategyDesc = null;
+            RaidAgeRestrictionFactor = 0f;
+            RaidAgeRestrictionDesc = null;
+            AmbushManhunterFactor = 0f;
+            PreMiscCalcs = 0f;
+            AnimalInsanityMassCalc = false;
+            FinalResult = 0f;
         }
 
         public static void SetPawnPointsName(string name)

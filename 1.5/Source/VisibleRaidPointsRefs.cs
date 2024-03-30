@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using Verse;
-using static VisibleRaidPoints.ThreatPointsBreakdown;
 
 namespace VisibleRaidPoints
 {
@@ -20,19 +19,29 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_ThreatPointsBreakdown_SetPawnPointsPoints = AccessTools.Method(typeof(ThreatPointsBreakdown), "SetPawnPointsPoints");
         public static readonly MethodInfo m_Mathf_Lerp_float_float_float = AccessTools.Method(typeof(Mathf), "Lerp", new[] { typeof(float), typeof(float), typeof(float) });
         public static readonly MethodInfo m_FloatRange_get_RandomInRange = AccessTools.Method(typeof(FloatRange), "get_RandomInRange");
+        public static readonly MethodInfo m_Mathf_Clamp = AccessTools.Method(typeof(Mathf), nameof(Mathf.Clamp), new[] { typeof(float), typeof(float), typeof(float) });
+        public static readonly MethodInfo m_Mathf_Max = AccessTools.Method(typeof(Mathf), nameof(Mathf.Max), new[] { typeof(float), typeof(float) });
 
-        public static readonly FieldInfo f_ThreatPointsBreakdown_PlayerWealthForStoryteller = AccessTools.Field(typeof(ThreatPointsBreakdown), "PlayerWealthForStoryteller");
-        public static readonly FieldInfo f_ThreatPointsBreakdown_PointsFromWealth = AccessTools.Field(typeof(ThreatPointsBreakdown), "PointsFromWealth");
-        public static readonly FieldInfo f_ThreatPointsBreakdown_PointsFromPawns = AccessTools.Field(typeof(ThreatPointsBreakdown), "PointsFromPawns");
-        public static readonly FieldInfo f_ThreatPointsBreakdown_TargetRandomFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), "TargetRandomFactor");
-        public static readonly FieldInfo f_ThreatPointsBreakdown_AdaptationFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), "AdaptationFactor");
-        public static readonly FieldInfo f_ThreatPointsBreakdown_GraceFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), "GraceFactor");
-        public static readonly FieldInfo f_ThreatPointsBreakdown_PreClamp = AccessTools.Field(typeof(ThreatPointsBreakdown), "PreClamp");
-        public static readonly FieldInfo f_ThreatPointsBreakdown_StorytellerRandomFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), "StorytellerRandomFactor");
-        public static readonly FieldInfo f_ThreatPointsBreakdown_RaidArrivalModeFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), "RaidArrivalModeFactor");
-        public static readonly FieldInfo f_ThreatPointsBreakdown_RaidArrivalModeDesc = AccessTools.Field(typeof(ThreatPointsBreakdown), "RaidArrivalModeDesc");
-        public static readonly FieldInfo f_ThreatPointsBreakdown_RaidStrategyFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), "RaidStrategyFactor");
-        public static readonly FieldInfo f_ThreatPointsBreakdown_RaidStrategyDesc = AccessTools.Field(typeof(ThreatPointsBreakdown), "RaidStrategyDesc");
+        public static readonly FieldInfo f_ThreatPointsBreakdown_PlayerWealthForStoryteller = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.PlayerWealthForStoryteller));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_PointsFromWealth = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.PointsFromWealth));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_PointsFromPawns = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.PointsFromPawns));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_TargetRandomFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.TargetRandomFactor));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_AdaptationFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.AdaptationFactor));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_GraceFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.GraceFactor));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_PreClamp = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.PreClamp));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_PostClamp = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.PostClamp));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_StorytellerRandomFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.StorytellerRandomFactor));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_RaidArrivalModeFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.RaidArrivalModeFactor));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_RaidArrivalModeDesc = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.RaidArrivalModeDesc));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_RaidStrategyFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.RaidStrategyFactor));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_RaidStrategyDesc = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.RaidStrategyDesc));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_RaidAgeRestrictionFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.RaidAgeRestrictionFactor));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_RaidAgeRestrictionDesc = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.RaidAgeRestrictionDesc));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_AmbushManhunterFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.AmbushManhunterFactor));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_PreMiscCalcs = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.PreMiscCalcs));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_AnimalInsanityMassCalc = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.AnimalInsanityMassCalc));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_FinalResult = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.FinalResult));
         public static readonly FieldInfo f_Def_defName = AccessTools.Field(typeof(Def), "defName");
+        public static readonly FieldInfo f_RaidAgeRestrictionDef_threatPointsFactor = AccessTools.Field(typeof(RaidAgeRestrictionDef), nameof(RaidAgeRestrictionDef.threatPointsFactor));
     }
 }
