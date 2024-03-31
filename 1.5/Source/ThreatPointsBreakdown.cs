@@ -27,8 +27,11 @@ namespace VisibleRaidPoints
         public static float RaidAgeRestrictionFactor;
         public static string RaidAgeRestrictionDesc;
         public static float AmbushManhunterFactor;
+        public static float CaravanDemandFactor;
+        public static float CrashedShipPartFactor;
         public static float PreMiscCalcs;
         public static bool AnimalInsanityMassCalc;
+        public static float CrashedShipPartMin;
         public static float FinalResult;
 
         public static void Clear()
@@ -50,8 +53,11 @@ namespace VisibleRaidPoints
             RaidAgeRestrictionFactor = 0f;
             RaidAgeRestrictionDesc = null;
             AmbushManhunterFactor = 0f;
+            CaravanDemandFactor = 0f;
+            CrashedShipPartFactor = 0f;
             PreMiscCalcs = 0f;
             AnimalInsanityMassCalc = false;
+            CrashedShipPartMin = 0f;
             FinalResult = 0f;
         }
 

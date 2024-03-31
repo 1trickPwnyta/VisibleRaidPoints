@@ -58,7 +58,10 @@
 	<VisibleRaidPoints_RaidStrategyFactorDesc>Raid strategy factor</VisibleRaidPoints_RaidStrategyFactorDesc>
 	<VisibleRaidPoints_RaidAgeRestrictionFactorDesc>Raid age restriction factor</VisibleRaidPoints_RaidAgeRestrictionFactorDesc>
 	<VisibleRaidPoints_AmbushManhunterFactorDesc>Caravan ambush (animals) factor</VisibleRaidPoints_AmbushManhunterFactorDesc>
+	<VisibleRaidPoints_CaravanDemandFactorDesc>Caravan demand random factor</VisibleRaidPoints_CaravanDemandFactorDesc>
+	<VisibleRaidPoints_CrashedShipPartFactorDesc>Crashed ship part factor</VisibleRaidPoints_CrashedShipPartFactorDesc>
 	<VisibleRaidPoints_RunningTotalPreClampDesc>Intermediate total</VisibleRaidPoints_RunningTotalPreClampDesc>
 	<VisibleRaidPoints_RunningTotalPreFinalDesc>Intermediate total</VisibleRaidPoints_RunningTotalPreFinalDesc>
-	<VisibleRaidPoints_AnimalInsanityMassCalcDesc>Mad animals adjustment</VisibleRaidPoints_AnimalInsanityMassCalcDesc>
+	<VisibleRaidPoints_AnimalInsanityMassCalcDesc>Animal mass insanity adjustment</VisibleRaidPoints_AnimalInsanityMassCalcDesc>
+	<VisibleRaidPoints_CrashedShipPartMinDesc>Crashed ship part minimum {0} points</VisibleRaidPoints_CrashedShipPartMinDesc>
 </LanguageData>
