@@ -1,9 +1,4 @@
 ﻿using RimWorld;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Verse;
 
@@ -50,7 +45,6 @@ namespace VisibleRaidPoints
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_FleshmassHeart".Translate(), ref VisibleRaidPointsSettings.FleshmassHeart);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_GhoulAttack".Translate(), ref VisibleRaidPointsSettings.GhoulAttack);
             }
-            listingStandard.CheckboxLabeled("VisibleRaidPoints_GiveQuest".Translate(), ref VisibleRaidPointsSettings.GiveQuest);
             if (ModsConfig.AnomalyActive)
             {
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_GorehulkAssault".Translate(), ref VisibleRaidPointsSettings.GorehulkAssault);
@@ -62,7 +56,7 @@ namespace VisibleRaidPoints
             {
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_MechCluster".Translate(), ref VisibleRaidPointsSettings.MechCluster);
             }
-            listingStandard.CheckboxLabeled("VisibleRaidPoints_PsychicEmanation".Translate(), ref VisibleRaidPointsSettings.PsychicEmanation);
+            listingStandard.CheckboxLabeled("VisibleRaidPoints_PsychicDrone".Translate(), ref VisibleRaidPointsSettings.PsychicDrone);
             if (ModsConfig.AnomalyActive)
             {
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_PsychicRitualSiege".Translate(), ref VisibleRaidPointsSettings.PsychicRitualSiege);
@@ -75,8 +69,6 @@ namespace VisibleRaidPoints
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_SightstealerArrival".Translate(), ref VisibleRaidPointsSettings.SightstealerArrival);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_SightstealerSwarm".Translate(), ref VisibleRaidPointsSettings.SightstealerSwarm);
             }
-            listingStandard.CheckboxLabeled("VisibleRaidPoints_TraderCaravanArrival".Translate(), ref VisibleRaidPointsSettings.TraderCaravanArrival);
-            listingStandard.CheckboxLabeled("VisibleRaidPoints_TravelerGroup".Translate(), ref VisibleRaidPointsSettings.TravelerGroup);
             listingStandard.CheckboxLabeled("VisibleRaidPoints_VisitorGroup".Translate(), ref VisibleRaidPointsSettings.VisitorGroup);
             if (ModsConfig.BiotechActive)
             {

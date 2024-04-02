@@ -57,8 +57,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaravanDemandUtility.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Dialog_IncidentWorkerTypes.cs" />
+    <Compile Include="Patch_MechClusterGenerator.cs" />
+    <Compile Include="Patch_IncidentWorker_Infestation.cs" />
     <Compile Include="Patch_IncidentWorker_DeepDrillInfestation.cs" />
     <Compile Include="Patch_IncidentWorker_CrashedShipPart.cs" />
     <Compile Include="Patch_IncidentWorker_AnimalInsanityMass.cs" />

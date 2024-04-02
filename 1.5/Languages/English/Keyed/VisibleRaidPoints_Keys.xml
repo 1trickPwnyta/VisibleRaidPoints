@@ -27,7 +27,7 @@
 	<VisibleRaidPoints_Infestation>Infestation</VisibleRaidPoints_Infestation>
 	<VisibleRaidPoints_InsectJelly>Insect jelly</VisibleRaidPoints_InsectJelly>
 	<VisibleRaidPoints_MechCluster>Mech cluster</VisibleRaidPoints_MechCluster>
-	<VisibleRaidPoints_PsychicEmanation>Psychic soothe/drone</VisibleRaidPoints_PsychicEmanation>
+	<VisibleRaidPoints_PsychicDrone>Psychic drone</VisibleRaidPoints_PsychicDrone>
 	<VisibleRaidPoints_PsychicRitualSiege>Psychic ritual siege</VisibleRaidPoints_PsychicRitualSiege>
 	<VisibleRaidPoints_RaidEnemy>Raid</VisibleRaidPoints_RaidEnemy>
 	<VisibleRaidPoints_RaidFriendly>Friendlies</VisibleRaidPoints_RaidFriendly>
@@ -61,10 +61,13 @@
 	<VisibleRaidPoints_CaravanDemandFactorDesc>Caravan demand random factor</VisibleRaidPoints_CaravanDemandFactorDesc>
 	<VisibleRaidPoints_CrashedShipPartFactorDesc>Crashed ship part factor</VisibleRaidPoints_CrashedShipPartFactorDesc>
 	<VisibleRaidPoints_DeepDrillInfestationFactorDesc>Deep drill infestation random factor</VisibleRaidPoints_DeepDrillInfestationFactorDesc>
+	<VisibleRaidPoints_InfestationFactorDesc>Infestation calculated factor</VisibleRaidPoints_InfestationFactorDesc>
 	<VisibleRaidPoints_RunningTotalPreClampDesc>Intermediate total</VisibleRaidPoints_RunningTotalPreClampDesc>
 	<VisibleRaidPoints_RunningTotalPreFinalDesc>Intermediate total</VisibleRaidPoints_RunningTotalPreFinalDesc>
 	<VisibleRaidPoints_AnimalInsanityMassCalcDesc>Animal mass insanity adjustment</VisibleRaidPoints_AnimalInsanityMassCalcDesc>
 	<VisibleRaidPoints_CrashedShipPartMinDesc>Crashed ship part minimum {0} points</VisibleRaidPoints_CrashedShipPartMinDesc>
 	<VisibleRaidPoints_DeepDrillInfestationMinDesc>Deep drill infestation minimum {0} points</VisibleRaidPoints_DeepDrillInfestationMinDesc>
 	<VisibleRaidPoints_DeepDrillInfestationMaxDesc>Deep drill infestation maximum {0} points</VisibleRaidPoints_DeepDrillInfestationMaxDesc>
+	<VisibleRaidPoints_MechClusterMaxDesc>Mech cluster maximum {0} points</VisibleRaidPoints_MechClusterMaxDesc>
+	<VisibleRaidPoints_RaidStrategyMinDesc>Raid strategy minimum {0} points</VisibleRaidPoints_RaidStrategyMinDesc>
 </LanguageData>

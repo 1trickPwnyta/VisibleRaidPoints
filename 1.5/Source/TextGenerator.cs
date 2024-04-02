@@ -126,6 +126,12 @@ namespace VisibleRaidPoints
                 additionalFactorsUsed.Add(ThreatPointsBreakdown.DeepDrillInfestationFactor);
             }
 
+            if (ThreatPointsBreakdown.InfestationFactor > 0f)
+            {
+                text += $"\n\n{"VisibleRaidPoints_InfestationFactorDesc".Translate()}: {ThreatPointsBreakdown.InfestationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
+                additionalFactorsUsed.Add(ThreatPointsBreakdown.InfestationFactor);
+            }
+
             if (additionalFactorsUsed.Count > 0)
             {
                 // Running total pre-final
@@ -159,38 +165,18 @@ namespace VisibleRaidPoints
                 text += $"\n\n{"VisibleRaidPoints_DeepDrillInfestationMaxDesc".Translate(ThreatPointsBreakdown.DeepDrillInfestationMax)}";
             }
 
+            if (ThreatPointsBreakdown.MechClusterMax > 0f && ThreatPointsBreakdown.PreMiscCalcs > ThreatPointsBreakdown.MechClusterMax)
+            {
+                text += $"\n\n{"VisibleRaidPoints_MechClusterMaxDesc".Translate(ThreatPointsBreakdown.MechClusterMax)}";
+            }
+
+            if (ThreatPointsBreakdown.RaidStrategyMin > 0f && ThreatPointsBreakdown.PreMiscCalcs < ThreatPointsBreakdown.RaidStrategyMin)
+            {
+                text += $"\n\n{"VisibleRaidPoints_RaidStrategyMinDesc".Translate(ThreatPointsBreakdown.RaidStrategyMin)} {$"({ThreatPointsBreakdown.FactionDesc}, {ThreatPointsBreakdown.GroupKindDesc})".Colorize(ColoredText.SubtleGrayColor)}";
+            }
+
             text += "\n\n----------------------";
             text += $"\n{"VisibleRaidPoints_BreakdownTotal".Translate()}: {((int)ThreatPointsBreakdown.FinalResult).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
-
-            return text;
-        }
-
-        public static TaggedString GenerateCaravanDemandMessageText(IncidentWorker_CaravanDemand instance, Faction enemyFaction, int attackerCount, List<ThingCount> demands, Caravan caravan)
-        {
-            if (instance is null)
-            {
-                throw new ArgumentNullException(nameof(instance));
-            }
-
-            TaggedString text = "CaravanDemand".Translate(caravan.Name, enemyFaction.NameColored, attackerCount, GenLabel.ThingsLabel(demands, "  - ", false), enemyFaction.def.pawnsPlural).Resolve().CapitalizeFirst();
-
-            if (VisibleRaidPointsSettings.CaravanDemand)
-            {
-                if (VisibleRaidPointsSettings.ShowInText)
-                {
-                    text += $"\n\n{GetThreatPointsIndicatorText()}";
-                }
-
-                if (VisibleRaidPointsSettings.ShowBreakdown)
-                {
-                    TaggedString breakdown = TextGenerator.GetThreatPointsBreakdownText();
-
-                    if (breakdown != null)
-                    {
-                        text += $"\n\n{breakdown}";
-                    }
-                }
-            }
 
             return text;
         }

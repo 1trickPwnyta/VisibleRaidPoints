@@ -9,7 +9,7 @@ namespace VisibleRaidPoints
 {
     public class VisibleRaidPointsSettings : ModSettings
     {
-        private static readonly int IncidentWorkerTypeCountVanilla = 17;
+        private static readonly int IncidentWorkerTypeCountVanilla = 14;
         private static readonly int IncidentWorkerTypeCountRoyalty = 1;
         private static readonly int IncidentWorkerTypeCountIdeology = 0;
         private static readonly int IncidentWorkerTypeCountBiotech = 1;
@@ -55,21 +55,18 @@ namespace VisibleRaidPoints
         public static bool FleshbeastAttack;
         public static bool FleshmassHeart;
         public static bool GhoulAttack;
-        public static bool GiveQuest;
         public static bool GorehulkAssault;
         public static bool HateChanters;
         public static bool Infestation;
         public static bool InsectJelly;
         public static bool MechCluster;
-        public static bool PsychicEmanation;
+        public static bool PsychicDrone;
         public static bool PsychicRitualSiege;
         public static bool RaidEnemy;
         public static bool RaidFriendly;
         public static bool ShamblerAssault;
         public static bool SightstealerArrival;
         public static bool SightstealerSwarm;
-        public static bool TraderCaravanArrival;
-        public static bool TravelerGroup;
         public static bool VisitorGroup;
         public static bool WastepackInfestation;
 
@@ -90,21 +87,18 @@ namespace VisibleRaidPoints
             if (FleshbeastAttack && type == typeof(IncidentWorker_FleshbeastAttack)) return true;
             if (FleshmassHeart && type == typeof(IncidentWorker_FleshmassHeart)) return true;
             if (GhoulAttack && type == typeof(IncidentWorker_GhoulAttack)) return true;
-            if (GiveQuest && type == typeof(IncidentWorker_GiveQuest)) return true;
             if (GorehulkAssault && type == typeof(IncidentWorker_GorehulkAssault)) return true;
             if (HateChanters && type == typeof(IncidentWorker_HateChanters)) return true;
             if (Infestation && type == typeof(IncidentWorker_Infestation)) return true;
             if (InsectJelly && type == typeof(IncidentWorker_InsectJelly)) return true;
             if (MechCluster && type == typeof(IncidentWorker_MechCluster)) return true;
-            if (PsychicEmanation && type == typeof(IncidentWorker_PsychicEmanation)) return true;
+            if (PsychicDrone && type == typeof(IncidentWorker_PsychicDrone)) return true;
             if (PsychicRitualSiege && type == typeof(IncidentWorker_PsychicRitualSiege)) return true;
             if (RaidEnemy && type == typeof(IncidentWorker_RaidEnemy)) return true;
             if (RaidFriendly && type == typeof(IncidentWorker_RaidFriendly)) return true;
             if (ShamblerAssault && type == typeof(IncidentWorker_ShamblerAssault)) return true;
             if (SightstealerArrival && type == typeof(IncidentWorker_SightstealerArrival)) return true;
             if (SightstealerSwarm && type == typeof(IncidentWorker_SightstealerSwarm)) return true;
-            if (TraderCaravanArrival && type == typeof(IncidentWorker_TraderCaravanArrival)) return true;
-            if (TravelerGroup && type == typeof(IncidentWorker_TravelerGroup)) return true;
             if (VisitorGroup && type == typeof(IncidentWorker_VisitorGroup)) return true;
             if (WastepackInfestation && type == typeof(IncidentWorker_WastepackInfestation)) return true;
             return false;
@@ -147,21 +141,18 @@ namespace VisibleRaidPoints
             Scribe_Values.Look(ref FleshbeastAttack, "FleshbeastAttack", true);
             Scribe_Values.Look(ref FleshmassHeart, "FleshmassHeart", true);
             Scribe_Values.Look(ref GhoulAttack, "GhoulAttack", false);
-            Scribe_Values.Look(ref GiveQuest, "GiveQuest", false);
             Scribe_Values.Look(ref GorehulkAssault, "GorehulkAssault", true);
             Scribe_Values.Look(ref HateChanters, "HateChanters", true);
             Scribe_Values.Look(ref Infestation, "Infestation", true);
             Scribe_Values.Look(ref InsectJelly, "InsectJelly", false);
             Scribe_Values.Look(ref MechCluster, "MechCluster", true);
-            Scribe_Values.Look(ref PsychicEmanation, "PsychicEmanation", false);
+            Scribe_Values.Look(ref PsychicDrone, "PsychicDrone", false);
             Scribe_Values.Look(ref PsychicRitualSiege, "PsychicRitualSiege", true);
             Scribe_Values.Look(ref RaidEnemy, "RaidEnemy", true);
             Scribe_Values.Look(ref RaidFriendly, "RaidFriendly", false);
             Scribe_Values.Look(ref ShamblerAssault, "ShamblerAssault", false);
             Scribe_Values.Look(ref SightstealerArrival, "SightstealerArrival", true);
             Scribe_Values.Look(ref SightstealerSwarm, "SightstealerSwarm", true);
-            Scribe_Values.Look(ref TraderCaravanArrival, "TraderCaravanArrival", false);
-            Scribe_Values.Look(ref TravelerGroup, "TravelerGroup", false);
             Scribe_Values.Look(ref VisitorGroup, "VisitorGroup", false);
             Scribe_Values.Look(ref WastepackInfestation, "WastepackInfestation", true);
         }

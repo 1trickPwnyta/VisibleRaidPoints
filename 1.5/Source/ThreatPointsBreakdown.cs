@@ -30,11 +30,16 @@ namespace VisibleRaidPoints
         public static float CaravanDemandFactor;
         public static float CrashedShipPartFactor;
         public static float DeepDrillInfestationFactor;
+        public static float InfestationFactor;
         public static float PreMiscCalcs;
         public static bool AnimalInsanityMassCalc;
         public static float CrashedShipPartMin;
         public static float DeepDrillInfestationMin;
         public static float DeepDrillInfestationMax;
+        public static float MechClusterMax;
+        public static float RaidStrategyMin;
+        public static string FactionDesc;
+        public static string GroupKindDesc;
         public static float FinalResult;
 
         public static void Clear()
@@ -59,11 +64,16 @@ namespace VisibleRaidPoints
             CaravanDemandFactor = 0f;
             CrashedShipPartFactor = 0f;
             DeepDrillInfestationFactor = 0f;
+            InfestationFactor = 0f;
             PreMiscCalcs = 0f;
             AnimalInsanityMassCalc = false;
             CrashedShipPartMin = 0f;
             DeepDrillInfestationMin = 0f;
             DeepDrillInfestationMax = 0f;
+            MechClusterMax = 0f;
+            RaidStrategyMin = 0f;
+            FactionDesc = null;
+            GroupKindDesc = null;
             FinalResult = 0f;
         }
 

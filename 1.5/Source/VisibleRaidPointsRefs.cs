@@ -11,7 +11,6 @@ namespace VisibleRaidPoints
     {
         public static readonly MethodInfo m_ThreatPointsBreakdown_Clear = AccessTools.Method(typeof(ThreatPointsBreakdown), "Clear");
         public static readonly MethodInfo m_IIncidentTarget_get_PlayerWealthForStoryteller = AccessTools.Method(typeof(IIncidentTarget), "get_PlayerWealthForStoryteller");
-        public static readonly MethodInfo m_SimpleCurve_Evaluate = AccessTools.Method(typeof(SimpleCurve), "Evaluate");
         public static readonly MethodInfo m_IIncidentTarget_get_PlayerPawnsForStoryteller = AccessTools.Method(typeof(IIncidentTarget), "get_PlayerPawnsForStoryteller");
         public static readonly MethodInfo m_IEnumeratorPawn_get_Current = AccessTools.Method(typeof(IEnumerator<Pawn>), "get_Current");
         public static readonly MethodInfo m_Pawn_get_LabelShort = AccessTools.Method(typeof(Pawn), "get_LabelShort");
@@ -21,10 +20,12 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_FloatRange_get_RandomInRange = AccessTools.Method(typeof(FloatRange), "get_RandomInRange");
         public static readonly MethodInfo m_Mathf_Clamp = AccessTools.Method(typeof(Mathf), nameof(Mathf.Clamp), new[] { typeof(float), typeof(float), typeof(float) });
         public static readonly MethodInfo m_Mathf_Max = AccessTools.Method(typeof(Mathf), nameof(Mathf.Max), new[] { typeof(float), typeof(float) });
+        public static readonly MethodInfo m_Mathf_Min = AccessTools.Method(typeof(Mathf), nameof(Mathf.Min), new[] { typeof(float), typeof(float) });
         public static readonly MethodInfo m_TaggedString_op_Implicit_string = AccessTools.Method(typeof(TaggedString), "op_Implicit", new[] { typeof(string) });
         public static readonly MethodInfo m_IncidentWorker_CaravanDemand_GenerateMessageText = AccessTools.Method(typeof(IncidentWorker_CaravanDemand), "GenerateMessageText");
-        public static readonly MethodInfo m_TextGenerator_GenerateCaravanDemandMessageText = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GenerateCaravanDemandMessageText));
+        public static readonly MethodInfo m_CaravanDemandUtility_GenerateCaravanDemandMessageText = AccessTools.Method(typeof(CaravanDemandUtility), nameof(CaravanDemandUtility.GenerateCaravanDemandMessageText));
         public static readonly MethodInfo m_Rand_Range = AccessTools.Method(typeof(Rand), nameof(Rand.Range), new[] { typeof(float), typeof(float) });
+        public static readonly MethodInfo m_SimpleCurve_Evaluate = AccessTools.Method(typeof(SimpleCurve), nameof(SimpleCurve.Evaluate));
 
         public static readonly FieldInfo f_IncidentParms_points = AccessTools.Field(typeof(IncidentParms), nameof(IncidentParms.points));
         public static readonly FieldInfo f_ThreatPointsBreakdown_PlayerWealthForStoryteller = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.PlayerWealthForStoryteller));
@@ -46,13 +47,19 @@ namespace VisibleRaidPoints
         public static readonly FieldInfo f_ThreatPointsBreakdown_CaravanDemandFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.CaravanDemandFactor));
         public static readonly FieldInfo f_ThreatPointsBreakdown_CrashedShipPartFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.CrashedShipPartFactor));
         public static readonly FieldInfo f_ThreatPointsBreakdown_DeepDrillInfestationFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.DeepDrillInfestationFactor));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_InfestationFactor = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.InfestationFactor));
         public static readonly FieldInfo f_ThreatPointsBreakdown_PreMiscCalcs = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.PreMiscCalcs));
         public static readonly FieldInfo f_ThreatPointsBreakdown_AnimalInsanityMassCalc = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.AnimalInsanityMassCalc));
         public static readonly FieldInfo f_ThreatPointsBreakdown_CrashedShipPartMin = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.CrashedShipPartMin));
         public static readonly FieldInfo f_ThreatPointsBreakdown_DeepDrillInfestationMin = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.DeepDrillInfestationMin));
         public static readonly FieldInfo f_ThreatPointsBreakdown_DeepDrillInfestationMax = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.DeepDrillInfestationMax));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_MechClusterMax = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.MechClusterMax));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_RaidStrategyMin = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.RaidStrategyMin));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_FactionDesc = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.FactionDesc));
+        public static readonly FieldInfo f_ThreatPointsBreakdown_GroupKindDesc = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.GroupKindDesc));
         public static readonly FieldInfo f_ThreatPointsBreakdown_FinalResult = AccessTools.Field(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.FinalResult));
         public static readonly FieldInfo f_Def_defName = AccessTools.Field(typeof(Def), "defName");
         public static readonly FieldInfo f_RaidAgeRestrictionDef_threatPointsFactor = AccessTools.Field(typeof(RaidAgeRestrictionDef), nameof(RaidAgeRestrictionDef.threatPointsFactor));
+        public static readonly FieldInfo f_Faction_def = AccessTools.Field(typeof(Faction), nameof(Faction.def));
     }
 }

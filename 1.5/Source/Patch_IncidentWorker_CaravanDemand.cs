@@ -41,7 +41,7 @@ namespace VisibleRaidPoints
 
                 if (!foundTextGeneration && instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_IncidentWorker_CaravanDemand_GenerateMessageText)
                 {
-                    instruction.operand = VisibleRaidPointsRefs.m_TextGenerator_GenerateCaravanDemandMessageText;
+                    instruction.operand = VisibleRaidPointsRefs.m_CaravanDemandUtility_GenerateCaravanDemandMessageText;
                     foundTextGeneration = true;
                 }
 
