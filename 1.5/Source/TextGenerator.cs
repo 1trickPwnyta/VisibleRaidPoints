@@ -120,6 +120,12 @@ namespace VisibleRaidPoints
                 additionalFactorsUsed.Add(ThreatPointsBreakdown.CrashedShipPartFactor);
             }
 
+            if (ThreatPointsBreakdown.DeepDrillInfestationFactor > 0f)
+            {
+                text += $"\n\n{"VisibleRaidPoints_DeepDrillInfestationFactorDesc".Translate()}: {ThreatPointsBreakdown.DeepDrillInfestationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
+                additionalFactorsUsed.Add(ThreatPointsBreakdown.DeepDrillInfestationFactor);
+            }
+
             if (additionalFactorsUsed.Count > 0)
             {
                 // Running total pre-final
@@ -141,6 +147,16 @@ namespace VisibleRaidPoints
             if (ThreatPointsBreakdown.CrashedShipPartMin > 0f && ThreatPointsBreakdown.PreMiscCalcs < ThreatPointsBreakdown.CrashedShipPartMin)
             {
                 text += $"\n\n{"VisibleRaidPoints_CrashedShipPartMinDesc".Translate(ThreatPointsBreakdown.CrashedShipPartMin)}";
+            }
+
+            if (ThreatPointsBreakdown.DeepDrillInfestationMin > 0f && ThreatPointsBreakdown.PreMiscCalcs < ThreatPointsBreakdown.DeepDrillInfestationMin)
+            {
+                text += $"\n\n{"VisibleRaidPoints_DeepDrillInfestationMinDesc".Translate(ThreatPointsBreakdown.DeepDrillInfestationMin)}";
+            }
+
+            if (ThreatPointsBreakdown.DeepDrillInfestationMax > 0f && ThreatPointsBreakdown.PreMiscCalcs > ThreatPointsBreakdown.DeepDrillInfestationMax)
+            {
+                text += $"\n\n{"VisibleRaidPoints_DeepDrillInfestationMaxDesc".Translate(ThreatPointsBreakdown.DeepDrillInfestationMax)}";
             }
 
             text += "\n\n----------------------";

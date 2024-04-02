@@ -60,8 +60,11 @@
 	<VisibleRaidPoints_AmbushManhunterFactorDesc>Caravan ambush (animals) factor</VisibleRaidPoints_AmbushManhunterFactorDesc>
 	<VisibleRaidPoints_CaravanDemandFactorDesc>Caravan demand random factor</VisibleRaidPoints_CaravanDemandFactorDesc>
 	<VisibleRaidPoints_CrashedShipPartFactorDesc>Crashed ship part factor</VisibleRaidPoints_CrashedShipPartFactorDesc>
+	<VisibleRaidPoints_DeepDrillInfestationFactorDesc>Deep drill infestation random factor</VisibleRaidPoints_DeepDrillInfestationFactorDesc>
 	<VisibleRaidPoints_RunningTotalPreClampDesc>Intermediate total</VisibleRaidPoints_RunningTotalPreClampDesc>
 	<VisibleRaidPoints_RunningTotalPreFinalDesc>Intermediate total</VisibleRaidPoints_RunningTotalPreFinalDesc>
 	<VisibleRaidPoints_AnimalInsanityMassCalcDesc>Animal mass insanity adjustment</VisibleRaidPoints_AnimalInsanityMassCalcDesc>
 	<VisibleRaidPoints_CrashedShipPartMinDesc>Crashed ship part minimum {0} points</VisibleRaidPoints_CrashedShipPartMinDesc>
+	<VisibleRaidPoints_DeepDrillInfestationMinDesc>Deep drill infestation minimum {0} points</VisibleRaidPoints_DeepDrillInfestationMinDesc>
+	<VisibleRaidPoints_DeepDrillInfestationMaxDesc>Deep drill infestation maximum {0} points</VisibleRaidPoints_DeepDrillInfestationMaxDesc>
 </LanguageData>

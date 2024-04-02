@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Debug.cs" />
     <Compile Include="Dialog_IncidentWorkerTypes.cs" />
+    <Compile Include="Patch_IncidentWorker_DeepDrillInfestation.cs" />
     <Compile Include="Patch_IncidentWorker_CrashedShipPart.cs" />
     <Compile Include="Patch_IncidentWorker_AnimalInsanityMass.cs" />
     <Compile Include="Patch_IncidentWorker_Ambush_ManhunterPack.cs" />

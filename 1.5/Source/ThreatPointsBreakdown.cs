@@ -29,9 +29,12 @@ namespace VisibleRaidPoints
         public static float AmbushManhunterFactor;
         public static float CaravanDemandFactor;
         public static float CrashedShipPartFactor;
+        public static float DeepDrillInfestationFactor;
         public static float PreMiscCalcs;
         public static bool AnimalInsanityMassCalc;
         public static float CrashedShipPartMin;
+        public static float DeepDrillInfestationMin;
+        public static float DeepDrillInfestationMax;
         public static float FinalResult;
 
         public static void Clear()
@@ -55,9 +58,12 @@ namespace VisibleRaidPoints
             AmbushManhunterFactor = 0f;
             CaravanDemandFactor = 0f;
             CrashedShipPartFactor = 0f;
+            DeepDrillInfestationFactor = 0f;
             PreMiscCalcs = 0f;
             AnimalInsanityMassCalc = false;
             CrashedShipPartMin = 0f;
+            DeepDrillInfestationMin = 0f;
+            DeepDrillInfestationMax = 0f;
             FinalResult = 0f;
         }
 
