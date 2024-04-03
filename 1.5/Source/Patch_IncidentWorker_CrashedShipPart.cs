@@ -27,8 +27,7 @@ namespace VisibleRaidPoints
                 if (foundPoints && !loadedFactor && instruction.opcode == OpCodes.Ldc_R4)
                 {
                     yield return instruction;
-                    yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_CrashedShipPartFactor);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetCrashedShipPartFactor);
                     loadedFactor = true;
                     continue;
                 }
@@ -37,15 +36,13 @@ namespace VisibleRaidPoints
                 {
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PreMiscCalcs);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPreMiscCalcs);
                     continue;
                 }
 
                 if (loadedFactor && !loadedMin && instruction.opcode == OpCodes.Ldc_R4)
                 {
                     yield return instruction;
-                    yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_CrashedShipPartMin);
                     loadedMin = true;
                     continue;
                 }
@@ -54,7 +51,7 @@ namespace VisibleRaidPoints
                 {
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_FinalResult);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetFinalResult);
                     foundMax = true;
                     continue;
                 }

@@ -21,12 +21,12 @@ namespace VisibleRaidPoints
             {
                 if (VisibleRaidPointsSettings.ShowInText)
                 {
-                    text += $"\n\n{TextGenerator.GetThreatPointsIndicatorText()}";
+                    text += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(ThreatPointsBreakdown.GetCurrent())}";
                 }
 
                 if (VisibleRaidPointsSettings.ShowBreakdown)
                 {
-                    TaggedString breakdown = TextGenerator.GetThreatPointsBreakdownText();
+                    TaggedString breakdown = TextGenerator.GetThreatPointsBreakdownText(ThreatPointsBreakdown.GetCurrent());
 
                     if (breakdown != null)
                     {

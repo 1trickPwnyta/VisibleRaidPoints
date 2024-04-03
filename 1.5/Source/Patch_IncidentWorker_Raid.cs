@@ -17,12 +17,9 @@ namespace VisibleRaidPoints
             bool foundMax = false;
 
             yield return new CodeInstruction(OpCodes.Ldarg_3);
-            yield return new CodeInstruction(OpCodes.Ldfld, VisibleRaidPointsRefs.f_Faction_def);
-            yield return new CodeInstruction(OpCodes.Ldfld, VisibleRaidPointsRefs.f_Def_defName);
-            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_FactionDesc);
+            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetRaidFaction);
             yield return new CodeInstruction(OpCodes.Ldarg_S, 4);
-            yield return new CodeInstruction(OpCodes.Ldfld, VisibleRaidPointsRefs.f_Def_defName);
-            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_GroupKindDesc);
+            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetRaidGroupKindDef);
 
             foreach (CodeInstruction instruction in instructions)
             {
@@ -32,43 +29,36 @@ namespace VisibleRaidPoints
                     yield return new CodeInstruction(OpCodes.Dup);
                     if (!foundRaidArrivalModeFactor)
                     {
-                        yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_RaidArrivalModeFactor);
+                        yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetRaidArrivalModeFactor);
                         yield return new CodeInstruction(OpCodes.Ldarg_1);
-                        yield return new CodeInstruction(OpCodes.Ldfld, VisibleRaidPointsRefs.f_Def_defName);
-                        yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_RaidArrivalModeDesc);
+                        yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetRaidArrivalModeDef);
                         foundRaidArrivalModeFactor = true;
                     } 
                     else
                     {
-                        yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_RaidStrategyFactor);
+                        yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetRaidStrategyFactor);
                         yield return new CodeInstruction(OpCodes.Ldarg_2);
-                        yield return new CodeInstruction(OpCodes.Ldfld, VisibleRaidPointsRefs.f_Def_defName);
-                        yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_RaidStrategyDesc);
+                        yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetRaidStrategyDef);
                     }
                 }
                 else if (instruction.opcode == OpCodes.Ldfld && (FieldInfo)instruction.operand == VisibleRaidPointsRefs.f_RaidAgeRestrictionDef_threatPointsFactor)
                 {
                     yield return instruction;
-                    yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_RaidAgeRestrictionFactor);
                     yield return new CodeInstruction(OpCodes.Ldarg_S, 5);
-                    yield return new CodeInstruction(OpCodes.Ldfld, VisibleRaidPointsRefs.f_Def_defName);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_RaidAgeRestrictionDesc);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetRaidAgeRestrictionDef);
                     foundAgeRestrictionFactor = true;
                 }
                 else if (foundAgeRestrictionFactor && !foundMax && instruction.opcode == OpCodes.Ldarg_0)
                 {
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PreMiscCalcs);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPreMiscCalcs);
                 }
                 else if (instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_Mathf_Max)
                 {
-                    yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_RaidStrategyMin);
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_FinalResult);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetFinalResult);
                     foundMax = true;
                 }
                 else

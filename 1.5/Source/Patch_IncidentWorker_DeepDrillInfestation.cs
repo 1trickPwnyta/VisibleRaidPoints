@@ -14,8 +14,6 @@ namespace VisibleRaidPoints
         {
             bool foundPoints = false;
             bool loadedFactor = false;
-            bool loadedMin = false;
-            bool loadedMax = false;
             bool foundClamp = false;
 
             foreach (CodeInstruction instruction in instructions)
@@ -29,42 +27,24 @@ namespace VisibleRaidPoints
                 {
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_DeepDrillInfestationFactor);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetDeepDrillInfestationFactor);
                     loadedFactor = true;
                     continue;
                 }
 
-                if (loadedFactor && !loadedMin && instruction.opcode == OpCodes.Mul)
+                if (loadedFactor && !foundClamp && instruction.opcode == OpCodes.Mul)
                 {
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PreMiscCalcs);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPreMiscCalcs);
                     continue;
                 }
 
-                if (loadedFactor && !loadedMin && instruction.opcode == OpCodes.Ldc_R4)
+                if (loadedFactor && !foundClamp && instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_Mathf_Clamp)
                 {
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_DeepDrillInfestationMin);
-                    loadedMin = true;
-                    continue;
-                }
-
-                if (loadedMin && !loadedMax && instruction.opcode == OpCodes.Ldc_R4)
-                {
-                    yield return instruction;
-                    yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_DeepDrillInfestationMax);
-                    loadedMax = true;
-                    continue;
-                }
-
-                if (loadedMax && !foundClamp && instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_Mathf_Clamp)
-                {
-                    yield return instruction;
-                    yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_FinalResult);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetFinalResult);
                     foundClamp = true;
                     continue;
                 }

@@ -1,6 +1,4 @@
 ﻿using RimWorld;
-using RimWorld.Planet;
-using System;
 using System.Collections.Generic;
 using Verse;
 
@@ -8,175 +6,188 @@ namespace VisibleRaidPoints
 {
     public static class TextGenerator
     {
-        public static TaggedString GetThreatPointsIndicatorText()
+        private static readonly float clampLow = 35f;
+        private static readonly float pollutionRaidFactor = 1.5f;
+        private static readonly float ambushManhunterFactor = 0.75f;
+        private static readonly float crashedShipPartFactor = 0.9f;
+        private static readonly float crashedShipPartMin = 300f;
+        private static readonly float deepDrillInfestationMin = 200f;
+        private static readonly float deepDrillInfestationMax = 1000f;
+        private static readonly float mechClusterMax = 10000f;
+
+        public static TaggedString GetThreatPointsIndicatorText(ThreatPointsBreakdown breakdown)
         {
-            return $"{"VisibleRaidPoints_RaidPointsUsed".Translate()}: {((int)ThreatPointsBreakdown.FinalResult).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+            return $"{"VisibleRaidPoints_RaidPointsUsed".Translate()}: {((int)breakdown.FinalResult).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
         }
 
-        public static TaggedString GetThreatPointsBreakdownText()
+        public static TaggedString GetThreatPointsBreakdownText(ThreatPointsBreakdown breakdown)
         {
-            if (ThreatPointsBreakdown.PointsPerPawn == null)
+            if (breakdown.PointsPerPawn == null)
             {
                 Debug.Log("Points per pawn not initialized. Cannot provide threat points breakdown. Harmony transpiler patch probably failed.");
                 return null;
             }
 
-            if (Find.Storyteller == null || Find.Storyteller.difficulty == null)
-            {
-                Debug.Log("Storyteller or difficulty settings not available. Cannot provide threat points breakdown. This shouldn't happen unless version < 1.3.");
-                return null;
-            }
-
-            float clampLow = 35f;
-
             TaggedString text = $"=== {"VisibleRaidPoints_PointsBreakdown".Translate()} ===";
 
-            text += $"\n\n{"VisibleRaidPoints_BreakdownPlayerWealthForStorytellerDesc".Translate()}: {$"${(int)ThreatPointsBreakdown.PlayerWealthForStoryteller}".Colorize(ColoredText.CurrencyColor)} {$"({"VisibleRaidPoints_BreakdownPlayerWealthForStorytellerExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor)}";
-            text += $"\n{"VisibleRaidPoints_BreakdownPointsFromWealthDesc".Translate()}: {((int)ThreatPointsBreakdown.PointsFromWealth).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+            text += $"\n\n{"VisibleRaidPoints_BreakdownPlayerWealthForStorytellerDesc".Translate()}: {$"${(int)breakdown.PlayerWealthForStoryteller}".Colorize(ColoredText.CurrencyColor)} {$"({"VisibleRaidPoints_BreakdownPlayerWealthForStorytellerExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor)}";
+            text += $"\n{"VisibleRaidPoints_BreakdownPointsFromWealthDesc".Translate()}: {((int)breakdown.PointsFromWealth).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
 
             text += "\n";
-            if (ThreatPointsBreakdown.PointsPerPawn.Count > 0)
+            if (breakdown.PointsPerPawn.Count > 0)
             {
                 text += $"\n{"VisibleRaidPoints_BreakdownPointsPerPawnDesc".Translate()}: {$"({"VisibleRaidPoints_BreakdownPointsPerPawnExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor)}";
             }
-            foreach (ThreatPointsBreakdown.PawnPoints p in ThreatPointsBreakdown.PointsPerPawn)
+            foreach (ThreatPointsBreakdown.PawnPoints p in breakdown.PointsPerPawn)
             {
                 if (p.Points > 0f)
                 {
                     text += $"\n  {p.Name}: {p.Points.ToString(".0").Colorize(ColoredText.FactionColor_Hostile)}";
                 }
             }
-            text += $"\n{"VisibleRaidPoints_BreakdownPointsFromPawnsDesc".Translate()}: {((int)ThreatPointsBreakdown.PointsFromPawns).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+            text += $"\n{"VisibleRaidPoints_BreakdownPointsFromPawnsDesc".Translate()}: {((int)breakdown.GetPointsFromPawns()).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
 
-            if (ThreatPointsBreakdown.TargetRandomFactor != 1f)
+            if (breakdown.TargetRandomFactor != 1f)
             {
-                text += $"\n\n{"VisibleRaidPoints_BreakdownTargetRandomFactorDesc".Translate()}: {ThreatPointsBreakdown.TargetRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
+                text += $"\n\n{"VisibleRaidPoints_BreakdownTargetRandomFactorDesc".Translate()}: {breakdown.TargetRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
             }
 
-            text += $"\n\n{"VisibleRaidPoints_BreakdownAdaptationFactorDesc".Translate()}: {ThreatPointsBreakdown.AdaptationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
+            text += $"\n\n{"VisibleRaidPoints_BreakdownAdaptationFactorDesc".Translate()}: {breakdown.AdaptationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
 
-            text += $"\n\n{"VisibleRaidPoints_BreakdownThreatScaleDesc".Translate()}: {Find.Storyteller.difficulty.threatScale.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
+            text += $"\n\n{"VisibleRaidPoints_BreakdownThreatScaleDesc".Translate()}: {breakdown.ThreatScale.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
 
-            if (ThreatPointsBreakdown.GraceFactor != 1f)
+            if (breakdown.GraceFactor != 1f)
             {
-                text += $"\n\n{"VisibleRaidPoints_BreakdownGraceFactorDesc".Translate()}: {ThreatPointsBreakdown.GraceFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} {$"({"VisibleRaidPoints_BreakdownGraceFactorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor)}";
+                text += $"\n\n{"VisibleRaidPoints_BreakdownGraceFactorDesc".Translate()}: {breakdown.GraceFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} {$"({"VisibleRaidPoints_BreakdownGraceFactorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor)}";
             }
 
             // Running total pre-clamp
             text += $"\n\n{"VisibleRaidPoints_RunningTotalPreClampDesc".Translate()}";
-            text += $"\n({((int)ThreatPointsBreakdown.PointsFromWealth).ToString().Colorize(ColoredText.FactionColor_Hostile)} + {((int)ThreatPointsBreakdown.PointsFromPawns).ToString().Colorize(ColoredText.FactionColor_Hostile)}) {(ThreatPointsBreakdown.TargetRandomFactor != 1f ? $"x {ThreatPointsBreakdown.TargetRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}x {ThreatPointsBreakdown.AdaptationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} x {Find.Storyteller.difficulty.threatScale.ToString("0.00").Colorize(ColoredText.ImpactColor)} {(ThreatPointsBreakdown.GraceFactor != 1f ? $"x {ThreatPointsBreakdown.GraceFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}= {((int)ThreatPointsBreakdown.PreClamp).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+            text += $"\n({((int)breakdown.PointsFromWealth).ToString().Colorize(ColoredText.FactionColor_Hostile)} + {((int)breakdown.GetPointsFromPawns()).ToString().Colorize(ColoredText.FactionColor_Hostile)}) {(breakdown.TargetRandomFactor != 1f ? $"x {breakdown.TargetRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}x {breakdown.AdaptationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} x {breakdown.ThreatScale.ToString("0.00").Colorize(ColoredText.ImpactColor)} {(breakdown.GraceFactor != 1f ? $"x {breakdown.GraceFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} " : "")}= {((int)breakdown.PreClamp).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
 
-            if (ThreatPointsBreakdown.PreClamp < clampLow)
+            if (breakdown.PreClamp < clampLow)
             {
                 text += $"\n\n{"VisibleRaidPoints_BreakdownClampLowDesc".Translate(clampLow)}";
             }
 
-            if (ThreatPointsBreakdown.PostClamp < ThreatPointsBreakdown.PreClamp)
+            if (breakdown.PostClamp < breakdown.PreClamp)
             {
-                text += $"\n\n{"VisibleRaidPoints_BreakdownClampHighDesc".Translate(ThreatPointsBreakdown.PostClamp)}";
+                text += $"\n\n{"VisibleRaidPoints_BreakdownClampHighDesc".Translate(breakdown.PostClamp)}";
             }
 
             List<float> additionalFactorsUsed = new List<float>();
 
-            if (ThreatPointsBreakdown.StorytellerRandomFactor > 0f)
+            if (breakdown.StorytellerRandomFactor > 0f)
             {
-                text += $"\n\n{"VisibleRaidPoints_StorytellerRandomFactorDesc".Translate()}: {ThreatPointsBreakdown.StorytellerRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
-                additionalFactorsUsed.Add(ThreatPointsBreakdown.StorytellerRandomFactor);
+                text += $"\n\n{"VisibleRaidPoints_StorytellerRandomFactorDesc".Translate()}: {breakdown.StorytellerRandomFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
+                additionalFactorsUsed.Add(breakdown.StorytellerRandomFactor);
             }
 
-            if (ThreatPointsBreakdown.RaidArrivalModeFactor > 0f)
+            if (breakdown.RaidArrivalModeDef != null && breakdown.RaidArrivalModeFactor > 0f)
             {
-                text += $"\n\n{"VisibleRaidPoints_RaidArrivalModeFactorDesc".Translate()}: {ThreatPointsBreakdown.RaidArrivalModeFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} {$"({ThreatPointsBreakdown.RaidArrivalModeDesc})".Colorize(ColoredText.SubtleGrayColor)}";
-                additionalFactorsUsed.Add(ThreatPointsBreakdown.RaidArrivalModeFactor);
+                text += $"\n\n{"VisibleRaidPoints_RaidArrivalModeFactorDesc".Translate()}: {breakdown.RaidArrivalModeFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} {$"({breakdown.RaidArrivalModeDef.defName})".Colorize(ColoredText.SubtleGrayColor)}";
+                additionalFactorsUsed.Add(breakdown.RaidArrivalModeFactor);
             }
 
-            if (ThreatPointsBreakdown.RaidStrategyFactor > 0f)
+            if (breakdown.RaidStrategyDef != null && breakdown.RaidStrategyFactor > 0f)
             {
-                text += $"\n\n{"VisibleRaidPoints_RaidStrategyFactorDesc".Translate()}: {ThreatPointsBreakdown.RaidStrategyFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} {$"({ThreatPointsBreakdown.RaidStrategyDesc})".Colorize(ColoredText.SubtleGrayColor)}";
-                additionalFactorsUsed.Add(ThreatPointsBreakdown.RaidStrategyFactor);
+                text += $"\n\n{"VisibleRaidPoints_RaidStrategyFactorDesc".Translate()}: {breakdown.RaidStrategyFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} {$"({breakdown.RaidStrategyDef.defName})".Colorize(ColoredText.SubtleGrayColor)}";
+                additionalFactorsUsed.Add(breakdown.RaidStrategyFactor);
             }
 
-            if (ThreatPointsBreakdown.RaidAgeRestrictionFactor > 0f)
+            if (breakdown.RaidAgeRestrictionDef != null)
             {
-                text += $"\n\n{"VisibleRaidPoints_RaidAgeRestrictionFactorDesc".Translate()}: {ThreatPointsBreakdown.RaidAgeRestrictionFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} {$"({ThreatPointsBreakdown.RaidAgeRestrictionDesc})".Colorize(ColoredText.SubtleGrayColor)}";
-                additionalFactorsUsed.Add(ThreatPointsBreakdown.RaidAgeRestrictionFactor);
+                text += $"\n\n{"VisibleRaidPoints_RaidAgeRestrictionFactorDesc".Translate()}: {breakdown.RaidAgeRestrictionDef.threatPointsFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)} {$"({breakdown.RaidAgeRestrictionDef.defName})".Colorize(ColoredText.SubtleGrayColor)}";
+                additionalFactorsUsed.Add(breakdown.RaidAgeRestrictionDef.threatPointsFactor);
             }
 
-            if (ThreatPointsBreakdown.AmbushManhunterFactor > 0f)
+            if (breakdown.PollutionRaidFactor)
             {
-                text += $"\n\n{"VisibleRaidPoints_AmbushManhunterFactorDesc".Translate()}: {ThreatPointsBreakdown.AmbushManhunterFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
-                additionalFactorsUsed.Add(ThreatPointsBreakdown.AmbushManhunterFactor);
+                text += $"\n\n{"VisibleRaidPoints_PollutionRaidFactorDesc".Translate()}: {pollutionRaidFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
+                additionalFactorsUsed.Add(pollutionRaidFactor);
             }
 
-            if (ThreatPointsBreakdown.CaravanDemandFactor > 0f)
+            if (breakdown.AmbushManhunterFactor)
             {
-                text += $"\n\n{"VisibleRaidPoints_CaravanDemandFactorDesc".Translate()}: {ThreatPointsBreakdown.CaravanDemandFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
-                additionalFactorsUsed.Add(ThreatPointsBreakdown.CaravanDemandFactor);
+                text += $"\n\n{"VisibleRaidPoints_AmbushManhunterFactorDesc".Translate()}: {ambushManhunterFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
+                additionalFactorsUsed.Add(ambushManhunterFactor);
             }
 
-            if (ThreatPointsBreakdown.CrashedShipPartFactor > 0f)
+            if (breakdown.CaravanDemandFactor > 0f)
             {
-                text += $"\n\n{"VisibleRaidPoints_CrashedShipPartFactorDesc".Translate()}: {ThreatPointsBreakdown.CrashedShipPartFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
-                additionalFactorsUsed.Add(ThreatPointsBreakdown.CrashedShipPartFactor);
+                text += $"\n\n{"VisibleRaidPoints_CaravanDemandFactorDesc".Translate()}: {breakdown.CaravanDemandFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
+                additionalFactorsUsed.Add(breakdown.CaravanDemandFactor);
             }
 
-            if (ThreatPointsBreakdown.DeepDrillInfestationFactor > 0f)
+            if (breakdown.CrashedShipPartFactor)
             {
-                text += $"\n\n{"VisibleRaidPoints_DeepDrillInfestationFactorDesc".Translate()}: {ThreatPointsBreakdown.DeepDrillInfestationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
-                additionalFactorsUsed.Add(ThreatPointsBreakdown.DeepDrillInfestationFactor);
+                text += $"\n\n{"VisibleRaidPoints_CrashedShipPartFactorDesc".Translate()}: {crashedShipPartFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
+                additionalFactorsUsed.Add(crashedShipPartFactor);
             }
 
-            if (ThreatPointsBreakdown.InfestationFactor > 0f)
+            if (breakdown.DeepDrillInfestationFactor > 0f)
             {
-                text += $"\n\n{"VisibleRaidPoints_InfestationFactorDesc".Translate()}: {ThreatPointsBreakdown.InfestationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
-                additionalFactorsUsed.Add(ThreatPointsBreakdown.InfestationFactor);
+                text += $"\n\n{"VisibleRaidPoints_DeepDrillInfestationFactorDesc".Translate()}: {breakdown.DeepDrillInfestationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
+                additionalFactorsUsed.Add(breakdown.DeepDrillInfestationFactor);
+            }
+
+            if (breakdown.InfestationFactor > 0f)
+            {
+                text += $"\n\n{"VisibleRaidPoints_InfestationFactorDesc".Translate()}: {breakdown.InfestationFactor.ToString("0.00").Colorize(ColoredText.ImpactColor)}";
+                additionalFactorsUsed.Add(breakdown.InfestationFactor);
             }
 
             if (additionalFactorsUsed.Count > 0)
             {
                 // Running total pre-final
                 text += $"\n\n{"VisibleRaidPoints_RunningTotalPreFinalDesc".Translate()}";
-                text += $"\n{((int)ThreatPointsBreakdown.PostClamp).ToString().Colorize(ColoredText.FactionColor_Hostile)} ";
+                text += $"\n{((int)breakdown.PostClamp).ToString().Colorize(ColoredText.FactionColor_Hostile)} ";
                 foreach (float factor in additionalFactorsUsed)
                 {
                     text += $"x {factor.ToString("0.00").Colorize(ColoredText.ImpactColor)} ";
                 }
-                text += $"= {((int)ThreatPointsBreakdown.PreMiscCalcs).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+                text += $"= {((int)breakdown.PreMiscCalcs).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
             }
 
-            if (ThreatPointsBreakdown.AnimalInsanityMassCalc)
+            if (breakdown.AnimalInsanityMassCalc)
             {
                 text += $"\n\n{"VisibleRaidPoints_AnimalInsanityMassCalcDesc".Translate()}";
-                text += $"\n({((int)ThreatPointsBreakdown.PreMiscCalcs).ToString().Colorize(ColoredText.FactionColor_Hostile)} - 250) x 0.5 + 250 = {((int)ThreatPointsBreakdown.FinalResult).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+                text += $"\n({((int)breakdown.PreMiscCalcs).ToString().Colorize(ColoredText.FactionColor_Hostile)} - 250) x 0.5 + 250 = {((int)breakdown.FinalResult).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
             }
 
-            if (ThreatPointsBreakdown.CrashedShipPartMin > 0f && ThreatPointsBreakdown.PreMiscCalcs < ThreatPointsBreakdown.CrashedShipPartMin)
+            if (breakdown.CrashedShipPartFactor && breakdown.PreMiscCalcs < crashedShipPartMin)
             {
-                text += $"\n\n{"VisibleRaidPoints_CrashedShipPartMinDesc".Translate(ThreatPointsBreakdown.CrashedShipPartMin)}";
+                text += $"\n\n{"VisibleRaidPoints_CrashedShipPartMinDesc".Translate(crashedShipPartMin)}";
             }
 
-            if (ThreatPointsBreakdown.DeepDrillInfestationMin > 0f && ThreatPointsBreakdown.PreMiscCalcs < ThreatPointsBreakdown.DeepDrillInfestationMin)
+            if (breakdown.DeepDrillInfestationFactor > 0f)
             {
-                text += $"\n\n{"VisibleRaidPoints_DeepDrillInfestationMinDesc".Translate(ThreatPointsBreakdown.DeepDrillInfestationMin)}";
+                if (breakdown.PreMiscCalcs < deepDrillInfestationMin)
+                {
+                    text += $"\n\n{"VisibleRaidPoints_DeepDrillInfestationMinDesc".Translate(deepDrillInfestationMin)}";
+                }
+                if (breakdown.PreMiscCalcs > deepDrillInfestationMax)
+                {
+                    text += $"\n\n{"VisibleRaidPoints_DeepDrillInfestationMaxDesc".Translate(deepDrillInfestationMax)}";
+                }
             }
 
-            if (ThreatPointsBreakdown.DeepDrillInfestationMax > 0f && ThreatPointsBreakdown.PreMiscCalcs > ThreatPointsBreakdown.DeepDrillInfestationMax)
+            if (breakdown.MechClusterMax && breakdown.PreMiscCalcs > mechClusterMax)
             {
-                text += $"\n\n{"VisibleRaidPoints_DeepDrillInfestationMaxDesc".Translate(ThreatPointsBreakdown.DeepDrillInfestationMax)}";
+                text += $"\n\n{"VisibleRaidPoints_MechClusterMaxDesc".Translate(mechClusterMax)}";
             }
 
-            if (ThreatPointsBreakdown.MechClusterMax > 0f && ThreatPointsBreakdown.PreMiscCalcs > ThreatPointsBreakdown.MechClusterMax)
+            if (breakdown.RaidStrategyDef != null && breakdown.RaidFaction != null && breakdown.RaidGroupKindDef != null)
             {
-                text += $"\n\n{"VisibleRaidPoints_MechClusterMaxDesc".Translate(ThreatPointsBreakdown.MechClusterMax)}";
-            }
-
-            if (ThreatPointsBreakdown.RaidStrategyMin > 0f && ThreatPointsBreakdown.PreMiscCalcs < ThreatPointsBreakdown.RaidStrategyMin)
-            {
-                text += $"\n\n{"VisibleRaidPoints_RaidStrategyMinDesc".Translate(ThreatPointsBreakdown.RaidStrategyMin)} {$"({ThreatPointsBreakdown.FactionDesc}, {ThreatPointsBreakdown.GroupKindDesc})".Colorize(ColoredText.SubtleGrayColor)}";
+                float raidStrategyMin = breakdown.RaidStrategyDef.Worker.MinimumPoints(breakdown.RaidFaction, breakdown.RaidGroupKindDef) * 1.05f;
+                if (breakdown.PreMiscCalcs < raidStrategyMin)
+                {
+                    text += $"\n\n{"VisibleRaidPoints_RaidStrategyMinDesc".Translate(raidStrategyMin)} {$"({breakdown.RaidFaction.def.defName}, {breakdown.RaidGroupKindDef.defName})".Colorize(ColoredText.SubtleGrayColor)}";
+                }
             }
 
             text += "\n\n----------------------";
-            text += $"\n{"VisibleRaidPoints_BreakdownTotal".Translate()}: {((int)ThreatPointsBreakdown.FinalResult).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+            text += $"\n{"VisibleRaidPoints_BreakdownTotal".Translate()}: {((int)breakdown.FinalResult).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
 
             return text;
         }

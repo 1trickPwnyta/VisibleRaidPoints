@@ -15,13 +15,13 @@ namespace VisibleRaidPoints
             bool foundCap = false;
             bool foundMin = false;
 
+            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetMechClusterMax);
+
             foreach (CodeInstruction instruction in instructions)
             {
                 if (!foundCap && instruction.opcode == OpCodes.Ldc_R4)
                 {
                     yield return instruction;
-                    yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_MechClusterMax);
                     foundCap = true;
                     continue;
                 }
@@ -30,7 +30,7 @@ namespace VisibleRaidPoints
                 {
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_FinalResult);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetFinalResult);
                     foundMin = true;
                     continue;
                 }

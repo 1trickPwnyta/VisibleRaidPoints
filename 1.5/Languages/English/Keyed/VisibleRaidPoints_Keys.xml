@@ -57,6 +57,7 @@
 	<VisibleRaidPoints_RaidArrivalModeFactorDesc>Raid arrival mode factor</VisibleRaidPoints_RaidArrivalModeFactorDesc>
 	<VisibleRaidPoints_RaidStrategyFactorDesc>Raid strategy factor</VisibleRaidPoints_RaidStrategyFactorDesc>
 	<VisibleRaidPoints_RaidAgeRestrictionFactorDesc>Raid age restriction factor</VisibleRaidPoints_RaidAgeRestrictionFactorDesc>
+	<VisibleRaidPoints_PollutionRaidFactorDesc>Pollution raid factor</VisibleRaidPoints_PollutionRaidFactorDesc>
 	<VisibleRaidPoints_AmbushManhunterFactorDesc>Caravan ambush (animals) factor</VisibleRaidPoints_AmbushManhunterFactorDesc>
 	<VisibleRaidPoints_CaravanDemandFactorDesc>Caravan demand random factor</VisibleRaidPoints_CaravanDemandFactorDesc>
 	<VisibleRaidPoints_CrashedShipPartFactorDesc>Crashed ship part factor</VisibleRaidPoints_CrashedShipPartFactorDesc>

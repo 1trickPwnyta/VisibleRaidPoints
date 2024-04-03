@@ -9,27 +9,57 @@ namespace VisibleRaidPoints
     [HarmonyPatch(new[] { typeof(TaggedString), typeof(TaggedString), typeof(LetterDef), typeof(IncidentParms), typeof(LookTargets), typeof(NamedArgument[]) })]
     public static class Patch_IncidentWorker_SendStandardLetter
     {
-        public static void Prefix(IncidentWorker __instance, ref TaggedString baseLetterLabel, ref TaggedString baseLetterText)
+        public static void Prefix(IncidentWorker __instance, ref TaggedString baseLetterLabel, ref TaggedString baseLetterText, IncidentParms parms)
         {
-            if (VisibleRaidPointsSettings.IncidentWorkerTypeEnabled(__instance.GetType()))
+            if (parms.points > 0f)
             {
-                if (VisibleRaidPointsSettings.ShowInLabel)
+                if (VisibleRaidPointsSettings.IncidentWorkerTypeEnabled(__instance.GetType()))
                 {
-                    baseLetterLabel = $"({(int)ThreatPointsBreakdown.FinalResult}) {baseLetterLabel}";
-                }
-
-                if (VisibleRaidPointsSettings.ShowInText)
-                {
-                    baseLetterText += $"\n\n{TextGenerator.GetThreatPointsIndicatorText()}";
-                }
-
-                if (VisibleRaidPointsSettings.ShowBreakdown)
-                {
-                    TaggedString breakdown = TextGenerator.GetThreatPointsBreakdownText();
-
-                    if (breakdown != null)
+                    ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated(parms);
+                    if (breakdown == null)
                     {
-                        baseLetterText += $"\n\n{breakdown}";
+                        breakdown = ThreatPointsBreakdown.GetCurrent();
+                    }
+
+                    if (VisibleRaidPointsSettings.ShowInLabel)
+                    {
+                        if (parms.customLetterLabel != null)
+                        {
+                            parms.customLetterLabel = $"({(int)breakdown.FinalResult}) {parms.customLetterLabel}";
+                        }
+                        else
+                        {
+                            baseLetterLabel = $"({(int)breakdown.FinalResult}) {baseLetterLabel}";
+                        }
+                    }
+
+                    if (VisibleRaidPointsSettings.ShowInText)
+                    {
+                        if (parms.customLetterText != null)
+                        {
+                            parms.customLetterText += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
+                        }
+                        else
+                        {
+                            baseLetterText += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
+                        }
+                    }
+
+                    if (VisibleRaidPointsSettings.ShowBreakdown)
+                    {
+                        TaggedString breakdownText = TextGenerator.GetThreatPointsBreakdownText(breakdown);
+
+                        if (breakdownText != null)
+                        {
+                            if (parms.customLetterText != null)
+                            {
+                                parms.customLetterText += $"\n\n{breakdownText}";
+                            }
+                            else
+                            {
+                                baseLetterText += $"\n\n{breakdownText}";
+                            }
+                        }
                     }
                 }
             }

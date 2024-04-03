@@ -23,9 +23,8 @@ namespace VisibleRaidPoints
                     {
                         yield return instruction;
                         yield return new CodeInstruction(OpCodes.Dup);
-                        yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_FinalResult);
-                        yield return new CodeInstruction(OpCodes.Ldc_I4_1);
-                        yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_AnimalInsanityMassCalc);
+                        yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetFinalResult);
+                        yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetAnimalInsanityMassCalc);
                     }
                 }
                 else

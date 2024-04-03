@@ -21,6 +21,7 @@ namespace VisibleRaidPoints
             PointsPerPawnPoints,
             RandomFactor,
             AdaptationFactor,
+            ThreatScale,
             GraceFactor,
             PreClamp,
             PostClamp,
@@ -48,9 +49,9 @@ namespace VisibleRaidPoints
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PlayerWealthForStoryteller);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPlayerWealthForStoryteller);
                             step = Step.PointsFromWealth;
-                        } 
+                        }
                         else
                         {
                             yield return instruction;
@@ -62,7 +63,7 @@ namespace VisibleRaidPoints
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PointsFromWealth);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPointsFromWealth);
                             step = Step.PlayerPawnsForStoryteller;
                         } 
                         else
@@ -117,8 +118,6 @@ namespace VisibleRaidPoints
                             yield return new CodeInstruction(OpCodes.Dup);
                             yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPawnPointsPoints);
                             yield return instruction;
-                            yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PointsFromPawns);
                             step = Step.RandomFactor;
                         }
                         else
@@ -132,7 +131,7 @@ namespace VisibleRaidPoints
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_TargetRandomFactor);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetTargetRandomFactor);
                             step = Step.AdaptationFactor;
                         }
                         else
@@ -146,7 +145,21 @@ namespace VisibleRaidPoints
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_AdaptationFactor);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetAdaptationFactor);
+                            step = Step.ThreatScale;
+                        }
+                        else
+                        {
+                            yield return instruction;
+                        }
+                        break;
+
+                    case Step.ThreatScale:
+                        if (instruction.opcode == OpCodes.Ldfld && (FieldInfo)instruction.operand == VisibleRaidPointsRefs.f_Difficulty_threatScale)
+                        {
+                            yield return instruction;
+                            yield return new CodeInstruction(OpCodes.Dup);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetThreatScale);
                             step = Step.GraceFactor;
                         }
                         else
@@ -160,7 +173,7 @@ namespace VisibleRaidPoints
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_GraceFactor);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetGraceFactor);
                             step = Step.PreClamp;
                         }
                         else
@@ -174,7 +187,7 @@ namespace VisibleRaidPoints
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PreClamp);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPreClamp);
                             step = Step.PostClamp;
                         }
                         else
@@ -188,11 +201,11 @@ namespace VisibleRaidPoints
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PostClamp);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPostClamp);
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PreMiscCalcs);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPreMiscCalcs);
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_FinalResult);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetFinalResult);
                             step = Step.Done;
                         }
                         else
@@ -207,11 +220,11 @@ namespace VisibleRaidPoints
                         {
                             yield return instruction;
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PostClamp);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPostClamp);
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_PreMiscCalcs);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPreMiscCalcs);
                             yield return new CodeInstruction(OpCodes.Dup);
-                            yield return new CodeInstruction(OpCodes.Stsfld, VisibleRaidPointsRefs.f_ThreatPointsBreakdown_FinalResult);
+                            yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetFinalResult);
                             continue;
                         }
 
