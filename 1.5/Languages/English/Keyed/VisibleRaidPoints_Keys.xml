@@ -39,6 +39,7 @@
 	<VisibleRaidPoints_VisitorGroup>Visitors</VisibleRaidPoints_VisitorGroup>
 	<VisibleRaidPoints_WastepackInfestation>Wastepack infestation</VisibleRaidPoints_WastepackInfestation>
 	<VisibleRaidPoints_PointsBreakdown>Threat Points Breakdown</VisibleRaidPoints_PointsBreakdown>
+	<VisibleRaidPoints_BreakdownInitialValueDesc>Initial value</VisibleRaidPoints_BreakdownInitialValueDesc>
 	<VisibleRaidPoints_BreakdownPlayerWealthForStorytellerDesc>Player wealth for storyteller</VisibleRaidPoints_BreakdownPlayerWealthForStorytellerDesc>
 	<VisibleRaidPoints_BreakdownPlayerWealthForStorytellerExpl>TotalWealth - (BuildingWealth / 2)</VisibleRaidPoints_BreakdownPlayerWealthForStorytellerExpl>
 	<VisibleRaidPoints_BreakdownPointsFromWealthDesc>Points from wealth</VisibleRaidPoints_BreakdownPointsFromWealthDesc>
@@ -50,8 +51,9 @@
 	<VisibleRaidPoints_BreakdownThreatScaleDesc>Threat scale</VisibleRaidPoints_BreakdownThreatScaleDesc>
 	<VisibleRaidPoints_BreakdownGraceFactorDesc>Grace factor</VisibleRaidPoints_BreakdownGraceFactorDesc>
 	<VisibleRaidPoints_BreakdownGraceFactorExpl>based on age of colony</VisibleRaidPoints_BreakdownGraceFactorExpl>
-	<VisibleRaidPoints_BreakdownClampLowDesc>Force minimum {0} points</VisibleRaidPoints_BreakdownClampLowDesc>
+	<VisibleRaidPoints_BreakdownClampLowDesc>Force minimum 35 points</VisibleRaidPoints_BreakdownClampLowDesc>
 	<VisibleRaidPoints_BreakdownClampHighDesc>Force maximum {0} points</VisibleRaidPoints_BreakdownClampHighDesc>
+	<VisibleRaidPoints_BreakdownPreCalculatedPointsDesc>Pre-calculated points</VisibleRaidPoints_BreakdownPreCalculatedPointsDesc>
 	<VisibleRaidPoints_BreakdownTotal>Final result</VisibleRaidPoints_BreakdownTotal>
 	<VisibleRaidPoints_StorytellerRandomFactorDesc>Randy Random factor</VisibleRaidPoints_StorytellerRandomFactorDesc>
 	<VisibleRaidPoints_RaidArrivalModeFactorDesc>Raid arrival mode factor</VisibleRaidPoints_RaidArrivalModeFactorDesc>
@@ -63,12 +65,12 @@
 	<VisibleRaidPoints_CrashedShipPartFactorDesc>Crashed ship part factor</VisibleRaidPoints_CrashedShipPartFactorDesc>
 	<VisibleRaidPoints_DeepDrillInfestationFactorDesc>Deep drill infestation random factor</VisibleRaidPoints_DeepDrillInfestationFactorDesc>
 	<VisibleRaidPoints_InfestationFactorDesc>Infestation calculated factor</VisibleRaidPoints_InfestationFactorDesc>
-	<VisibleRaidPoints_RunningTotalPreClampDesc>Intermediate total</VisibleRaidPoints_RunningTotalPreClampDesc>
-	<VisibleRaidPoints_RunningTotalPreFinalDesc>Intermediate total</VisibleRaidPoints_RunningTotalPreFinalDesc>
+	<VisibleRaidPoints_IntermediateTotalDesc>Intermediate total</VisibleRaidPoints_IntermediateTotalDesc>
 	<VisibleRaidPoints_AnimalInsanityMassCalcDesc>Animal mass insanity adjustment</VisibleRaidPoints_AnimalInsanityMassCalcDesc>
-	<VisibleRaidPoints_CrashedShipPartMinDesc>Crashed ship part minimum {0} points</VisibleRaidPoints_CrashedShipPartMinDesc>
-	<VisibleRaidPoints_DeepDrillInfestationMinDesc>Deep drill infestation minimum {0} points</VisibleRaidPoints_DeepDrillInfestationMinDesc>
-	<VisibleRaidPoints_DeepDrillInfestationMaxDesc>Deep drill infestation maximum {0} points</VisibleRaidPoints_DeepDrillInfestationMaxDesc>
-	<VisibleRaidPoints_MechClusterMaxDesc>Mech cluster maximum {0} points</VisibleRaidPoints_MechClusterMaxDesc>
+	<VisibleRaidPoints_CrashedShipPartMinDesc>Crashed ship part minimum 300 points</VisibleRaidPoints_CrashedShipPartMinDesc>
+	<VisibleRaidPoints_DeepDrillInfestationMinDesc>Deep drill infestation minimum 200 points</VisibleRaidPoints_DeepDrillInfestationMinDesc>
+	<VisibleRaidPoints_DeepDrillInfestationMaxDesc>Deep drill infestation maximum 1000 points</VisibleRaidPoints_DeepDrillInfestationMaxDesc>
+	<VisibleRaidPoints_MechClusterMaxDesc>Mech cluster maximum 10000 points</VisibleRaidPoints_MechClusterMaxDesc>
 	<VisibleRaidPoints_RaidStrategyMinDesc>Raid strategy minimum {0} points</VisibleRaidPoints_RaidStrategyMinDesc>
+	<VisibleRaidPoints_FactionMinDesc>Faction minimum {0} points</VisibleRaidPoints_FactionMinDesc>
 </LanguageData>

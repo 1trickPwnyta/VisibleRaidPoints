@@ -12,46 +12,35 @@ namespace VisibleRaidPoints
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
         {
-            bool foundPoints = false;
-            bool loadedFactor = false;
-            bool loadedMin = false;
+            bool foundMul = false;
             bool foundMax = false;
 
             foreach (CodeInstruction instruction in instructions)
             {
-                if (!foundPoints && instruction.opcode == OpCodes.Ldfld && (FieldInfo)instruction.operand == VisibleRaidPointsRefs.f_IncidentParms_points)
+                if (!foundMul && instruction.opcode == OpCodes.Mul)
                 {
-                    foundPoints = true;
-                }
-
-                if (foundPoints && !loadedFactor && instruction.opcode == OpCodes.Ldc_R4)
-                {
-                    yield return instruction;
-                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetCrashedShipPartFactor);
-                    loadedFactor = true;
-                    continue;
-                }
-
-                if (loadedFactor && !loadedMin && instruction.opcode == OpCodes.Mul)
-                {
+                    yield return new CodeInstruction(OpCodes.Ldc_I4, (int)ThreatPointsBreakdown.OperationType.Mul);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetOperationType);
+                    yield return new CodeInstruction(OpCodes.Ldc_R4, 0.9f);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetOperationValue);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_TextGenerator_GetCrashedShipPartFactorDesc);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetOperationDescription);
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetPreMiscCalcs);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetOperationRunningTotal);
+                    foundMul = true;
                     continue;
                 }
 
-                if (loadedFactor && !loadedMin && instruction.opcode == OpCodes.Ldc_R4)
+                if (foundMul && !foundMax && instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_Mathf_Max)
                 {
-                    yield return instruction;
-                    loadedMin = true;
-                    continue;
-                }
-
-                if (loadedMin && !foundMax && instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_Mathf_Max)
-                {
+                    yield return new CodeInstruction(OpCodes.Ldc_I4, (int)ThreatPointsBreakdown.OperationType.Min);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetOperationType);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_TextGenerator_GetCrashedShipPartMinDesc);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetOperationDescription);
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
-                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetFinalResult);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetOperationRunningTotal);
                     foundMax = true;
                     continue;
                 }

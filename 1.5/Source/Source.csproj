@@ -60,6 +60,7 @@
     <Compile Include="CaravanDemandUtility.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Dialog_IncidentWorkerTypes.cs" />
+    <Compile Include="Patch_IncidentWorker_QuestPart_RandomRaid.cs" />
     <Compile Include="Patch_QuestNode_Root_PollutionRaid.cs" />
     <Compile Include="Patch_QuestPart_Incident.cs" />
     <Compile Include="Patch_IncidentParms.cs" />
