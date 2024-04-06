@@ -25,11 +25,11 @@ namespace VisibleRaidPoints
                     {
                         if (parms.customLetterLabel != null)
                         {
-                            parms.customLetterLabel = $"({(int)breakdown.FinalResult}) {parms.customLetterLabel}";
+                            parms.customLetterLabel = $"({(int)breakdown.GetFinalResult()}) {parms.customLetterLabel}";
                         }
                         else
                         {
-                            baseLetterLabel = $"({(int)breakdown.FinalResult}) {baseLetterLabel}";
+                            baseLetterLabel = $"({(int)breakdown.GetFinalResult()}) {baseLetterLabel}";
                         }
                     }
 

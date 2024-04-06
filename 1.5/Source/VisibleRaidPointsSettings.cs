@@ -1,7 +1,5 @@
 ﻿using RimWorld;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Verse;
 
@@ -9,7 +7,7 @@ namespace VisibleRaidPoints
 {
     public class VisibleRaidPointsSettings : ModSettings
     {
-        private static readonly int IncidentWorkerTypeCountVanilla = 14;
+        private static readonly int IncidentWorkerTypeCountVanilla = 13;
         private static readonly int IncidentWorkerTypeCountRoyalty = 1;
         private static readonly int IncidentWorkerTypeCountIdeology = 0;
         private static readonly int IncidentWorkerTypeCountBiotech = 1;
@@ -58,7 +56,6 @@ namespace VisibleRaidPoints
         public static bool GorehulkAssault;
         public static bool HateChanters;
         public static bool Infestation;
-        public static bool InsectJelly;
         public static bool MechCluster;
         public static bool PsychicDrone;
         public static bool PsychicRitualSiege;
@@ -90,7 +87,6 @@ namespace VisibleRaidPoints
             if (GorehulkAssault && type == typeof(IncidentWorker_GorehulkAssault)) return true;
             if (HateChanters && type == typeof(IncidentWorker_HateChanters)) return true;
             if (Infestation && type == typeof(IncidentWorker_Infestation)) return true;
-            if (InsectJelly && type == typeof(IncidentWorker_InsectJelly)) return true;
             if (MechCluster && type == typeof(IncidentWorker_MechCluster)) return true;
             if (PsychicDrone && type == typeof(IncidentWorker_PsychicDrone)) return true;
             if (PsychicRitualSiege && type == typeof(IncidentWorker_PsychicRitualSiege)) return true;
@@ -144,7 +140,6 @@ namespace VisibleRaidPoints
             Scribe_Values.Look(ref GorehulkAssault, "GorehulkAssault", true);
             Scribe_Values.Look(ref HateChanters, "HateChanters", true);
             Scribe_Values.Look(ref Infestation, "Infestation", true);
-            Scribe_Values.Look(ref InsectJelly, "InsectJelly", false);
             Scribe_Values.Look(ref MechCluster, "MechCluster", true);
             Scribe_Values.Look(ref PsychicDrone, "PsychicDrone", false);
             Scribe_Values.Look(ref PsychicRitualSiege, "PsychicRitualSiege", true);

@@ -6,31 +6,6 @@ namespace VisibleRaidPoints
 {
     public static class TextGenerator
     {
-        private static TaggedString GetIntermediateTotal(ThreatPointsBreakdown.OperationType? previousOperationType, float previousIntermediateTotal, List<float> intermediateValues, float previousRunningTotal)
-        {
-            TaggedString text = "";
-
-            if (previousOperationType == ThreatPointsBreakdown.OperationType.Add || previousOperationType == ThreatPointsBreakdown.OperationType.Mul)
-            {
-                text += $"\n{"VisibleRaidPoints_IntermediateTotalDesc".Translate()}";
-                text += $"\n{((int)previousIntermediateTotal).ToString().Colorize(ColoredText.FactionColor_Hostile)} ";
-                foreach (float value in intermediateValues)
-                {
-                    if (previousOperationType == ThreatPointsBreakdown.OperationType.Add)
-                    {
-                        text += $"+ {((int)value).ToString().Colorize(ColoredText.FactionColor_Hostile)} ";
-                    }
-                    if (previousOperationType == ThreatPointsBreakdown.OperationType.Mul)
-                    {
-                        text += $"x {value.ToString("0.00").Colorize(ColoredText.ImpactColor)} ";
-                    }
-                }
-                text += $"= {((int)previousRunningTotal).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
-            }
-
-            return text;
-        }
-
         public static TaggedString GetAmbushManhunterFactorDesc()
         {
             return "VisibleRaidPoints_AmbushManhunterFactorDesc".Translate();
@@ -78,27 +53,27 @@ namespace VisibleRaidPoints
 
         public static TaggedString GetFactionMinDesc(Faction faction)
         {
-            return "VisibleRaidPoints_FactionMinDesc".Translate(faction.def.MinPointsToGeneratePawnGroup(PawnGroupKindDefOf.Combat, null)) + $"({faction.def.defName})".Colorize(ColoredText.SubtleGrayColor);
+            return "VisibleRaidPoints_FactionMinDesc".Translate(faction.def.MinPointsToGeneratePawnGroup(PawnGroupKindDefOf.Combat, null)) + $" ({faction.def.defName})".Colorize(ColoredText.SubtleGrayColor);
         }
 
         public static TaggedString GetRaidArrivalModeFactorDesc(PawnsArrivalModeDef def)
         {
-            return "VisibleRaidPoints_RaidArrivalModeFactorDesc".Translate() + $"({def.defName})".Colorize(ColoredText.SubtleGrayColor);
+            return "VisibleRaidPoints_RaidArrivalModeFactorDesc".Translate() + $" ({def.defName})".Colorize(ColoredText.SubtleGrayColor);
         }
 
         public static TaggedString GetRaidStrategyFactorDesc(RaidStrategyDef def)
         {
-            return "VisibleRaidPoints_RaidStrategyFactorDesc".Translate() + $"({def.defName})".Colorize(ColoredText.SubtleGrayColor);
+            return "VisibleRaidPoints_RaidStrategyFactorDesc".Translate() + $" ({def.defName})".Colorize(ColoredText.SubtleGrayColor);
         }
 
         public static TaggedString GetRaidAgeRestrictionFactorDesc(RaidAgeRestrictionDef def)
         {
-            return "VisibleRaidPoints_RaidAgeRestrictionFactorDesc".Translate() + $"({def.defName})".Colorize(ColoredText.SubtleGrayColor);
+            return "VisibleRaidPoints_RaidAgeRestrictionFactorDesc".Translate() + $" ({def.defName})".Colorize(ColoredText.SubtleGrayColor);
         }
 
         public static TaggedString GetRaidStrategyMinDesc(RaidStrategyDef raidStrategy, Faction faction, PawnGroupKindDef groupKind)
         {
-            return "VisibleRaidPoints_RaidStrategyMinDesc".Translate(raidStrategy.Worker.MinimumPoints(faction, groupKind) * 1.05f) + $"({raidStrategy.defName}, {faction.def.defName}, {groupKind.defName})".Colorize(ColoredText.SubtleGrayColor);
+            return "VisibleRaidPoints_RaidStrategyMinDesc".Translate(raidStrategy.Worker.MinimumPoints(faction, groupKind) * 1.05f) + $" ({raidStrategy.defName}, {faction.def.defName}, {groupKind.defName})".Colorize(ColoredText.SubtleGrayColor);
         }
 
         public static TaggedString GetMechClusterMaxDesc()
@@ -143,7 +118,7 @@ namespace VisibleRaidPoints
 
         public static TaggedString GetGraceFactorDesc()
         {
-            return "VisibleRaidPoints_BreakdownGraceFactorDesc".Translate() + $"({"VisibleRaidPoints_BreakdownGraceFactorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor);
+            return "VisibleRaidPoints_BreakdownGraceFactorDesc".Translate() + $" ({"VisibleRaidPoints_BreakdownGraceFactorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor);
         }
 
         public static TaggedString GetClampLowDesc()
@@ -158,7 +133,36 @@ namespace VisibleRaidPoints
 
         public static TaggedString GetThreatPointsIndicatorText(ThreatPointsBreakdown breakdown)
         {
-            return $"{"VisibleRaidPoints_RaidPointsUsed".Translate()}: {((int)breakdown.FinalResult).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+            return $"{"VisibleRaidPoints_RaidPointsUsed".Translate()}: {((int)breakdown.GetFinalResult()).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+        }
+
+        private static TaggedString GetIntermediateTotal(ThreatPointsBreakdown.OperationType? previousOperationType, float previousIntermediateTotal, List<float> intermediateValues, float previousRunningTotal)
+        {
+            TaggedString text = "";
+
+            if (previousOperationType == ThreatPointsBreakdown.OperationType.Add || previousOperationType == ThreatPointsBreakdown.OperationType.Mul)
+            {
+                text += $"\n\n{"VisibleRaidPoints_IntermediateTotalDesc".Translate()}";
+                text += $"\n{((int)previousIntermediateTotal).ToString().Colorize(ColoredText.FactionColor_Hostile)} ";
+                foreach (float value in intermediateValues)
+                {
+                    if (previousOperationType == ThreatPointsBreakdown.OperationType.Add)
+                    {
+                        text += $"+ {((int)value).ToString().Colorize(ColoredText.FactionColor_Hostile)} ";
+                    }
+                    if (previousOperationType == ThreatPointsBreakdown.OperationType.Mul)
+                    {
+                        text += $"* {value.ToString("0.00").Colorize(ColoredText.ImpactColor)} ";
+                    }
+                }
+                text += $"= {((int)previousRunningTotal).ToString().Colorize(ColoredText.FactionColor_Hostile)}\n";
+            }
+            else
+            {
+                text += "\n";
+            }
+
+            return text;
         }
 
         public static TaggedString GetThreatPointsBreakdownText(ThreatPointsBreakdown breakdown)
@@ -191,6 +195,20 @@ namespace VisibleRaidPoints
             List<float> intermediateValues = new List<float>();
             foreach (ThreatPointsBreakdown.PointsOperation operation in breakdown.Operations)
             {
+                //Debug.Log(operation.Operation + " " + operation.Value + " " + operation.Description + " (" + operation.RunningTotal + ")");
+                if (operation.RunningTotal == previousRunningTotal)
+                {
+                    continue;
+                }
+                if (operation.Operation == ThreatPointsBreakdown.OperationType.Min && operation.RunningTotal < previousRunningTotal)
+                {
+                    continue;
+                }
+                if (operation.Operation == ThreatPointsBreakdown.OperationType.Max && operation.RunningTotal > previousRunningTotal)
+                {
+                    continue;
+                }
+
                 if (operation.Operation != previousOperationType)
                 {
                     text += GetIntermediateTotal(previousOperationType, previousIntermediateTotal, intermediateValues, previousRunningTotal);
@@ -205,19 +223,13 @@ namespace VisibleRaidPoints
                         text += $"\n  + {((int)operation.Value).ToString().Colorize(ColoredText.FactionColor_Hostile)} {operation.Description}";
                         break;
                     case ThreatPointsBreakdown.OperationType.Mul:
-                        text += $"\n  x {operation.Value.ToString("0.00").Colorize(ColoredText.ImpactColor)} {operation.Description}";
+                        text += $"\n  * {operation.Value.ToString("0.00").Colorize(ColoredText.ImpactColor)} {operation.Description}";
                         break;
                     case ThreatPointsBreakdown.OperationType.Min:
-                        if (operation.RunningTotal > previousRunningTotal)
-                        {
-                            text += $"\n{operation.Description}";
-                        }
+                        text += $"\n{operation.Description}";
                         break;
                     case ThreatPointsBreakdown.OperationType.Max:
-                        if (operation.RunningTotal < previousRunningTotal)
-                        {
-                            text += $"\n{operation.Description}";
-                        }
+                        text += $"\n{operation.Description}";
                         break;
                 }
 
@@ -229,7 +241,7 @@ namespace VisibleRaidPoints
             text += GetIntermediateTotal(previousOperationType, previousIntermediateTotal, intermediateValues, previousRunningTotal);
 
             text += "\n----------------------";
-            text += $"\n{"VisibleRaidPoints_BreakdownTotal".Translate()}: {((int)breakdown.FinalResult).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
+            text += $"\n{"VisibleRaidPoints_BreakdownTotal".Translate()}: {((int)breakdown.GetFinalResult()).ToString().Colorize(ColoredText.FactionColor_Hostile)}";
 
             return text;
         }

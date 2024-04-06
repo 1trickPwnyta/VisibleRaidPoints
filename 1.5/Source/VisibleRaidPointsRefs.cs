@@ -32,7 +32,6 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_ThreatPointsBreakdown_SetPlayerWealthForStoryteller = AccessTools.Method(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.SetPlayerWealthForStoryteller));
         public static readonly MethodInfo m_ThreatPointsBreakdown_SetPawnPointsName = AccessTools.Method(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.SetPawnPointsName));
         public static readonly MethodInfo m_ThreatPointsBreakdown_SetPawnPointsPoints = AccessTools.Method(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.SetPawnPointsPoints));
-        public static readonly MethodInfo m_ThreatPointsBreakdown_SetFinalResult = AccessTools.Method(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.SetFinalResult));
         public static readonly MethodInfo m_TextGenerator_GetAmbushManhunterFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetAmbushManhunterFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetAnimalInsanityMassCalcDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetAnimalInsanityMassCalcDesc));
         public static readonly MethodInfo m_TextGenerator_GetCaravanDemandFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetCaravanDemandFactorDesc));

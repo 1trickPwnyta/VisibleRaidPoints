@@ -1,5 +1,4 @@
-﻿using Verse;
-using RimWorld;
+﻿using RimWorld;
 using HarmonyLib;
 
 namespace VisibleRaidPoints

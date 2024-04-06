@@ -51,7 +51,6 @@ namespace VisibleRaidPoints
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_HateChanters".Translate(), ref VisibleRaidPointsSettings.HateChanters);
             }
             listingStandard.CheckboxLabeled("VisibleRaidPoints_Infestation".Translate(), ref VisibleRaidPointsSettings.Infestation);
-            listingStandard.CheckboxLabeled("VisibleRaidPoints_InsectJelly".Translate(), ref VisibleRaidPointsSettings.InsectJelly);
             if (ModsConfig.RoyaltyActive)
             {
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_MechCluster".Translate(), ref VisibleRaidPointsSettings.MechCluster);

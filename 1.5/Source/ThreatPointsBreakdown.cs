@@ -50,7 +50,6 @@ namespace VisibleRaidPoints
         public List<PointsOperation> Operations = new List<PointsOperation>();
         public float PlayerWealthForStoryteller = 0f;
         public List<PawnPoints> PointsPerPawn = new List<PawnPoints>();
-        public float FinalResult = 0f;
 
         public static void Clear()
         {
@@ -162,9 +161,16 @@ namespace VisibleRaidPoints
             last.Points = points;
         }
 
-        public static void SetFinalResult(float finalResult)
+        public float GetFinalResult()
         {
-            current.FinalResult = finalResult;
+            if (Operations.Count > 0)
+            {
+                return Operations.GetLast().RunningTotal;
+            }
+            else
+            {
+                return 0f;
+            }
         }
 
         public void ExposeData()
@@ -173,7 +179,6 @@ namespace VisibleRaidPoints
             Scribe_Collections.Look(ref Operations, "Operations");
             Scribe_Values.Look(ref PlayerWealthForStoryteller, "PlayerWealthForStoryteller");
             Scribe_Collections.Look(ref PointsPerPawn, "PointsPerPawn", LookMode.Deep);
-            Scribe_Values.Look(ref FinalResult, "FinalResult");
         }
     }
 }

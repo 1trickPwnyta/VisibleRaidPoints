@@ -12,10 +12,20 @@ namespace VisibleRaidPoints
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
         {
+            IEnumerable<CodeInstruction> newInstructions = Transpiler2(instructions, il);
+            foreach (CodeInstruction instruction in newInstructions)
+            {
+                Debug.Log(instruction.opcode + " " + instruction.operand);
+            }
+            return newInstructions;
+        }
+
+        public static IEnumerable<CodeInstruction> Transpiler2(IEnumerable<CodeInstruction> instructions, ILGenerator il)
+        {
             bool foundRaidArrivalModeFactor = false;
             bool foundRaidStrategyFactor = false;
             bool foundAgeRestrictionFactor = false;
-            bool foundRaidStrategyMin = false;
+            bool foundAgeRestrictionMul = false;
 
             foreach (CodeInstruction instruction in instructions)
             {
@@ -67,11 +77,12 @@ namespace VisibleRaidPoints
                     yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetOperationDescription);
                     foundAgeRestrictionFactor = true;
                 }
-                else if (foundAgeRestrictionFactor && !foundRaidStrategyMin && instruction.opcode == OpCodes.Mul)
+                else if (foundAgeRestrictionFactor && !foundAgeRestrictionMul && instruction.opcode == OpCodes.Mul)
                 {
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
                     yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetOperationRunningTotal);
+                    foundAgeRestrictionMul = true;
                 }
                 else if (instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_Mathf_Max)
                 {
@@ -85,7 +96,6 @@ namespace VisibleRaidPoints
                     yield return instruction;
                     yield return new CodeInstruction(OpCodes.Dup);
                     yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_ThreatPointsBreakdown_SetOperationRunningTotal);
-                    foundRaidStrategyMin = true;
                 }
                 else
                 {
