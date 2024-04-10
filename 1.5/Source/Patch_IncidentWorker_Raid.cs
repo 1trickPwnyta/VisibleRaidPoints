@@ -12,16 +12,6 @@ namespace VisibleRaidPoints
     {
         public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions, ILGenerator il)
         {
-            IEnumerable<CodeInstruction> newInstructions = Transpiler2(instructions, il);
-            foreach (CodeInstruction instruction in newInstructions)
-            {
-                Debug.Log(instruction.opcode + " " + instruction.operand);
-            }
-            return newInstructions;
-        }
-
-        public static IEnumerable<CodeInstruction> Transpiler2(IEnumerable<CodeInstruction> instructions, ILGenerator il)
-        {
             bool foundRaidArrivalModeFactor = false;
             bool foundRaidStrategyFactor = false;
             bool foundAgeRestrictionFactor = false;

@@ -68,7 +68,6 @@ namespace VisibleRaidPoints
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_SightstealerArrival".Translate(), ref VisibleRaidPointsSettings.SightstealerArrival);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_SightstealerSwarm".Translate(), ref VisibleRaidPointsSettings.SightstealerSwarm);
             }
-            listingStandard.CheckboxLabeled("VisibleRaidPoints_VisitorGroup".Translate(), ref VisibleRaidPointsSettings.VisitorGroup);
             if (ModsConfig.BiotechActive)
             {
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_WastepackInfestation".Translate(), ref VisibleRaidPointsSettings.WastepackInfestation);

@@ -7,7 +7,7 @@ namespace VisibleRaidPoints
 {
     public class VisibleRaidPointsSettings : ModSettings
     {
-        private static readonly int IncidentWorkerTypeCountVanilla = 13;
+        private static readonly int IncidentWorkerTypeCountVanilla = 12;
         private static readonly int IncidentWorkerTypeCountRoyalty = 1;
         private static readonly int IncidentWorkerTypeCountIdeology = 0;
         private static readonly int IncidentWorkerTypeCountBiotech = 1;
@@ -64,7 +64,6 @@ namespace VisibleRaidPoints
         public static bool ShamblerAssault;
         public static bool SightstealerArrival;
         public static bool SightstealerSwarm;
-        public static bool VisitorGroup;
         public static bool WastepackInfestation;
 
         public static bool IncidentWorkerTypeEnabled(Type type)
@@ -95,7 +94,6 @@ namespace VisibleRaidPoints
             if (ShamblerAssault && type == typeof(IncidentWorker_ShamblerAssault)) return true;
             if (SightstealerArrival && type == typeof(IncidentWorker_SightstealerArrival)) return true;
             if (SightstealerSwarm && type == typeof(IncidentWorker_SightstealerSwarm)) return true;
-            if (VisitorGroup && type == typeof(IncidentWorker_VisitorGroup)) return true;
             if (WastepackInfestation && type == typeof(IncidentWorker_WastepackInfestation)) return true;
             return false;
         }
@@ -148,7 +146,6 @@ namespace VisibleRaidPoints
             Scribe_Values.Look(ref ShamblerAssault, "ShamblerAssault", false);
             Scribe_Values.Look(ref SightstealerArrival, "SightstealerArrival", true);
             Scribe_Values.Look(ref SightstealerSwarm, "SightstealerSwarm", true);
-            Scribe_Values.Look(ref VisitorGroup, "VisitorGroup", false);
             Scribe_Values.Look(ref WastepackInfestation, "WastepackInfestation", true);
         }
     }
