@@ -58,7 +58,9 @@ namespace VisibleRaidPoints
 
         public static ThreatPointsBreakdown GetCurrent()
         {
-            return current;
+            ThreatPointsBreakdown result = current;
+            Clear();
+            return result;
         }
 
         public static void Associate(IncidentParms parms, ThreatPointsBreakdown breakdown)
