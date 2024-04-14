@@ -33,7 +33,7 @@
 	<VisibleRaidPoints_RaidFriendly>Friendlies</VisibleRaidPoints_RaidFriendly>
 	<VisibleRaidPoints_ShamblerAssault>Shambler assault</VisibleRaidPoints_ShamblerAssault>
 	<VisibleRaidPoints_SightstealerArrival>Sightstealer arrival</VisibleRaidPoints_SightstealerArrival>
-	<VisibleRaidPoints_SightstealerSwarm>Sightstealer swarm</VisibleRaidPoints_SightstealerSwarm>
+	<VisibleRaidPoints_SightstealerSwarm>Distant shriek</VisibleRaidPoints_SightstealerSwarm>
 	<VisibleRaidPoints_TraderCaravanArrival>Trade caravan</VisibleRaidPoints_TraderCaravanArrival>
 	<VisibleRaidPoints_TravelerGroup>Travelers</VisibleRaidPoints_TravelerGroup>
 	<VisibleRaidPoints_VisitorGroup>Visitors</VisibleRaidPoints_VisitorGroup>
@@ -71,6 +71,7 @@
 	<VisibleRaidPoints_DeepDrillInfestationMinDesc>Deep drill infestation minimum 200 points</VisibleRaidPoints_DeepDrillInfestationMinDesc>
 	<VisibleRaidPoints_DeepDrillInfestationMaxDesc>Deep drill infestation maximum 1000 points</VisibleRaidPoints_DeepDrillInfestationMaxDesc>
 	<VisibleRaidPoints_MechClusterMaxDesc>Mech cluster maximum 10000 points</VisibleRaidPoints_MechClusterMaxDesc>
+	<VisibleRaidPoints_SightstealerSwarmFactorDesc>Sightstealer swarm factor</VisibleRaidPoints_SightstealerSwarmFactorDesc>
 	<VisibleRaidPoints_RaidStrategyMinDesc>Raid strategy minimum {0} points</VisibleRaidPoints_RaidStrategyMinDesc>
 	<VisibleRaidPoints_FactionMinDesc>Faction minimum {0} points</VisibleRaidPoints_FactionMinDesc>
 </LanguageData>

@@ -60,6 +60,7 @@
     <Compile Include="CaravanDemandUtility.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Dialog_IncidentWorkerTypes.cs" />
+    <Compile Include="Patch_IncidentWorker_Ambush_ManhunterPack.cs" />
     <Compile Include="Patch_IncidentWorker_QuestPart_RandomRaid.cs" />
     <Compile Include="Patch_QuestNode_Raid.cs" />
     <Compile Include="Patch_QuestNode_Root_PollutionRaid.cs" />
@@ -70,7 +71,7 @@
     <Compile Include="Patch_IncidentWorker_DeepDrillInfestation.cs" />
     <Compile Include="Patch_IncidentWorker_CrashedShipPart.cs" />
     <Compile Include="Patch_IncidentWorker_AnimalInsanityMass.cs" />
-    <Compile Include="Patch_IncidentWorker_Ambush_ManhunterPack.cs" />
+    <Compile Include="Patch_IncidentWorker_SightstealerSwarm.cs" />
     <Compile Include="Patch_IncidentWorker_CaravanDemand.cs" />
     <Compile Include="Patch_IncidentWorker_Raid.cs" />
     <Compile Include="Patch_StorytellerComp_RandomMain.cs" />

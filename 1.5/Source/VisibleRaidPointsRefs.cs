@@ -47,6 +47,7 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_TextGenerator_GetRaidAgeRestrictionFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetRaidAgeRestrictionFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetRaidStrategyMinDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetRaidStrategyMinDesc));
         public static readonly MethodInfo m_TextGenerator_GetMechClusterMaxDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetMechClusterMaxDesc));
+        public static readonly MethodInfo m_TextGenerator_GetSightstealerSwarmFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetSightstealerSwarmFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPollutionRaidFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPollutionRaidFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetStorytellerRandomFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetStorytellerRandomFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPointsFromWealthDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPointsFromWealthDesc));

@@ -81,6 +81,11 @@ namespace VisibleRaidPoints
             return "VisibleRaidPoints_MechClusterMaxDesc".Translate();
         }
 
+        public static TaggedString GetSightstealerSwarmFactorDesc()
+        {
+            return "VisibleRaidPoints_SightstealerSwarmFactorDesc".Translate();
+        }
+
         public static TaggedString GetPollutionRaidFactorDesc()
         {
             return "VisibleRaidPoints_PollutionRaidFactorDesc".Translate();
