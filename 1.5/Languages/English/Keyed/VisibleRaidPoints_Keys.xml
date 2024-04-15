@@ -72,6 +72,8 @@
 	<VisibleRaidPoints_DeepDrillInfestationMaxDesc>Deep drill infestation maximum 1000 points</VisibleRaidPoints_DeepDrillInfestationMaxDesc>
 	<VisibleRaidPoints_MechClusterMaxDesc>Mech cluster maximum 10000 points</VisibleRaidPoints_MechClusterMaxDesc>
 	<VisibleRaidPoints_SightstealerSwarmFactorDesc>Sightstealer swarm factor</VisibleRaidPoints_SightstealerSwarmFactorDesc>
+	<VisibleRaidPoints_GorehulkAssaultMinDesc>Gorehulk assault minimum {0} points</VisibleRaidPoints_GorehulkAssaultMinDesc>
+	<VisibleRaidPoints_GorehulkAssaultMinFactorDesc>Gorehulk assault minimum factor</VisibleRaidPoints_GorehulkAssaultMinFactorDesc>
 	<VisibleRaidPoints_RaidStrategyMinDesc>Raid strategy minimum {0} points</VisibleRaidPoints_RaidStrategyMinDesc>
 	<VisibleRaidPoints_FactionMinDesc>Faction minimum {0} points</VisibleRaidPoints_FactionMinDesc>
 </LanguageData>
