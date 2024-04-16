@@ -32,6 +32,7 @@
 	<VisibleRaidPoints_RaidEnemy>Raid</VisibleRaidPoints_RaidEnemy>
 	<VisibleRaidPoints_RaidFriendly>Friendlies</VisibleRaidPoints_RaidFriendly>
 	<VisibleRaidPoints_ShamblerAssault>Shambler assault</VisibleRaidPoints_ShamblerAssault>
+	<VisibleRaidPoints_ShamblerSwarm>Shambler swarm</VisibleRaidPoints_ShamblerSwarm>
 	<VisibleRaidPoints_SightstealerArrival>Sightstealer arrival</VisibleRaidPoints_SightstealerArrival>
 	<VisibleRaidPoints_SightstealerSwarm>Distant shriek</VisibleRaidPoints_SightstealerSwarm>
 	<VisibleRaidPoints_TraderCaravanArrival>Trade caravan</VisibleRaidPoints_TraderCaravanArrival>
@@ -74,6 +75,8 @@
 	<VisibleRaidPoints_SightstealerSwarmFactorDesc>Sightstealer swarm factor</VisibleRaidPoints_SightstealerSwarmFactorDesc>
 	<VisibleRaidPoints_GorehulkAssaultMinDesc>Gorehulk assault minimum {0} points</VisibleRaidPoints_GorehulkAssaultMinDesc>
 	<VisibleRaidPoints_GorehulkAssaultMinFactorDesc>Gorehulk assault minimum factor</VisibleRaidPoints_GorehulkAssaultMinFactorDesc>
+	<VisibleRaidPoints_EntitySwarmRandomFactorDesc>Entity swarm random factor</VisibleRaidPoints_EntitySwarmRandomFactorDesc>
+	<VisibleRaidPoints_EntitySwarmMinDesc>Entity swarm minimum {0} points</VisibleRaidPoints_EntitySwarmMinDesc>
 	<VisibleRaidPoints_RaidStrategyMinDesc>Raid strategy minimum {0} points</VisibleRaidPoints_RaidStrategyMinDesc>
 	<VisibleRaidPoints_FactionMinDesc>Faction minimum {0} points</VisibleRaidPoints_FactionMinDesc>
 </LanguageData>

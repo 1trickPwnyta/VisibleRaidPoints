@@ -63,6 +63,7 @@
     <Compile Include="Patch_IncidentWorker_Ambush_ManhunterPack.cs" />
     <Compile Include="Patch_IncidentWorker_QuestPart_RandomRaid.cs" />
     <Compile Include="Patch_IncidentWorker_GorehulkAssault.cs" />
+    <Compile Include="Patch_IncidentWorker_EntitySwarm.cs" />
     <Compile Include="Patch_QuestNode_Raid.cs" />
     <Compile Include="Patch_QuestNode_Root_PollutionRaid.cs" />
     <Compile Include="Patch_QuestPart_Incident.cs" />

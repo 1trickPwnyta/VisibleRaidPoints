@@ -49,7 +49,6 @@ namespace VisibleRaidPoints
         public static bool DeepDrillInfestation;
         public static bool DevourerAssault;
         public static bool DevourerWaterAssault;
-        public static bool EntitySwarm;
         public static bool FleshbeastAttack;
         public static bool FleshmassHeart;
         public static bool GhoulAttack;
@@ -62,6 +61,7 @@ namespace VisibleRaidPoints
         public static bool RaidEnemy;
         public static bool RaidFriendly;
         public static bool ShamblerAssault;
+        public static bool ShamblerSwarm;
         public static bool SightstealerArrival;
         public static bool SightstealerSwarm;
         public static bool WastepackInfestation;
@@ -79,7 +79,6 @@ namespace VisibleRaidPoints
             if (DeepDrillInfestation && type == typeof(IncidentWorker_DeepDrillInfestation)) return true;
             if (DevourerAssault && type == typeof(IncidentWorker_DevourerAssault)) return true;
             if (DevourerWaterAssault && type == typeof(IncidentWorker_DevourerWaterAssault)) return true;
-            if (EntitySwarm && type == typeof(IncidentWorker_EntitySwarm)) return true;
             if (FleshbeastAttack && type == typeof(IncidentWorker_FleshbeastAttack)) return true;
             if (FleshmassHeart && type == typeof(IncidentWorker_FleshmassHeart)) return true;
             if (GhoulAttack && type == typeof(IncidentWorker_GhoulAttack)) return true;
@@ -92,6 +91,7 @@ namespace VisibleRaidPoints
             if (RaidEnemy && type == typeof(IncidentWorker_RaidEnemy)) return true;
             if (RaidFriendly && type == typeof(IncidentWorker_RaidFriendly)) return true;
             if (ShamblerAssault && type == typeof(IncidentWorker_ShamblerAssault)) return true;
+            if (ShamblerSwarm && (type == typeof(IncidentWorker_ShamblerSwarm) || type == typeof(IncidentWorker_ShamblerSwarmAnimals))) return true;
             if (SightstealerArrival && type == typeof(IncidentWorker_SightstealerArrival)) return true;
             if (SightstealerSwarm && type == typeof(IncidentWorker_SightstealerSwarm)) return true;
             if (WastepackInfestation && type == typeof(IncidentWorker_WastepackInfestation)) return true;
@@ -131,7 +131,6 @@ namespace VisibleRaidPoints
             Scribe_Values.Look(ref DeepDrillInfestation, "DeepDrillInfestation", true);
             Scribe_Values.Look(ref DevourerAssault, "DevourerAssault", true);
             Scribe_Values.Look(ref DevourerWaterAssault, "DevourerWaterAssault", true);
-            Scribe_Values.Look(ref EntitySwarm, "EntitySwarm", true);
             Scribe_Values.Look(ref FleshbeastAttack, "FleshbeastAttack", true);
             Scribe_Values.Look(ref FleshmassHeart, "FleshmassHeart", true);
             Scribe_Values.Look(ref GhoulAttack, "GhoulAttack", false);
@@ -143,7 +142,8 @@ namespace VisibleRaidPoints
             Scribe_Values.Look(ref PsychicRitualSiege, "PsychicRitualSiege", true);
             Scribe_Values.Look(ref RaidEnemy, "RaidEnemy", true);
             Scribe_Values.Look(ref RaidFriendly, "RaidFriendly", false);
-            Scribe_Values.Look(ref ShamblerAssault, "ShamblerAssault", false);
+            Scribe_Values.Look(ref ShamblerAssault, "ShamblerAssault", true);
+            Scribe_Values.Look(ref ShamblerSwarm, "ShamblerSwarm", true);
             Scribe_Values.Look(ref SightstealerArrival, "SightstealerArrival", true);
             Scribe_Values.Look(ref SightstealerSwarm, "SightstealerSwarm", true);
             Scribe_Values.Look(ref WastepackInfestation, "WastepackInfestation", true);

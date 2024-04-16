@@ -50,6 +50,8 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_TextGenerator_GetSightstealerSwarmFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetSightstealerSwarmFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetGorehulkAssaultMinDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetGorehulkAssaultMinDesc));
         public static readonly MethodInfo m_TextGenerator_GetGorehulkAssaultMinFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetGorehulkAssaultMinFactorDesc));
+        public static readonly MethodInfo m_TextGenerator_GetEntitySwarmRandomFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetEntitySwarmRandomFactorDesc));
+        public static readonly MethodInfo m_TextGenerator_GetEntitySwarmMinDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetEntitySwarmMinDesc));
         public static readonly MethodInfo m_TextGenerator_GetPollutionRaidFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPollutionRaidFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetStorytellerRandomFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetStorytellerRandomFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPointsFromWealthDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPointsFromWealthDesc));
@@ -65,5 +67,6 @@ namespace VisibleRaidPoints
         public static readonly FieldInfo f_RaidAgeRestrictionDef_threatPointsFactor = AccessTools.Field(typeof(RaidAgeRestrictionDef), nameof(RaidAgeRestrictionDef.threatPointsFactor));
         public static readonly FieldInfo f_Difficulty_threatScale = AccessTools.Field(typeof(Difficulty), nameof(Difficulty.threatScale));
         public static readonly FieldInfo f_QuestPart_RandomRaid_faction = AccessTools.Field(typeof(QuestPart_RandomRaid), nameof(QuestPart_RandomRaid.faction));
+        public static readonly FieldInfo f_PawnGroupMakerParms_groupKind = AccessTools.Field(typeof(PawnGroupMakerParms), nameof(PawnGroupMakerParms.groupKind));
     }
 }

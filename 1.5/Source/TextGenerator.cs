@@ -96,6 +96,16 @@ namespace VisibleRaidPoints
             return "VisibleRaidPoints_GorehulkAssaultMinFactorDesc".Translate();
         }
 
+        public static TaggedString GetEntitySwarmRandomFactorDesc()
+        {
+            return "VisibleRaidPoints_EntitySwarmRandomFactorDesc".Translate();
+        }
+
+        public static TaggedString GetEntitySwarmMinDesc(PawnGroupKindDef groupKind)
+        {
+            return "VisibleRaidPoints_EntitySwarmMinDesc".Translate(Faction.OfEntities.def.MinPointsToGeneratePawnGroup(groupKind, null) * 1.05f) + $" ({groupKind.defName})".Colorize(ColoredText.SubtleGrayColor);
+        }
+
         public static TaggedString GetPollutionRaidFactorDesc()
         {
             return "VisibleRaidPoints_PollutionRaidFactorDesc".Translate();

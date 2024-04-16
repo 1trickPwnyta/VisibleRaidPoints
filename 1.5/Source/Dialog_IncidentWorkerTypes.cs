@@ -40,7 +40,6 @@ namespace VisibleRaidPoints
             {
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_DevourerAssault".Translate(), ref VisibleRaidPointsSettings.DevourerAssault);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_DevourerWaterAssault".Translate(), ref VisibleRaidPointsSettings.DevourerWaterAssault);
-                listingStandard.CheckboxLabeled("VisibleRaidPoints_EntitySwarm".Translate(), ref VisibleRaidPointsSettings.EntitySwarm);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_FleshbeastAttack".Translate(), ref VisibleRaidPointsSettings.FleshbeastAttack);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_FleshmassHeart".Translate(), ref VisibleRaidPointsSettings.FleshmassHeart);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_GhoulAttack".Translate(), ref VisibleRaidPointsSettings.GhoulAttack);
@@ -65,6 +64,7 @@ namespace VisibleRaidPoints
             if (ModsConfig.AnomalyActive)
             {
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_ShamblerAssault".Translate(), ref VisibleRaidPointsSettings.ShamblerAssault);
+                listingStandard.CheckboxLabeled("VisibleRaidPoints_ShamblerSwarm".Translate(), ref VisibleRaidPointsSettings.ShamblerSwarm);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_SightstealerArrival".Translate(), ref VisibleRaidPointsSettings.SightstealerArrival);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_SightstealerSwarm".Translate(), ref VisibleRaidPointsSettings.SightstealerSwarm);
             }
