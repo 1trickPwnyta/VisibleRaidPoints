@@ -54,6 +54,10 @@ namespace VisibleRaidPoints
             {
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_MechCluster".Translate(), ref VisibleRaidPointsSettings.MechCluster);
             }
+            if (ModsConfig.AnomalyActive)
+            {
+                listingStandard.CheckboxLabeled("VisibleRaidPoints_PitGateEmergence".Translate(), ref VisibleRaidPointsSettings.PitGateEmergence);
+            }
             listingStandard.CheckboxLabeled("VisibleRaidPoints_PsychicDrone".Translate(), ref VisibleRaidPointsSettings.PsychicDrone);
             if (ModsConfig.AnomalyActive)
             {

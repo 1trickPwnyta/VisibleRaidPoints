@@ -24,6 +24,9 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_CaravanDemandUtility_GenerateCaravanDemandMessageText = AccessTools.Method(typeof(CaravanDemandUtility), nameof(CaravanDemandUtility.GenerateCaravanDemandMessageText));
         public static readonly MethodInfo m_Rand_Range = AccessTools.Method(typeof(Rand), nameof(Rand.Range), new[] { typeof(float), typeof(float) });
         public static readonly MethodInfo m_SimpleCurve_Evaluate = AccessTools.Method(typeof(SimpleCurve), nameof(SimpleCurve.Evaluate));
+        public static readonly MethodInfo m_Find_get_LetterStack = AccessTools.Method(typeof(Find), "get_LetterStack");
+        public static readonly MethodInfo m_LetterStack_ReceiveLetter = AccessTools.Method(typeof(LetterStack), nameof(LetterStack.ReceiveLetter), new[] { typeof(TaggedString), typeof(TaggedString), typeof(LetterDef), typeof(LookTargets), typeof(Faction), typeof(Quest), typeof(List<ThingDef>), typeof(string), typeof(int), typeof(bool) });
+        public static readonly MethodInfo m_LetterUtility_ReceiveLetter = AccessTools.Method(typeof(LetterUtility), nameof(LetterUtility.ReceiveLetter));
         public static readonly MethodInfo m_ThreatPointsBreakdown_SetInitialValue = AccessTools.Method(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.SetInitialValue));
         public static readonly MethodInfo m_ThreatPointsBreakdown_SetOperationType = AccessTools.Method(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.SetOperationType));
         public static readonly MethodInfo m_ThreatPointsBreakdown_SetOperationValue = AccessTools.Method(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.SetOperationValue));

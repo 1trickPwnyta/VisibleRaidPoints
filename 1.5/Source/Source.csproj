@@ -60,6 +60,8 @@
     <Compile Include="CaravanDemandUtility.cs" />
     <Compile Include="Debug.cs" />
     <Compile Include="Dialog_IncidentWorkerTypes.cs" />
+    <Compile Include="LetterUtility.cs" />
+    <Compile Include="Patch_PitGate.cs" />
     <Compile Include="Patch_IncidentWorker_Ambush_ManhunterPack.cs" />
     <Compile Include="Patch_IncidentWorker_QuestPart_RandomRaid.cs" />
     <Compile Include="Patch_IncidentWorker_GorehulkAssault.cs" />
