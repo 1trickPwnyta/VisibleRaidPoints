@@ -77,6 +77,7 @@
 	<VisibleRaidPoints_GorehulkAssaultMinFactorDesc>Gorehulk assault minimum factor</VisibleRaidPoints_GorehulkAssaultMinFactorDesc>
 	<VisibleRaidPoints_EntitySwarmRandomFactorDesc>Entity swarm random factor</VisibleRaidPoints_EntitySwarmRandomFactorDesc>
 	<VisibleRaidPoints_EntitySwarmMinDesc>Entity swarm minimum {0} points</VisibleRaidPoints_EntitySwarmMinDesc>
+	<VisibleRaidPoints_FleshbeastAttackFactorDesc>Fleshbeast attack factor</VisibleRaidPoints_FleshbeastAttackFactorDesc>
 	<VisibleRaidPoints_RaidStrategyMinDesc>Raid strategy minimum {0} points</VisibleRaidPoints_RaidStrategyMinDesc>
 	<VisibleRaidPoints_FactionMinDesc>Faction minimum {0} points</VisibleRaidPoints_FactionMinDesc>
 </LanguageData>

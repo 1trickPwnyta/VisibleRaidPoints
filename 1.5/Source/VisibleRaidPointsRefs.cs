@@ -52,6 +52,7 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_TextGenerator_GetGorehulkAssaultMinFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetGorehulkAssaultMinFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetEntitySwarmRandomFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetEntitySwarmRandomFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetEntitySwarmMinDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetEntitySwarmMinDesc));
+        public static readonly MethodInfo m_TextGenerator_GetFleshbeastAttackFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetFleshbeastAttackFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPollutionRaidFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPollutionRaidFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetStorytellerRandomFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetStorytellerRandomFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPointsFromWealthDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPointsFromWealthDesc));

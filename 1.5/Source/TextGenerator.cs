@@ -106,6 +106,11 @@ namespace VisibleRaidPoints
             return "VisibleRaidPoints_EntitySwarmMinDesc".Translate(Faction.OfEntities.def.MinPointsToGeneratePawnGroup(groupKind, null) * 1.05f) + $" ({groupKind.defName})".Colorize(ColoredText.SubtleGrayColor);
         }
 
+        public static TaggedString GetFleshbeastAttackFactorDesc()
+        {
+            return "VisibleRaidPoints_FleshbeastAttackFactorDesc".Translate();
+        }
+
         public static TaggedString GetPollutionRaidFactorDesc()
         {
             return "VisibleRaidPoints_PollutionRaidFactorDesc".Translate();
