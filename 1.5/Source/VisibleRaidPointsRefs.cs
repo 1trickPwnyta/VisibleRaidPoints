@@ -1,5 +1,6 @@
 ﻿using HarmonyLib;
 using RimWorld;
+using RimWorld.QuestGen;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -56,6 +57,7 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_TextGenerator_GetEntitySwarmRandomFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetEntitySwarmRandomFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetEntitySwarmMinDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetEntitySwarmMinDesc));
         public static readonly MethodInfo m_TextGenerator_GetFleshbeastAttackFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetFleshbeastAttackFactorDesc));
+        public static readonly MethodInfo m_TextGenerator_GetNoctolithsDamagedFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetNoctolithsDamagedFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPollutionRaidFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPollutionRaidFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetStorytellerRandomFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetStorytellerRandomFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPointsFromWealthDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPointsFromWealthDesc));
@@ -72,5 +74,9 @@ namespace VisibleRaidPoints
         public static readonly FieldInfo f_Difficulty_threatScale = AccessTools.Field(typeof(Difficulty), nameof(Difficulty.threatScale));
         public static readonly FieldInfo f_QuestPart_RandomRaid_faction = AccessTools.Field(typeof(QuestPart_RandomRaid), nameof(QuestPart_RandomRaid.faction));
         public static readonly FieldInfo f_PawnGroupMakerParms_groupKind = AccessTools.Field(typeof(PawnGroupMakerParms), nameof(PawnGroupMakerParms.groupKind));
+        public static readonly FieldInfo f_QuestPart_Noctoliths_points = AccessTools.Field(typeof(QuestPart_Noctoliths), "points");
+        public static readonly FieldInfo f_QuestPart_Noctoliths_damagedCount = AccessTools.Field(typeof(QuestPart_Noctoliths), "damagedCount");
+        public static readonly FieldInfo f_VisibleRaidPointsSettings_PitGateEmergence = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.PitGateEmergence));
+        public static readonly FieldInfo f_VisibleRaidPointsSettings_NoctolAttack = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.NoctolAttack));
     }
 }

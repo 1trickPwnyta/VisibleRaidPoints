@@ -56,6 +56,7 @@ namespace VisibleRaidPoints
             }
             if (ModsConfig.AnomalyActive)
             {
+                listingStandard.CheckboxLabeled("VisibleRaidPoints_NoctolAttack".Translate(), ref VisibleRaidPointsSettings.NoctolAttack);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_PitGateEmergence".Translate(), ref VisibleRaidPointsSettings.PitGateEmergence);
             }
             listingStandard.CheckboxLabeled("VisibleRaidPoints_PsychicDrone".Translate(), ref VisibleRaidPointsSettings.PsychicDrone);

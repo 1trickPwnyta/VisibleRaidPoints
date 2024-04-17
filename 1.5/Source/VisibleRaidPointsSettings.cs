@@ -11,7 +11,7 @@ namespace VisibleRaidPoints
         private static readonly int IncidentWorkerTypeCountRoyalty = 1;
         private static readonly int IncidentWorkerTypeCountIdeology = 0;
         private static readonly int IncidentWorkerTypeCountBiotech = 1;
-        private static readonly int IncidentWorkerTypeCountAnomaly = 14;
+        private static readonly int IncidentWorkerTypeCountAnomaly = 15;
 
         public static int GetIncidentWorkerTypeCount()
         {
@@ -56,6 +56,7 @@ namespace VisibleRaidPoints
         public static bool HateChanters;
         public static bool Infestation;
         public static bool MechCluster;
+        public static bool NoctolAttack;
         public static bool PitGateEmergence;
         public static bool PsychicDrone;
         public static bool PsychicRitualSiege;
@@ -139,6 +140,7 @@ namespace VisibleRaidPoints
             Scribe_Values.Look(ref HateChanters, "HateChanters", true);
             Scribe_Values.Look(ref Infestation, "Infestation", true);
             Scribe_Values.Look(ref MechCluster, "MechCluster", true);
+            Scribe_Values.Look(ref NoctolAttack, "NoctolAttack", true);
             Scribe_Values.Look(ref PitGateEmergence, "PitGateEmergence", true);
             Scribe_Values.Look(ref PsychicDrone, "PsychicDrone", false);
             Scribe_Values.Look(ref PsychicRitualSiege, "PsychicRitualSiege", true);

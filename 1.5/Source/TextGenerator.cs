@@ -111,6 +111,11 @@ namespace VisibleRaidPoints
             return "VisibleRaidPoints_FleshbeastAttackFactorDesc".Translate();
         }
 
+        public static TaggedString GetNoctolithsDamagedFactorDesc(int damagedCount)
+        {
+            return "VisibleRaidPoints_NoctolithsDamagedFactorDesc".Translate() + $" ({damagedCount})".Colorize(ColoredText.SubtleGrayColor);
+        }
+
         public static TaggedString GetPollutionRaidFactorDesc()
         {
             return "VisibleRaidPoints_PollutionRaidFactorDesc".Translate();

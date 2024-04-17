@@ -6,9 +6,9 @@ namespace VisibleRaidPoints
 {
     public static class LetterUtility
     {
-        public static void ReceiveLetter(LetterStack letterStack, TaggedString label, TaggedString text, LetterDef textLetterDef, LookTargets lookTargets, Faction relatedFaction = null, Quest quest = null, List<ThingDef> hyperlinkThingDefs = null, string debugInfo = null, int delayTicks = 0, bool playSound = true)
+        public static void ReceiveLetter(LetterStack letterStack, TaggedString label, TaggedString text, LetterDef textLetterDef, LookTargets lookTargets, Faction relatedFaction, Quest quest, List<ThingDef> hyperlinkThingDefs, string debugInfo, int delayTicks, bool playSound, bool incidentEnabled)
         {
-            if (VisibleRaidPointsSettings.PitGateEmergence)
+            if (incidentEnabled)
             {
                 ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetCurrent();
 

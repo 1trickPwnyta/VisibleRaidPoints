@@ -27,6 +27,7 @@
 	<VisibleRaidPoints_Infestation>Infestation</VisibleRaidPoints_Infestation>
 	<VisibleRaidPoints_InsectJelly>Insect jelly</VisibleRaidPoints_InsectJelly>
 	<VisibleRaidPoints_MechCluster>Mech cluster</VisibleRaidPoints_MechCluster>
+	<VisibleRaidPoints_NoctolAttack>Noctol attack</VisibleRaidPoints_NoctolAttack>
 	<VisibleRaidPoints_PitGateEmergence>Pit gate emergence</VisibleRaidPoints_PitGateEmergence>
 	<VisibleRaidPoints_PsychicDrone>Psychic drone</VisibleRaidPoints_PsychicDrone>
 	<VisibleRaidPoints_PsychicRitualSiege>Psychic ritual siege</VisibleRaidPoints_PsychicRitualSiege>
@@ -79,6 +80,7 @@
 	<VisibleRaidPoints_EntitySwarmRandomFactorDesc>Entity swarm random factor</VisibleRaidPoints_EntitySwarmRandomFactorDesc>
 	<VisibleRaidPoints_EntitySwarmMinDesc>Entity swarm minimum {0} points</VisibleRaidPoints_EntitySwarmMinDesc>
 	<VisibleRaidPoints_FleshbeastAttackFactorDesc>Fleshbeast attack factor</VisibleRaidPoints_FleshbeastAttackFactorDesc>
+	<VisibleRaidPoints_NoctolithsDamagedFactorDesc>Noctoliths damaged factor</VisibleRaidPoints_NoctolithsDamagedFactorDesc>
 	<VisibleRaidPoints_RaidStrategyMinDesc>Raid strategy minimum {0} points</VisibleRaidPoints_RaidStrategyMinDesc>
 	<VisibleRaidPoints_FactionMinDesc>Faction minimum {0} points</VisibleRaidPoints_FactionMinDesc>
 </LanguageData>

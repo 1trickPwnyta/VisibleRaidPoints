@@ -171,7 +171,7 @@ namespace VisibleRaidPoints
             }
             else
             {
-                return 0f;
+                return InitialValue;
             }
         }
 
