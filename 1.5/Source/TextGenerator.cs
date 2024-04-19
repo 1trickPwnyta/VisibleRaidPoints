@@ -116,6 +116,21 @@ namespace VisibleRaidPoints
             return "VisibleRaidPoints_NoctolithsDamagedFactorDesc".Translate() + $" ({damagedCount})".Colorize(ColoredText.SubtleGrayColor);
         }
 
+        public static TaggedString GetDevourerAssaultMinDesc(float min)
+        {
+            return "VisibleRaidPoints_DevourerAssaultMinDesc".Translate((int)min);
+        }
+
+        public static TaggedString GetDevourerAssaultMinFactorDesc()
+        {
+            return "VisibleRaidPoints_DevourerAssaultMinFactorDesc".Translate();
+        }
+
+        public static TaggedString GetDevourerWaterAssaultFactorDesc()
+        {
+            return "VisibleRaidPoints_DevourerWaterAssaultFactorDesc".Translate();
+        }
+
         public static TaggedString GetPollutionRaidFactorDesc()
         {
             return "VisibleRaidPoints_PollutionRaidFactorDesc".Translate();

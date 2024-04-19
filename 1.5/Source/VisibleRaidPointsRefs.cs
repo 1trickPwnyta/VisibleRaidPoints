@@ -58,6 +58,9 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_TextGenerator_GetEntitySwarmMinDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetEntitySwarmMinDesc));
         public static readonly MethodInfo m_TextGenerator_GetFleshbeastAttackFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetFleshbeastAttackFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetNoctolithsDamagedFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetNoctolithsDamagedFactorDesc));
+        public static readonly MethodInfo m_TextGenerator_GetDevourerAssaultMinDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetDevourerAssaultMinDesc));
+        public static readonly MethodInfo m_TextGenerator_GetDevourerAssaultMinFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetDevourerAssaultMinFactorDesc));
+        public static readonly MethodInfo m_TextGenerator_GetDevourerWaterAssaultFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetDevourerWaterAssaultFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPollutionRaidFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPollutionRaidFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetStorytellerRandomFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetStorytellerRandomFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPointsFromWealthDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPointsFromWealthDesc));
