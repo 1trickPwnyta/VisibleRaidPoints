@@ -115,36 +115,36 @@ namespace VisibleRaidPoints
 
         public override void ExposeData()
         {
-            Scribe_Values.Look(ref ShowInLabel, "ShowInLabel");
-            Scribe_Values.Look(ref ShowInText, "ShowInText");
-            Scribe_Values.Look(ref ShowBreakdown, "ShowBreakdown");
-            Scribe_Values.Look(ref AggressiveAnimals, "AggressiveAnimals");
-            Scribe_Values.Look(ref AmbushEnemyFaction, "AmbushEnemyFaction");
-            Scribe_Values.Look(ref AmbushManhunterPack, "AmbushManhunterPack");
-            Scribe_Values.Look(ref AnimalInsanityMass, "AnimalInsanityMass");
-            Scribe_Values.Look(ref CaravanDemand, "CaravanDemand");
-            Scribe_Values.Look(ref ChimeraAssault, "ChimeraAssault");
-            Scribe_Values.Look(ref CrashedShipPart, "CrashedShipPart");
-            Scribe_Values.Look(ref CropBlight, "CropBlight");
-            Scribe_Values.Look(ref DeepDrillInfestation, "DeepDrillInfestation");
-            Scribe_Values.Look(ref DevourerAssault, "DevourerAssault");
-            Scribe_Values.Look(ref DevourerWaterAssault, "DevourerWaterAssault");
-            Scribe_Values.Look(ref FleshbeastAttack, "FleshbeastAttack");
-            Scribe_Values.Look(ref FleshmassHeart, "FleshmassHeart");
-            Scribe_Values.Look(ref GorehulkAssault, "GorehulkAssault");
-            Scribe_Values.Look(ref HateChanters, "HateChanters");
-            Scribe_Values.Look(ref Infestation, "Infestation");
-            Scribe_Values.Look(ref MechCluster, "MechCluster");
-            Scribe_Values.Look(ref NoctolAttack, "NoctolAttack");
-            Scribe_Values.Look(ref PitGateEmergence, "PitGateEmergence");
-            Scribe_Values.Look(ref PsychicDrone, "PsychicDrone");
-            Scribe_Values.Look(ref PsychicRitualSiege, "PsychicRitualSiege");
-            Scribe_Values.Look(ref RaidEnemy, "RaidEnemy");
-            Scribe_Values.Look(ref RaidFriendly, "RaidFriendly");
-            Scribe_Values.Look(ref ShamblerAssault, "ShamblerAssault");
-            Scribe_Values.Look(ref ShamblerSwarm, "ShamblerSwarm");
-            Scribe_Values.Look(ref SightstealerSwarm, "SightstealerSwarm");
-            Scribe_Values.Look(ref WastepackInfestation, "WastepackInfestation");
+            Scribe_Values.Look(ref ShowInLabel, "ShowInLabel", false);
+            Scribe_Values.Look(ref ShowInText, "ShowInText", true);
+            Scribe_Values.Look(ref ShowBreakdown, "ShowBreakdown", false);
+            Scribe_Values.Look(ref AggressiveAnimals, "AggressiveAnimals", true);
+            Scribe_Values.Look(ref AmbushEnemyFaction, "AmbushEnemyFaction", true);
+            Scribe_Values.Look(ref AmbushManhunterPack, "AmbushManhunterPack", true);
+            Scribe_Values.Look(ref AnimalInsanityMass, "AnimalInsanityMass", false);
+            Scribe_Values.Look(ref CaravanDemand, "CaravanDemand", false);
+            Scribe_Values.Look(ref ChimeraAssault, "ChimeraAssault", true);
+            Scribe_Values.Look(ref CrashedShipPart, "CrashedShipPart", true);
+            Scribe_Values.Look(ref CropBlight, "CropBlight", false);
+            Scribe_Values.Look(ref DeepDrillInfestation, "DeepDrillInfestation", true);
+            Scribe_Values.Look(ref DevourerAssault, "DevourerAssault", true);
+            Scribe_Values.Look(ref DevourerWaterAssault, "DevourerWaterAssault", true);
+            Scribe_Values.Look(ref FleshbeastAttack, "FleshbeastAttack", true);
+            Scribe_Values.Look(ref FleshmassHeart, "FleshmassHeart", true);
+            Scribe_Values.Look(ref GorehulkAssault, "GorehulkAssault", true);
+            Scribe_Values.Look(ref HateChanters, "HateChanters", true);
+            Scribe_Values.Look(ref Infestation, "Infestation", true);
+            Scribe_Values.Look(ref MechCluster, "MechCluster", true);
+            Scribe_Values.Look(ref NoctolAttack, "NoctolAttack", true);
+            Scribe_Values.Look(ref PitGateEmergence, "PitGateEmergence", true);
+            Scribe_Values.Look(ref PsychicDrone, "PsychicDrone", false);
+            Scribe_Values.Look(ref PsychicRitualSiege, "PsychicRitualSiege", true);
+            Scribe_Values.Look(ref RaidEnemy, "RaidEnemy", true);
+            Scribe_Values.Look(ref RaidFriendly, "RaidFriendly", false);
+            Scribe_Values.Look(ref ShamblerAssault, "ShamblerAssault", true);
+            Scribe_Values.Look(ref ShamblerSwarm, "ShamblerSwarm", true);
+            Scribe_Values.Look(ref SightstealerSwarm, "SightstealerSwarm", true);
+            Scribe_Values.Look(ref WastepackInfestation, "WastepackInfestation", true);
         }
     }
 }
