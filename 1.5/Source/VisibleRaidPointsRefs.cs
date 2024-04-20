@@ -61,6 +61,10 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_TextGenerator_GetDevourerAssaultMinDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetDevourerAssaultMinDesc));
         public static readonly MethodInfo m_TextGenerator_GetDevourerAssaultMinFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetDevourerAssaultMinFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetDevourerWaterAssaultFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetDevourerWaterAssaultFactorDesc));
+        public static readonly MethodInfo m_TextGenerator_GetChimeraAssaultMinDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetChimeraAssaultMinDesc));
+        public static readonly MethodInfo m_TextGenerator_GetChimeraAssaultMinFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetChimeraAssaultMinFactorDesc));
+        public static readonly MethodInfo m_TextGenerator_GetHateChantersMinDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetHateChantersMinDesc));
+        public static readonly MethodInfo m_TextGenerator_GetHateChantersMinFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetHateChantersMinFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPollutionRaidFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPollutionRaidFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetStorytellerRandomFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetStorytellerRandomFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPointsFromWealthDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPointsFromWealthDesc));
@@ -81,5 +85,6 @@ namespace VisibleRaidPoints
         public static readonly FieldInfo f_QuestPart_Noctoliths_damagedCount = AccessTools.Field(typeof(QuestPart_Noctoliths), "damagedCount");
         public static readonly FieldInfo f_VisibleRaidPointsSettings_PitGateEmergence = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.PitGateEmergence));
         public static readonly FieldInfo f_VisibleRaidPointsSettings_NoctolAttack = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.NoctolAttack));
+        public static readonly FieldInfo f_VisibleRaidPointsSettings_HateChanters = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.HateChanters));
     }
 }

@@ -61,6 +61,8 @@
     <Compile Include="Debug.cs" />
     <Compile Include="Dialog_IncidentWorkerTypes.cs" />
     <Compile Include="LetterUtility.cs" />
+    <Compile Include="Patch_IncidentWorker_HateChanters.cs" />
+    <Compile Include="Patch_IncidentWorker_ChimeraAssault.cs" />
     <Compile Include="Patch_IncidentWorker_DevourerWaterAssault.cs" />
     <Compile Include="Patch_IncidentWorker_DevourerAssault.cs" />
     <Compile Include="Patch_QuestPart_Noctoliths.cs" />

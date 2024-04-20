@@ -21,6 +21,7 @@ Note: The current version of this mod is no longer compatible with version 1.2 o
 Note: This mod is now fully compatible with my other mod, Unlimited Threat Scale: https://steamcommunity.com/sharedfiles/filedetails/?id=2562732435 in version 1.5+ of RimWorld. Unlimited Threat Scale must be before this mod in the mod order list.
 
 === Updates ===
+04/19/2024: Massive overhaul that adds support for many Anomaly events, more accurate threat points for non-raid events and some quest-related raids, adds option to toggle threat point display for different event types
 03/14/2024: Updated to 1.5
 07/11/2023: Fixed points breakdown for children and slaves
 10/26/2022: Updated to 1.4
@@ -29,11 +30,6 @@ Note: This mod is now fully compatible with my other mod, Unlimited Threat Scale
 08/26/2021: Added threat points breakdown feature.
 08/09/2021: Added Korean translation.
 08/06/2021: Enabled visible threat points for additional incident types including infestations, crashed ship parts, mechanoid clusters, manhunter packs, animal mass insanity, and caravan ambushes. Added Spanish translation.
-
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-If you enjoy my work and want to support me and my family, I take donations at:
-https://ko-fi.com/1trickpwnyta
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 </description>
 	<url>https://github.com/1trickPonyta/VisibleRaidPoints</url>
 	<modDependencies>

@@ -131,6 +131,26 @@ namespace VisibleRaidPoints
             return "VisibleRaidPoints_DevourerWaterAssaultFactorDesc".Translate();
         }
 
+        public static TaggedString GetChimeraAssaultMinDesc(float min)
+        {
+            return "VisibleRaidPoints_ChimeraAssaultMinDesc".Translate((int)min);
+        }
+
+        public static TaggedString GetChimeraAssaultMinFactorDesc()
+        {
+            return "VisibleRaidPoints_ChimeraAssaultMinFactorDesc".Translate();
+        }
+
+        public static TaggedString GetHateChantersMinDesc(float min)
+        {
+            return "VisibleRaidPoints_HateChantersMinDesc".Translate((int)min);
+        }
+
+        public static TaggedString GetHateChantersMinFactorDesc()
+        {
+            return "VisibleRaidPoints_HateChantersMinFactorDesc".Translate();
+        }
+
         public static TaggedString GetPollutionRaidFactorDesc()
         {
             return "VisibleRaidPoints_PollutionRaidFactorDesc".Translate();

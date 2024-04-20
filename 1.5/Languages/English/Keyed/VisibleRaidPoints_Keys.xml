@@ -30,7 +30,7 @@
 	<VisibleRaidPoints_NoctolAttack>Noctol attack</VisibleRaidPoints_NoctolAttack>
 	<VisibleRaidPoints_PitGateEmergence>Pit gate emergence</VisibleRaidPoints_PitGateEmergence>
 	<VisibleRaidPoints_PsychicDrone>Psychic drone</VisibleRaidPoints_PsychicDrone>
-	<VisibleRaidPoints_PsychicRitualSiege>Psychic ritual siege</VisibleRaidPoints_PsychicRitualSiege>
+	<VisibleRaidPoints_PsychicRitualSiege>Cultist psychic ritual</VisibleRaidPoints_PsychicRitualSiege>
 	<VisibleRaidPoints_RaidEnemy>Raid</VisibleRaidPoints_RaidEnemy>
 	<VisibleRaidPoints_RaidFriendly>Friendlies</VisibleRaidPoints_RaidFriendly>
 	<VisibleRaidPoints_ShamblerAssault>Shambler assault</VisibleRaidPoints_ShamblerAssault>
@@ -84,6 +84,10 @@
 	<VisibleRaidPoints_DevourerAssaultMinDesc>Devourer assault minimum {0} points</VisibleRaidPoints_DevourerAssaultMinDesc>
 	<VisibleRaidPoints_DevourerAssaultMinFactorDesc>Devourer assault minimum factor</VisibleRaidPoints_DevourerAssaultMinFactorDesc>
 	<VisibleRaidPoints_DevourerWaterAssaultFactorDesc>Devourer water assault factor</VisibleRaidPoints_DevourerWaterAssaultFactorDesc>
+	<VisibleRaidPoints_ChimeraAssaultMinDesc>Chimera assault minimum {0} points</VisibleRaidPoints_ChimeraAssaultMinDesc>
+	<VisibleRaidPoints_ChimeraAssaultMinFactorDesc>Chimera assault minimum factor</VisibleRaidPoints_ChimeraAssaultMinFactorDesc>
+	<VisibleRaidPoints_HateChantersMinDesc>Hate chanters minimum {0} points</VisibleRaidPoints_HateChantersMinDesc>
+	<VisibleRaidPoints_HateChantersMinFactorDesc>Hate chanters minimum factor</VisibleRaidPoints_HateChantersMinFactorDesc>
 	<VisibleRaidPoints_RaidStrategyMinDesc>Raid strategy minimum {0} points</VisibleRaidPoints_RaidStrategyMinDesc>
 	<VisibleRaidPoints_FactionMinDesc>Faction minimum {0} points</VisibleRaidPoints_FactionMinDesc>
 </LanguageData>
