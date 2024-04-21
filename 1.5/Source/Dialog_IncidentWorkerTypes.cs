@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using UnityEngine;
 using Verse;
+using Verse.Sound;
 
 namespace VisibleRaidPoints
 {
@@ -12,16 +13,29 @@ namespace VisibleRaidPoints
         {
             this.doCloseX = true;
             this.doCloseButton = true;
+            this.closeOnClickedOutside = true;
         }
 
         public override void DoWindowContents(Rect inRect)
         {
-            Rect rect = new Rect(inRect);
-            rect.yMax -= Window.CloseButSize.y;
-            rect.yMin += 8f;
-            Listing_Standard listingStandard = new Listing_Standard(rect, () => scrollPos);
+            if (Widgets.ButtonText(new Rect(0f, 0f, inRect.width / 2, 24f), "VisibleRaidPoints_EnableAll".Translate()))
+            {
+                EnableAll(true);
+                SoundDefOf.Checkbox_TurnedOn.PlayOneShotOnCamera(null);
+            }
+            if (Widgets.ButtonText(new Rect(inRect.width / 2, 0f, inRect.width / 2, 24f), "VisibleRaidPoints_DisableAll".Translate()))
+            {
+                EnableAll(false);
+                SoundDefOf.Checkbox_TurnedOff.PlayOneShotOnCamera(null);
+            }
+
+            Rect outRect = new Rect(inRect);
+            outRect.y += 24f;
+            outRect.yMax -= Window.CloseButSize.y + 24f;
+            outRect.yMin += 8f;
+            Listing_Standard listingStandard = new Listing_Standard(inRect, () => scrollPos);
             Rect viewRect = new Rect(0f, 0f, inRect.width - 16f, 24f * VisibleRaidPointsSettings.GetIncidentWorkerTypeCount());
-            Widgets.BeginScrollView(rect, ref scrollPos, viewRect);
+            Widgets.BeginScrollView(outRect, ref scrollPos, viewRect);
             listingStandard.Begin(viewRect);
             
             listingStandard.CheckboxLabeled("VisibleRaidPoints_AggressiveAnimals".Translate(), ref VisibleRaidPointsSettings.AggressiveAnimals);
@@ -42,9 +56,6 @@ namespace VisibleRaidPoints
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_DevourerWaterAssault".Translate(), ref VisibleRaidPointsSettings.DevourerWaterAssault);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_FleshbeastAttack".Translate(), ref VisibleRaidPointsSettings.FleshbeastAttack);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_FleshmassHeart".Translate(), ref VisibleRaidPointsSettings.FleshmassHeart);
-            }
-            if (ModsConfig.AnomalyActive)
-            {
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_GorehulkAssault".Translate(), ref VisibleRaidPointsSettings.GorehulkAssault);
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_HateChanters".Translate(), ref VisibleRaidPointsSettings.HateChanters);
             }
@@ -75,9 +86,40 @@ namespace VisibleRaidPoints
             {
                 listingStandard.CheckboxLabeled("VisibleRaidPoints_WastepackInfestation".Translate(), ref VisibleRaidPointsSettings.WastepackInfestation);
             }
-
+            
             listingStandard.End();
             Widgets.EndScrollView();
+        }
+
+        private void EnableAll(bool enable)
+        {
+            VisibleRaidPointsSettings.AggressiveAnimals = enable;
+            VisibleRaidPointsSettings.AmbushEnemyFaction = enable;
+            VisibleRaidPointsSettings.AmbushManhunterPack = enable;
+            VisibleRaidPointsSettings.AnimalInsanityMass = enable;
+            VisibleRaidPointsSettings.CaravanDemand = enable;
+            VisibleRaidPointsSettings.ChimeraAssault = enable;
+            VisibleRaidPointsSettings.CrashedShipPart = enable;
+            VisibleRaidPointsSettings.CropBlight = enable;
+            VisibleRaidPointsSettings.DeepDrillInfestation = enable;
+            VisibleRaidPointsSettings.DevourerAssault = enable;
+            VisibleRaidPointsSettings.DevourerWaterAssault = enable;
+            VisibleRaidPointsSettings.FleshbeastAttack = enable;
+            VisibleRaidPointsSettings.FleshmassHeart = enable;
+            VisibleRaidPointsSettings.GorehulkAssault = enable;
+            VisibleRaidPointsSettings.HateChanters = enable;
+            VisibleRaidPointsSettings.Infestation = enable;
+            VisibleRaidPointsSettings.MechCluster = enable;
+            VisibleRaidPointsSettings.NoctolAttack = enable;
+            VisibleRaidPointsSettings.PitGateEmergence = enable;
+            VisibleRaidPointsSettings.PsychicDrone = enable;
+            VisibleRaidPointsSettings.PsychicRitualSiege = enable;
+            VisibleRaidPointsSettings.RaidEnemy = enable;
+            VisibleRaidPointsSettings.RaidFriendly = enable;
+            VisibleRaidPointsSettings.ShamblerAssault = enable;
+            VisibleRaidPointsSettings.ShamblerSwarm = enable;
+            VisibleRaidPointsSettings.SightstealerSwarm = enable;
+            VisibleRaidPointsSettings.WastepackInfestation = enable;
         }
     }
 }

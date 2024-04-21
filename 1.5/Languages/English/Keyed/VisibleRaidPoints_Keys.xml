@@ -6,6 +6,8 @@
 	<VisibleRaidPoints_ShowBreakdownInLetterText>Show points breakdown in letter text</VisibleRaidPoints_ShowBreakdownInLetterText>
 	<VisibleRaidPoints_IncidentWorkerTypes>Enabled event types</VisibleRaidPoints_IncidentWorkerTypes>
 	<VisibleRaidPoints_Modify>Modify</VisibleRaidPoints_Modify>
+	<VisibleRaidPoints_EnableAll>Enable all</VisibleRaidPoints_EnableAll>
+	<VisibleRaidPoints_DisableAll>Disable all</VisibleRaidPoints_DisableAll>
 	<VisibleRaidPoints_AggressiveAnimals>Manhunter pack</VisibleRaidPoints_AggressiveAnimals>
 	<VisibleRaidPoints_AmbushEnemyFaction>Caravan ambush (human)</VisibleRaidPoints_AmbushEnemyFaction>
 	<VisibleRaidPoints_AmbushManhunterPack>Caravan ambush (animals)</VisibleRaidPoints_AmbushManhunterPack>
