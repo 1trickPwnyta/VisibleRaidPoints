@@ -21,6 +21,7 @@ Note: The current version of this mod is no longer compatible with version 1.2 o
 Note: This mod is now fully compatible with my other mod, Unlimited Threat Scale: https://steamcommunity.com/sharedfiles/filedetails/?id=2562732435 in version 1.5+ of RimWorld. Unlimited Threat Scale must be before this mod in the mod order list.
 
 === Updates ===
+04/22/2024: Added/fixed threat points for events summoned by psychic rituals
 04/20/2024: Fixed empty settings on first install bug, add enable/disable all button in event type menu
 04/19/2024: Massive overhaul that adds support for many Anomaly events, more accurate threat points for non-raid events and some quest-related raids, adds option to toggle threat point display for different event types
 03/14/2024: Updated to 1.5

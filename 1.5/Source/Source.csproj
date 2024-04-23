@@ -61,6 +61,9 @@
     <Compile Include="Debug.cs" />
     <Compile Include="Dialog_IncidentWorkerTypes.cs" />
     <Compile Include="LetterUtility.cs" />
+    <Compile Include="Patch_PsychicRitualToil_SummonFleshbeastsCultist.cs" />
+    <Compile Include="Patch_PsychicRitualToil_SummonFleshbeastsPlayer.cs" />
+    <Compile Include="Patch_PsychicRitualToil_SummonShamblers.cs" />
     <Compile Include="Patch_IncidentWorker_HateChanters.cs" />
     <Compile Include="Patch_IncidentWorker_ChimeraAssault.cs" />
     <Compile Include="Patch_IncidentWorker_DevourerWaterAssault.cs" />

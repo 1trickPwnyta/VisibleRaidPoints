@@ -69,7 +69,7 @@
 	<VisibleRaidPoints_CaravanDemandFactorDesc>Caravan demand random factor</VisibleRaidPoints_CaravanDemandFactorDesc>
 	<VisibleRaidPoints_CrashedShipPartFactorDesc>Crashed ship part factor</VisibleRaidPoints_CrashedShipPartFactorDesc>
 	<VisibleRaidPoints_DeepDrillInfestationFactorDesc>Deep drill infestation random factor</VisibleRaidPoints_DeepDrillInfestationFactorDesc>
-	<VisibleRaidPoints_InfestationFactorDesc>Infestation calculated factor</VisibleRaidPoints_InfestationFactorDesc>
+	<VisibleRaidPoints_InfestationFactorDesc>Infestation factor</VisibleRaidPoints_InfestationFactorDesc>
 	<VisibleRaidPoints_IntermediateTotalDesc>Intermediate total</VisibleRaidPoints_IntermediateTotalDesc>
 	<VisibleRaidPoints_AnimalInsanityMassCalcDesc>Animal mass insanity adjustment</VisibleRaidPoints_AnimalInsanityMassCalcDesc>
 	<VisibleRaidPoints_CrashedShipPartMinDesc>Crashed ship part minimum 300 points</VisibleRaidPoints_CrashedShipPartMinDesc>
@@ -92,4 +92,7 @@
 	<VisibleRaidPoints_HateChantersMinFactorDesc>Hate chanters minimum factor</VisibleRaidPoints_HateChantersMinFactorDesc>
 	<VisibleRaidPoints_RaidStrategyMinDesc>Raid strategy minimum {0} points</VisibleRaidPoints_RaidStrategyMinDesc>
 	<VisibleRaidPoints_FactionMinDesc>Faction minimum {0} points</VisibleRaidPoints_FactionMinDesc>
+	<VisibleRaidPoints_PsychicRitualQualityDesc>Psychic ritual quality</VisibleRaidPoints_PsychicRitualQualityDesc>
+	<VisibleRaidPoints_PsychicRitualQualityFactorDesc>Psychic ritual quality factor</VisibleRaidPoints_PsychicRitualQualityFactorDesc>
+	<VisibleRaidPoints_PsychicRitualSiegeThreatDesc>Psychic ritual siege threat</VisibleRaidPoints_PsychicRitualSiegeThreatDesc>
 </LanguageData>

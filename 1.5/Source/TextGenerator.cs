@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
+using UnityEngine;
 using Verse;
 
 namespace VisibleRaidPoints
@@ -149,6 +150,21 @@ namespace VisibleRaidPoints
         public static TaggedString GetHateChantersMinFactorDesc()
         {
             return "VisibleRaidPoints_HateChantersMinFactorDesc".Translate();
+        }
+
+        public static TaggedString GetPsychicRitualQualityDesc(float percent)
+        {
+            return "VisibleRaidPoints_PsychicRitualQualityDesc".Translate() + $" ({(percent * 100).ToString("0.0")}%)".Colorize(ColoredText.SubtleGrayColor);
+        }
+
+        public static TaggedString GetPsychicRitualQualityFactorDesc()
+        {
+            return "VisibleRaidPoints_PsychicRitualQualityFactorDesc".Translate();
+        }
+
+        public static TaggedString GetPsychicRitualSiegeThreatDesc(float points)
+        {
+            return "VisibleRaidPoints_PsychicRitualSiegeThreatDesc".Translate() + $" ({(int)points} points)".Colorize(ColoredText.SubtleGrayColor);
         }
 
         public static TaggedString GetPollutionRaidFactorDesc()
