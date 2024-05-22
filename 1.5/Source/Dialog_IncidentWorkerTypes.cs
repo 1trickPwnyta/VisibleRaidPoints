@@ -42,6 +42,10 @@ namespace VisibleRaidPoints
             listingStandard.CheckboxLabeled("VisibleRaidPoints_AmbushEnemyFaction".Translate(), ref VisibleRaidPointsSettings.AmbushEnemyFaction);
             listingStandard.CheckboxLabeled("VisibleRaidPoints_AmbushManhunterPack".Translate(), ref VisibleRaidPointsSettings.AmbushManhunterPack);
             listingStandard.CheckboxLabeled("VisibleRaidPoints_AnimalInsanityMass".Translate(), ref VisibleRaidPointsSettings.AnimalInsanityMass);
+            if (ModsConfig.AnomalyActive)
+            {
+                listingStandard.CheckboxLabeled("VisibleRaidPoints_AnomalyEndgame".Translate(), ref VisibleRaidPointsSettings.AnomalyEndgame);
+            }
             listingStandard.CheckboxLabeled("VisibleRaidPoints_CaravanDemand".Translate(), ref VisibleRaidPointsSettings.CaravanDemand);
             if (ModsConfig.AnomalyActive)
             {

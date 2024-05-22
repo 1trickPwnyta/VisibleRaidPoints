@@ -69,6 +69,7 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_TextGenerator_GetPsychicRitualQualityDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPsychicRitualQualityDesc));
         public static readonly MethodInfo m_TextGenerator_GetPsychicRitualQualityFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPsychicRitualQualityFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPsychicRitualSiegeThreatDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPsychicRitualSiegeThreatDesc));
+        public static readonly MethodInfo m_TextGenerator_GetVoidAwakeningFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetVoidAwakeningFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPollutionRaidFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPollutionRaidFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetStorytellerRandomFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetStorytellerRandomFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPointsFromWealthDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPointsFromWealthDesc));
@@ -92,5 +93,6 @@ namespace VisibleRaidPoints
         public static readonly FieldInfo f_VisibleRaidPointsSettings_NoctolAttack = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.NoctolAttack));
         public static readonly FieldInfo f_VisibleRaidPointsSettings_HateChanters = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.HateChanters));
         public static readonly FieldInfo f_VisibleRaidPointsSettings_FleshbeastAttack = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.FleshbeastAttack));
+        public static readonly FieldInfo f_VisibleRaidPointsSettings_AnomalyEndgame = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.AnomalyEndgame));
     }
 }

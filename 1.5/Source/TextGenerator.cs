@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using Verse;
 
@@ -165,6 +166,11 @@ namespace VisibleRaidPoints
         public static TaggedString GetPsychicRitualSiegeThreatDesc(float points)
         {
             return "VisibleRaidPoints_PsychicRitualSiegeThreatDesc".Translate() + $" ({(int)points} points)".Colorize(ColoredText.SubtleGrayColor);
+        }
+
+        public static TaggedString GetVoidAwakeningFactorDesc()
+        {
+            return "VisibleRaidPoints_VoidAwakeningFactorDesc".Translate();
         }
 
         public static TaggedString GetPollutionRaidFactorDesc()

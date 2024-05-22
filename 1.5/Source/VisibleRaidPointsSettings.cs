@@ -11,7 +11,7 @@ namespace VisibleRaidPoints
         private static readonly int IncidentWorkerTypeCountRoyalty = 1;
         private static readonly int IncidentWorkerTypeCountIdeology = 0;
         private static readonly int IncidentWorkerTypeCountBiotech = 1;
-        private static readonly int IncidentWorkerTypeCountAnomaly = 13;
+        private static readonly int IncidentWorkerTypeCountAnomaly = 14;
 
         public static int GetIncidentWorkerTypeCount()
         {
@@ -42,6 +42,7 @@ namespace VisibleRaidPoints
         public static bool AmbushEnemyFaction = true;
         public static bool AmbushManhunterPack = true;
         public static bool AnimalInsanityMass = false;
+        public static bool AnomalyEndgame = true;
         public static bool CaravanDemand = false;
         public static bool ChimeraAssault = true;
         public static bool CrashedShipPart = true;
@@ -122,6 +123,7 @@ namespace VisibleRaidPoints
             Scribe_Values.Look(ref AmbushEnemyFaction, "AmbushEnemyFaction", true);
             Scribe_Values.Look(ref AmbushManhunterPack, "AmbushManhunterPack", true);
             Scribe_Values.Look(ref AnimalInsanityMass, "AnimalInsanityMass", false);
+            Scribe_Values.Look(ref AnomalyEndgame, "AnomalyEndgame", true);
             Scribe_Values.Look(ref CaravanDemand, "CaravanDemand", false);
             Scribe_Values.Look(ref ChimeraAssault, "ChimeraAssault", true);
             Scribe_Values.Look(ref CrashedShipPart, "CrashedShipPart", true);
