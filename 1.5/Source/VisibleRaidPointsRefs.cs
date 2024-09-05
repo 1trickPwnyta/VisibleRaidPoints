@@ -26,8 +26,10 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_Rand_Range = AccessTools.Method(typeof(Rand), nameof(Rand.Range), new[] { typeof(float), typeof(float) });
         public static readonly MethodInfo m_SimpleCurve_Evaluate = AccessTools.Method(typeof(SimpleCurve), nameof(SimpleCurve.Evaluate));
         public static readonly MethodInfo m_Find_get_LetterStack = AccessTools.Method(typeof(Find), "get_LetterStack");
-        public static readonly MethodInfo m_LetterStack_ReceiveLetter = AccessTools.Method(typeof(LetterStack), nameof(LetterStack.ReceiveLetter), new[] { typeof(TaggedString), typeof(TaggedString), typeof(LetterDef), typeof(LookTargets), typeof(Faction), typeof(Quest), typeof(List<ThingDef>), typeof(string), typeof(int), typeof(bool) });
+        public static readonly MethodInfo m_LetterStack_ReceiveLetter_Letter = AccessTools.Method(typeof(LetterStack), nameof(LetterStack.ReceiveLetter), new[] { typeof(Letter), typeof(string), typeof(int), typeof(bool) });
+        public static readonly MethodInfo m_LetterStack_ReceiveLetter_TaggedString = AccessTools.Method(typeof(LetterStack), nameof(LetterStack.ReceiveLetter), new[] { typeof(TaggedString), typeof(TaggedString), typeof(LetterDef), typeof(LookTargets), typeof(Faction), typeof(Quest), typeof(List<ThingDef>), typeof(string), typeof(int), typeof(bool) });
         public static readonly MethodInfo m_LetterUtility_ReceiveLetter = AccessTools.Method(typeof(LetterUtility), nameof(LetterUtility.ReceiveLetter));
+        public static readonly MethodInfo m_LetterUtility_InjectThreatPoints = AccessTools.Method(typeof(LetterUtility), nameof(LetterUtility.InjectThreatPoints));
         public static readonly MethodInfo m_FloatRange_LerpThroughRange = AccessTools.Method(typeof(FloatRange), nameof(FloatRange.LerpThroughRange));
         public static readonly MethodInfo m_ThreatPointsBreakdown_SetInitialValue = AccessTools.Method(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.SetInitialValue));
         public static readonly MethodInfo m_ThreatPointsBreakdown_SetOperationType = AccessTools.Method(typeof(ThreatPointsBreakdown), nameof(ThreatPointsBreakdown.SetOperationType));
@@ -71,6 +73,7 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_TextGenerator_GetPsychicRitualSiegeThreatDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPsychicRitualSiegeThreatDesc));
         public static readonly MethodInfo m_TextGenerator_GetVoidAwakeningFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetVoidAwakeningFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPollutionRaidFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPollutionRaidFactorDesc));
+        public static readonly MethodInfo m_TextGenerator_GetSanguophageHunterPointsDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetSanguophageHunterPointsDesc));
         public static readonly MethodInfo m_TextGenerator_GetStorytellerRandomFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetStorytellerRandomFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPointsFromWealthDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPointsFromWealthDesc));
         public static readonly MethodInfo m_TextGenerator_GetPointsFromPawnsDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPointsFromPawnsDesc));
