@@ -50,6 +50,7 @@ namespace VisibleRaidPoints
         public List<PointsOperation> Operations = new List<PointsOperation>();
         public float PlayerWealthForStoryteller = 0f;
         public List<PawnPoints> PointsPerPawn = new List<PawnPoints>();
+        public string CallingMethodName = null;
 
         public static void Clear()
         {
@@ -114,6 +115,7 @@ namespace VisibleRaidPoints
         public static void SetInitialValue(float initialValue)
         {
             current.InitialValue = initialValue;
+            current.CallingMethodName = (new System.Diagnostics.StackTrace()).GetFrame(1).GetMethod().Name;
         }
 
         public static void SetOperationType(OperationType operationType)
@@ -205,6 +207,7 @@ namespace VisibleRaidPoints
             Scribe_Collections.Look(ref Operations, "Operations");
             Scribe_Values.Look(ref PlayerWealthForStoryteller, "PlayerWealthForStoryteller");
             Scribe_Collections.Look(ref PointsPerPawn, "PointsPerPawn", LookMode.Deep);
+            Scribe_Values.Look(ref CallingMethodName, "CallingMethodName");
         }
     }
 }
