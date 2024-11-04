@@ -266,16 +266,6 @@ namespace VisibleRaidPoints
         {
             TaggedString text = $"=== {"VisibleRaidPoints_PointsBreakdown".Translate()} ===\n";
 
-            if (Prefs.DevMode)
-            {
-                text += "\nDebug info:";
-                if (breakdown.CallingMethodName != null)
-                {
-                    text += $"\nCalling method: {breakdown.CallingMethodName}";
-                }
-                text += "\n";
-            }
-
             if (breakdown.PlayerWealthForStoryteller > 0f)
             {
                 text += $"\n{"VisibleRaidPoints_BreakdownPlayerWealthForStorytellerDesc".Translate()}: {$"${(int)breakdown.PlayerWealthForStoryteller}".Colorize(ColoredText.CurrencyColor)} {$"({"VisibleRaidPoints_BreakdownPlayerWealthForStorytellerExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor)}\n";
