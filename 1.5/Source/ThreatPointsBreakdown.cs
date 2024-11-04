@@ -1,6 +1,5 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
-using System.Reflection;
 using Verse;
 
 namespace VisibleRaidPoints
@@ -45,11 +44,13 @@ namespace VisibleRaidPoints
 
         private static ThreatPointsBreakdown current = new ThreatPointsBreakdown();
         private static Dictionary<IncidentParms, ThreatPointsBreakdown> incidentAssociations = new Dictionary<IncidentParms, ThreatPointsBreakdown>();
+        private static Dictionary<QuestPart_Letter, ThreatPointsBreakdown> questAssociations = new Dictionary<QuestPart_Letter, ThreatPointsBreakdown>();
 
         public float InitialValue = 0f;
         public List<PointsOperation> Operations = new List<PointsOperation>();
         public float PlayerWealthForStoryteller = 0f;
         public List<PawnPoints> PointsPerPawn = new List<PawnPoints>();
+        public string CallingMethodName = null;
 
         public static void Clear()
         {
@@ -75,6 +76,18 @@ namespace VisibleRaidPoints
             }
         }
 
+        public static void Associate(QuestPart_Letter quest, ThreatPointsBreakdown breakdown)
+        {
+            if (!questAssociations.ContainsKey(quest))
+            {
+                questAssociations.Add(quest, breakdown);
+            }
+            else
+            {
+                questAssociations[quest] = breakdown;
+            }
+        }
+
         public static ThreatPointsBreakdown GetAssociated(IncidentParms parms)
         {
             if (incidentAssociations.ContainsKey(parms))
@@ -87,9 +100,22 @@ namespace VisibleRaidPoints
             }
         }
 
+        public static ThreatPointsBreakdown GetAssociated(QuestPart_Letter quest)
+        {
+            if (questAssociations.ContainsKey(quest))
+            {
+                return questAssociations[quest];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public static void SetInitialValue(float initialValue)
         {
             current.InitialValue = initialValue;
+            current.CallingMethodName = (new System.Diagnostics.StackTrace()).GetFrame(1).GetMethod().Name;
         }
 
         public static void SetOperationType(OperationType operationType)
@@ -181,6 +207,7 @@ namespace VisibleRaidPoints
             Scribe_Collections.Look(ref Operations, "Operations");
             Scribe_Values.Look(ref PlayerWealthForStoryteller, "PlayerWealthForStoryteller");
             Scribe_Collections.Look(ref PointsPerPawn, "PointsPerPawn", LookMode.Deep);
+            Scribe_Values.Look(ref CallingMethodName, "CallingMethodName");
         }
     }
 }

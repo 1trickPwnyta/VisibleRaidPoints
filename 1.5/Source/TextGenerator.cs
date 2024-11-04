@@ -178,6 +178,11 @@ namespace VisibleRaidPoints
             return "VisibleRaidPoints_PollutionRaidFactorDesc".Translate();
         }
 
+        public static TaggedString GetSanguophageHunterPointsDesc()
+        {
+            return "VisibleRaidPoints_SanguophageHunterPointsDesc".Translate();
+        }
+
         public static TaggedString GetStorytellerRandomFactorDesc()
         {
             return "VisibleRaidPoints_StorytellerRandomFactorDesc".Translate();
@@ -260,6 +265,16 @@ namespace VisibleRaidPoints
         public static TaggedString GetThreatPointsBreakdownText(ThreatPointsBreakdown breakdown)
         {
             TaggedString text = $"=== {"VisibleRaidPoints_PointsBreakdown".Translate()} ===\n";
+
+            if (Prefs.DevMode)
+            {
+                text += "\nDebug info:";
+                if (breakdown.CallingMethodName != null)
+                {
+                    text += $"\nCalling method: {breakdown.CallingMethodName}";
+                }
+                text += "\n";
+            }
 
             if (breakdown.PlayerWealthForStoryteller > 0f)
             {
