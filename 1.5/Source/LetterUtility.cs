@@ -34,36 +34,5 @@ namespace VisibleRaidPoints
             }
             letterStack.ReceiveLetter(label, text, textLetterDef, lookTargets, relatedFaction, quest, hyperlinkThingDefs, debugInfo, delayTicks, playSound);
         }
-
-        public static void InjectThreatPoints(Letter letter, QuestPart_Letter quest)
-        {
-            ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated(quest);
-            if (breakdown != null)
-            {
-                if (VisibleRaidPointsSettings.ShowInLabel)
-                {
-                    letter.Label = $"({(int)breakdown.GetFinalResult()}) {letter.Label}";
-                }
-
-                ChoiceLetter choiceLetter = letter as ChoiceLetter;
-                if (choiceLetter != null)
-                {
-                    if (VisibleRaidPointsSettings.ShowInText)
-                    {
-                        choiceLetter.Text += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
-                    }
-
-                    if (VisibleRaidPointsSettings.ShowBreakdown)
-                    {
-                        TaggedString breakdownText = TextGenerator.GetThreatPointsBreakdownText(breakdown);
-
-                        if (breakdownText != null)
-                        {
-                            choiceLetter.Text += $"\n\n{breakdownText}";
-                        }
-                    }
-                }
-            }
-        }
     }
 }

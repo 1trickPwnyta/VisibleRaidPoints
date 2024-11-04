@@ -36,7 +36,6 @@
 	<VisibleRaidPoints_PsychicRitualSiege>Cultist psychic ritual</VisibleRaidPoints_PsychicRitualSiege>
 	<VisibleRaidPoints_RaidEnemy>Raid</VisibleRaidPoints_RaidEnemy>
 	<VisibleRaidPoints_RaidFriendly>Friendlies</VisibleRaidPoints_RaidFriendly>
-	<VisibleRaidPoints_SanguophageIncidents>Sanguophage-related incidents</VisibleRaidPoints_SanguophageIncidents>
 	<VisibleRaidPoints_ShamblerAssault>Shambler assault</VisibleRaidPoints_ShamblerAssault>
 	<VisibleRaidPoints_ShamblerSwarm>Shambler swarm</VisibleRaidPoints_ShamblerSwarm>
 	<VisibleRaidPoints_SightstealerArrival>Sightstealer arrival</VisibleRaidPoints_SightstealerArrival>
@@ -98,5 +97,4 @@
 	<VisibleRaidPoints_PsychicRitualQualityFactorDesc>Psychic ritual quality factor</VisibleRaidPoints_PsychicRitualQualityFactorDesc>
 	<VisibleRaidPoints_PsychicRitualSiegeThreatDesc>Psychic ritual siege threat</VisibleRaidPoints_PsychicRitualSiegeThreatDesc>
 	<VisibleRaidPoints_VoidAwakeningFactorDesc>Void awakening factor</VisibleRaidPoints_VoidAwakeningFactorDesc>
-	<VisibleRaidPoints_SanguophageHunterPointsDesc>Sanguophage hunter points (200 per sanguophage)</VisibleRaidPoints_SanguophageHunterPointsDesc>
 </LanguageData>

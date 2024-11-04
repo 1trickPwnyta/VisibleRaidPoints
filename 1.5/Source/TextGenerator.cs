@@ -178,11 +178,6 @@ namespace VisibleRaidPoints
             return "VisibleRaidPoints_PollutionRaidFactorDesc".Translate();
         }
 
-        public static TaggedString GetSanguophageHunterPointsDesc()
-        {
-            return "VisibleRaidPoints_SanguophageHunterPointsDesc".Translate();
-        }
-
         public static TaggedString GetStorytellerRandomFactorDesc()
         {
             return "VisibleRaidPoints_StorytellerRandomFactorDesc".Translate();

@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
+using System.Reflection;
 using Verse;
 
 namespace VisibleRaidPoints
@@ -44,7 +45,6 @@ namespace VisibleRaidPoints
 
         private static ThreatPointsBreakdown current = new ThreatPointsBreakdown();
         private static Dictionary<IncidentParms, ThreatPointsBreakdown> incidentAssociations = new Dictionary<IncidentParms, ThreatPointsBreakdown>();
-        private static Dictionary<QuestPart_Letter, ThreatPointsBreakdown> questAssociations = new Dictionary<QuestPart_Letter, ThreatPointsBreakdown>();
 
         public float InitialValue = 0f;
         public List<PointsOperation> Operations = new List<PointsOperation>();
@@ -75,35 +75,11 @@ namespace VisibleRaidPoints
             }
         }
 
-        public static void Associate(QuestPart_Letter quest, ThreatPointsBreakdown breakdown)
-        {
-            if (!questAssociations.ContainsKey(quest))
-            {
-                questAssociations.Add(quest, breakdown);
-            }
-            else
-            {
-                questAssociations[quest] = breakdown;
-            }
-        }
-
         public static ThreatPointsBreakdown GetAssociated(IncidentParms parms)
         {
             if (incidentAssociations.ContainsKey(parms))
             {
                 return incidentAssociations[parms];
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public static ThreatPointsBreakdown GetAssociated(QuestPart_Letter quest)
-        {
-            if (questAssociations.ContainsKey(quest))
-            {
-                return questAssociations[quest];
             }
             else
             {
