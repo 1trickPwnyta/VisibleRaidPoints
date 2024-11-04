@@ -1,6 +1,7 @@
 ﻿using RimWorld;
 using HarmonyLib;
 using RimWorld.QuestGen;
+using Verse;
 
 namespace VisibleRaidPoints
 {
@@ -8,9 +9,9 @@ namespace VisibleRaidPoints
     [HarmonyPatch(nameof(QuestGen_Misc.Letter))]
     public static class Patch_QuestGen_Misc_Letter
     {
-        public static void Postfix(QuestPart_Letter __result)
+        public static void Postfix(LetterDef letterDef, QuestPart_Letter __result)
         {
-            if (__result != null)
+            if (letterDef == LetterDefOf.ThreatBig && __result != null)
             {
                 ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetCurrent();
                 if (breakdown.GetFinalResult() > 0)
