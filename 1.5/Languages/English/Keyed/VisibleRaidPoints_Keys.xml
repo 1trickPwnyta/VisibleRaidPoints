@@ -97,4 +97,7 @@
 	<VisibleRaidPoints_PsychicRitualQualityFactorDesc>Psychic ritual quality factor</VisibleRaidPoints_PsychicRitualQualityFactorDesc>
 	<VisibleRaidPoints_PsychicRitualSiegeThreatDesc>Psychic ritual siege threat</VisibleRaidPoints_PsychicRitualSiegeThreatDesc>
 	<VisibleRaidPoints_VoidAwakeningFactorDesc>Void awakening factor</VisibleRaidPoints_VoidAwakeningFactorDesc>
+	<VisibleRaidPoints_ThreatsGeneratorFactorDesc>Threats generator factor</VisibleRaidPoints_ThreatsGeneratorFactorDesc>
+	<VisibleRaidPoints_ThreatsGeneratorMinDesc>Threats generator minimum {0} points</VisibleRaidPoints_ThreatsGeneratorMinDesc>
+	<VisibleRaidPoints_ThreatsGeneratorExpl>such as for Royalty ending</VisibleRaidPoints_ThreatsGeneratorExpl>
 </LanguageData>

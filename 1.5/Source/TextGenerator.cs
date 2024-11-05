@@ -178,6 +178,16 @@ namespace VisibleRaidPoints
             return "VisibleRaidPoints_PollutionRaidFactorDesc".Translate();
         }
 
+        public static TaggedString GetThreatsGeneratorFactorDesc()
+        {
+            return "VisibleRaidPoints_ThreatsGeneratorFactorDesc".Translate() + $" ({"VisibleRaidPoints_ThreatsGeneratorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor);
+        }
+
+        public static TaggedString GetThreatsGeneratorMinDesc(float min)
+        {
+            return "VisibleRaidPoints_ThreatsGeneratorMinDesc".Translate((int)min) + $" ({"VisibleRaidPoints_ThreatsGeneratorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor);
+        }
+
         public static TaggedString GetStorytellerRandomFactorDesc()
         {
             return "VisibleRaidPoints_StorytellerRandomFactorDesc".Translate();
