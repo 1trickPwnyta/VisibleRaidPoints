@@ -1,7 +1,5 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
-using System.Reflection;
-using UnityEngine;
 using Verse;
 
 namespace VisibleRaidPoints
@@ -178,14 +176,14 @@ namespace VisibleRaidPoints
             return "VisibleRaidPoints_PollutionRaidFactorDesc".Translate();
         }
 
-        public static TaggedString GetThreatsGeneratorFactorDesc()
+        public static TaggedString GetThreatsGeneratorFactorDesc(ThreatsGeneratorParams parms)
         {
-            return "VisibleRaidPoints_ThreatsGeneratorFactorDesc".Translate() + $" ({"VisibleRaidPoints_ThreatsGeneratorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor);
+            return "VisibleRaidPoints_ThreatsGeneratorFactorDesc".Translate() + $" ({parms.GetQuestName() ?? "VisibleRaidPoints_ThreatsGeneratorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor);
         }
 
-        public static TaggedString GetThreatsGeneratorMinDesc(float min)
+        public static TaggedString GetThreatsGeneratorMinDesc(float min, ThreatsGeneratorParams parms)
         {
-            return "VisibleRaidPoints_ThreatsGeneratorMinDesc".Translate((int)min) + $" ({"VisibleRaidPoints_ThreatsGeneratorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor);
+            return "VisibleRaidPoints_ThreatsGeneratorMinDesc".Translate((int)min) + $" ({parms.GetQuestName() ?? "VisibleRaidPoints_ThreatsGeneratorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor);
         }
 
         public static TaggedString GetStorytellerRandomFactorDesc()
