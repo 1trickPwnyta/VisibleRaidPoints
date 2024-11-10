@@ -16,11 +16,10 @@ For an even more educational experience, you can also enable a threat points bre
 Spanish translation by Ferchu.
 Korean translation by PenguinsCanFly.
 
-Note: The current version of this mod is no longer compatible with version 1.2 of the game. For a 1.2-compatible version of the mod with reduced functionality, you can download it from the "1.2-compatibility" branch on GitHub: https://github.com/1trickPonyta/VisibleRaidPoints/tree/1.2-compatibility
-
 Note: This mod is now fully compatible with my other mod, Unlimited Threat Scale: https://steamcommunity.com/sharedfiles/filedetails/?id=2562732435 in version 1.5+ of RimWorld. Unlimited Threat Scale must be before this mod in the mod order list.
 
 === Updates ===
+11/09/2024: Corrected threat point breakdown for royalty ending raids
 05/22/2024: Added threat points for Anomaly endgame events
 04/22/2024: Added/fixed threat points for events summoned by psychic rituals
 04/20/2024: Fixed empty settings on first install bug, add enable/disable all button in event type menu
@@ -33,6 +32,9 @@ Note: This mod is now fully compatible with my other mod, Unlimited Threat Scale
 08/26/2021: Added threat points breakdown feature.
 08/09/2021: Added Korean translation.
 08/06/2021: Enabled visible threat points for additional incident types including infestations, crashed ship parts, mechanoid clusters, manhunter packs, animal mass insanity, and caravan ambushes. Added Spanish translation.
+
+=== Credits ===
+Mod icon: twitter.com/mouse_draws
 </description>
 	<url>https://github.com/1trickPonyta/VisibleRaidPoints</url>
 	<modDependencies>
