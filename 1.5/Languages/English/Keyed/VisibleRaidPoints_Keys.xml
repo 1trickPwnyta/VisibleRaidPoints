@@ -99,4 +99,7 @@
 	<VisibleRaidPoints_PsychicRitualSiegeThreatDesc>Psychic ritual siege threat</VisibleRaidPoints_PsychicRitualSiegeThreatDesc>
 	<VisibleRaidPoints_VoidAwakeningFactorDesc>Void awakening factor</VisibleRaidPoints_VoidAwakeningFactorDesc>
 	<VisibleRaidPoints_SanguophageHunterPointsDesc>Sanguophage hunter points (200 per sanguophage)</VisibleRaidPoints_SanguophageHunterPointsDesc>
+	<VisibleRaidPoints_ThreatsGeneratorFactorDesc>Threats generator factor</VisibleRaidPoints_ThreatsGeneratorFactorDesc>
+	<VisibleRaidPoints_ThreatsGeneratorMinDesc>Threats generator minimum {0} points</VisibleRaidPoints_ThreatsGeneratorMinDesc>
+	<VisibleRaidPoints_ThreatsGeneratorExpl>such as for Royalty ending</VisibleRaidPoints_ThreatsGeneratorExpl>
 </LanguageData>

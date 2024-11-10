@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using RimWorld;
 using RimWorld.QuestGen;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -74,6 +75,8 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_TextGenerator_GetVoidAwakeningFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetVoidAwakeningFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPollutionRaidFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPollutionRaidFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetSanguophageHunterPointsDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetSanguophageHunterPointsDesc));
+        public static readonly MethodInfo m_TextGenerator_GetThreatsGeneratorFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetThreatsGeneratorFactorDesc));
+        public static readonly MethodInfo m_TextGenerator_GetThreatsGeneratorMinDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetThreatsGeneratorMinDesc));
         public static readonly MethodInfo m_TextGenerator_GetStorytellerRandomFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetStorytellerRandomFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetPointsFromWealthDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPointsFromWealthDesc));
         public static readonly MethodInfo m_TextGenerator_GetPointsFromPawnsDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetPointsFromPawnsDesc));

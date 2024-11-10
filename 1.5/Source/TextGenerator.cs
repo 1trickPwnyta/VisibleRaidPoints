@@ -1,7 +1,5 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
-using System.Reflection;
-using UnityEngine;
 using Verse;
 
 namespace VisibleRaidPoints
@@ -181,6 +179,16 @@ namespace VisibleRaidPoints
         public static TaggedString GetSanguophageHunterPointsDesc()
         {
             return "VisibleRaidPoints_SanguophageHunterPointsDesc".Translate();
+		}
+		
+        public static TaggedString GetThreatsGeneratorFactorDesc(ThreatsGeneratorParams parms)
+        {
+            return "VisibleRaidPoints_ThreatsGeneratorFactorDesc".Translate() + $" ({parms.GetQuestName() ?? "VisibleRaidPoints_ThreatsGeneratorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor);
+        }
+
+        public static TaggedString GetThreatsGeneratorMinDesc(float min, ThreatsGeneratorParams parms)
+        {
+            return "VisibleRaidPoints_ThreatsGeneratorMinDesc".Translate((int)min) + $" ({parms.GetQuestName() ?? "VisibleRaidPoints_ThreatsGeneratorExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor);
         }
 
         public static TaggedString GetStorytellerRandomFactorDesc()
