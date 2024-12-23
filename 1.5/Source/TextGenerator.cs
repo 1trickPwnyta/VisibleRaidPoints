@@ -272,21 +272,21 @@ namespace VisibleRaidPoints
 
         public static TaggedString GetThreatPointsBreakdownText(ThreatPointsBreakdown breakdown)
         {
-            TaggedString text = $"=== {"VisibleRaidPoints_PointsBreakdown".Translate()} ===\n";
+            TaggedString text = "";
 
             if (Prefs.DevMode)
             {
-                text += "\nDebug info:";
+                text += "Debug info:";
                 if (breakdown.CallingMethodName != null)
                 {
                     text += $"\nCalling method: {breakdown.CallingMethodName}";
                 }
-                text += "\n";
+                text += "\n\n";
             }
 
             if (breakdown.PlayerWealthForStoryteller > 0f)
             {
-                text += $"\n{"VisibleRaidPoints_BreakdownPlayerWealthForStorytellerDesc".Translate()}: {$"${(int)breakdown.PlayerWealthForStoryteller}".Colorize(ColoredText.CurrencyColor)} {$"({"VisibleRaidPoints_BreakdownPlayerWealthForStorytellerExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor)}\n";
+                text += $"{"VisibleRaidPoints_BreakdownPlayerWealthForStorytellerDesc".Translate()}: {$"${(int)breakdown.PlayerWealthForStoryteller}".Colorize(ColoredText.CurrencyColor)} {$"({"VisibleRaidPoints_BreakdownPlayerWealthForStorytellerExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor)}\n";
             }
 
             if (breakdown.PointsPerPawn.Count > 0)

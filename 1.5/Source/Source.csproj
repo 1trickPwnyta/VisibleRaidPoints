@@ -93,6 +93,7 @@
     <Compile Include="Patch_IncidentWorker_CaravanDemand.cs" />
     <Compile Include="Patch_IncidentWorker_Raid.cs" />
     <Compile Include="Patch_QuestPart_ThreatsGenerator.cs" />
+    <Compile Include="Patch_StandardLetter.cs" />
     <Compile Include="Patch_StorytellerComp_RandomMain.cs" />
     <Compile Include="Patch_StorytellerUtility.cs" />
     <Compile Include="Patch_IncidentWorker.cs" />

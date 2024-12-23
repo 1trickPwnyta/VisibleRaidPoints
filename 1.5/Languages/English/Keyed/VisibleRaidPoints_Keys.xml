@@ -45,7 +45,7 @@
 	<VisibleRaidPoints_TravelerGroup>Travelers</VisibleRaidPoints_TravelerGroup>
 	<VisibleRaidPoints_VisitorGroup>Visitors</VisibleRaidPoints_VisitorGroup>
 	<VisibleRaidPoints_WastepackInfestation>Wastepack infestation</VisibleRaidPoints_WastepackInfestation>
-	<VisibleRaidPoints_PointsBreakdown>Threat Points Breakdown</VisibleRaidPoints_PointsBreakdown>
+	<VisibleRaidPoints_PointsBreakdown>Threat points breakdown</VisibleRaidPoints_PointsBreakdown>
 	<VisibleRaidPoints_BreakdownInitialValueDesc>Initial value</VisibleRaidPoints_BreakdownInitialValueDesc>
 	<VisibleRaidPoints_BreakdownPlayerWealthForStorytellerDesc>Player wealth for storyteller</VisibleRaidPoints_BreakdownPlayerWealthForStorytellerDesc>
 	<VisibleRaidPoints_BreakdownPlayerWealthForStorytellerExpl>TotalWealth - (BuildingWealth / 2)</VisibleRaidPoints_BreakdownPlayerWealthForStorytellerExpl>

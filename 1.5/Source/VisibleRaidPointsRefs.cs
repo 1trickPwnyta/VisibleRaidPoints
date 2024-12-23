@@ -86,6 +86,7 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_TextGenerator_GetGraceFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetGraceFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetClampLowDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetClampLowDesc));
         public static readonly MethodInfo m_TextGenerator_GetClampHighDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetClampHighDesc));
+        public static readonly MethodInfo m_LetterUtility_AssociateWithBreakdown = AccessTools.Method(typeof(LetterUtility), nameof(LetterUtility.AssociateWithBreakdown));
 
         public static readonly FieldInfo f_IncidentParms_points = AccessTools.Field(typeof(IncidentParms), nameof(IncidentParms.points));
         public static readonly FieldInfo f_RaidAgeRestrictionDef_threatPointsFactor = AccessTools.Field(typeof(RaidAgeRestrictionDef), nameof(RaidAgeRestrictionDef.threatPointsFactor));

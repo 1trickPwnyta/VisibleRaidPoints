@@ -19,18 +19,21 @@ namespace VisibleRaidPoints
 
             if (VisibleRaidPointsSettings.CaravanDemand)
             {
+                ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetCurrent();
+                ThreatPointsBreakdown.Clear();
+
                 if (VisibleRaidPointsSettings.ShowInText)
                 {
-                    text += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(ThreatPointsBreakdown.GetCurrent())}";
+                    text += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
                 }
 
                 if (VisibleRaidPointsSettings.ShowBreakdown)
                 {
-                    TaggedString breakdown = TextGenerator.GetThreatPointsBreakdownText(ThreatPointsBreakdown.GetCurrent());
+                    TaggedString breakdownText = TextGenerator.GetThreatPointsBreakdownText(breakdown);
 
-                    if (breakdown != null)
+                    if (breakdownText != null)
                     {
-                        text += $"\n\n{breakdown}";
+                        text += $"\n\n{breakdownText}";
                     }
                 }
             }

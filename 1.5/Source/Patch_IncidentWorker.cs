@@ -1,67 +1,28 @@
-﻿using Verse;
-using RimWorld;
+﻿using RimWorld;
 using HarmonyLib;
+using System.Collections.Generic;
+using System.Reflection.Emit;
+using System.Reflection;
 
 namespace VisibleRaidPoints
 {
     [HarmonyPatch(typeof(IncidentWorker))]
-    [HarmonyPatch("SendStandardLetter")]
-    [HarmonyPatch(new[] { typeof(TaggedString), typeof(TaggedString), typeof(LetterDef), typeof(IncidentParms), typeof(LookTargets), typeof(NamedArgument[]) })]
-    public static class Patch_IncidentWorker_SendStandardLetter
+    [HarmonyPatch(nameof(IncidentWorker.SendIncidentLetter))]
+    public static class Patch_IncidentWorker_SendIncidentLetter
     {
-        public static void Prefix(IncidentWorker __instance, ref TaggedString baseLetterLabel, ref TaggedString baseLetterText, IncidentParms parms)
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
         {
-            if (parms.points > 0f)
+            foreach (CodeInstruction instruction in instructions)
             {
-                if (VisibleRaidPointsSettings.IncidentWorkerTypeEnabled(__instance.GetType()))
+                if (instruction.opcode == OpCodes.Call && (MethodInfo)instruction.operand == VisibleRaidPointsRefs.m_Find_get_LetterStack)
                 {
-                    ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated(parms);
-                    if (breakdown == null)
-                    {
-                        breakdown = ThreatPointsBreakdown.GetCurrent();
-                    }
-
-                    if (VisibleRaidPointsSettings.ShowInLabel)
-                    {
-                        if (parms.customLetterLabel != null)
-                        {
-                            parms.customLetterLabel = $"({(int)breakdown.GetFinalResult()}) {parms.customLetterLabel}";
-                        }
-                        else
-                        {
-                            baseLetterLabel = $"({(int)breakdown.GetFinalResult()}) {baseLetterLabel}";
-                        }
-                    }
-
-                    if (VisibleRaidPointsSettings.ShowInText)
-                    {
-                        if (parms.customLetterText != null)
-                        {
-                            parms.customLetterText += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
-                        }
-                        else
-                        {
-                            baseLetterText += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
-                        }
-                    }
-
-                    if (VisibleRaidPointsSettings.ShowBreakdown)
-                    {
-                        TaggedString breakdownText = TextGenerator.GetThreatPointsBreakdownText(breakdown);
-
-                        if (breakdownText != null)
-                        {
-                            if (parms.customLetterText != null)
-                            {
-                                parms.customLetterText += $"\n\n{breakdownText}";
-                            }
-                            else
-                            {
-                                baseLetterText += $"\n\n{breakdownText}";
-                            }
-                        }
-                    }
+                    yield return new CodeInstruction(OpCodes.Ldloc_S, 4);
+                    yield return new CodeInstruction(OpCodes.Ldarg_S, 5);
+                    yield return new CodeInstruction(OpCodes.Ldarg_3);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_LetterUtility_AssociateWithBreakdown);
                 }
+
+                yield return instruction;
             }
         }
     }

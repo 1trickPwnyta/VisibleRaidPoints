@@ -12,6 +12,7 @@ namespace VisibleRaidPoints
             if (value.points > 0f)
             {
                 ThreatPointsBreakdown.Associate(value, ThreatPointsBreakdown.GetCurrent());
+                ThreatPointsBreakdown.Clear();
             }
         }
     }

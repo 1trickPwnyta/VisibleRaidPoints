@@ -1,4 +1,5 @@
-﻿using RimWorld;
+﻿using HarmonyLib;
+using RimWorld;
 using System.Collections.Generic;
 using Verse;
 
@@ -11,6 +12,7 @@ namespace VisibleRaidPoints
             if (incidentEnabled)
             {
                 ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetCurrent();
+                ThreatPointsBreakdown.Clear();
 
                 if (VisibleRaidPointsSettings.ShowInLabel)
                 {
@@ -62,6 +64,44 @@ namespace VisibleRaidPoints
                             choiceLetter.Text += $"\n\n{breakdownText}";
                         }
                     }
+                }
+            }
+        }
+
+        public static void AssociateWithBreakdown(ChoiceLetter letter, IncidentDef def, IncidentParms parms)
+        {
+            if (VisibleRaidPointsSettings.IncidentWorkerTypeEnabled(def.workerClass) && parms.points > 0f)
+            {
+                ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated(parms);
+                if (breakdown == null)
+                {
+                    breakdown = ThreatPointsBreakdown.GetCurrent();
+                    ThreatPointsBreakdown.Clear();
+                }
+                if (breakdown != null)
+                {
+                    ThreatPointsBreakdown.Associate(letter, breakdown);
+                    if (VisibleRaidPointsSettings.ShowInLabel)
+                    {
+                        TaggedString label = (TaggedString)typeof(Letter).Field("label").GetValue(letter);
+                        typeof(Letter).Field("label").SetValue(letter, (TaggedString)$"({(int)breakdown.GetFinalResult()}) {label}");
+                    }
+
+                    TaggedString text = (TaggedString)typeof(ChoiceLetter).Field("text").GetValue(letter);
+                    if (VisibleRaidPointsSettings.ShowInText)
+                    {
+                        text += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
+                    }
+                    if (VisibleRaidPointsSettings.ShowBreakdown)
+                    {
+                        text += $"=== {"VisibleRaidPoints_PointsBreakdown".Translate()} ===\n";
+                        text += $"\n\n{TextGenerator.GetThreatPointsBreakdownText(breakdown)}";
+                    }
+                    typeof(ChoiceLetter).Field("text").SetValue(letter, text);
+                }
+                else
+                {
+                    throw new System.Exception("Tried to associate letter with null breakdown.");
                 }
             }
         }

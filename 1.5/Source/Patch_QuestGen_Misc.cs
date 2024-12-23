@@ -14,6 +14,7 @@ namespace VisibleRaidPoints
             if (letterDef == LetterDefOf.ThreatBig && __result != null)
             {
                 ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetCurrent();
+                ThreatPointsBreakdown.Clear();
                 if (breakdown.GetFinalResult() > 0)
                 {
                     ThreatPointsBreakdown.Associate(__result, breakdown);

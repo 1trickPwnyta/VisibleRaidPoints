@@ -43,6 +43,7 @@ namespace VisibleRaidPoints
         }
 
         private static ThreatPointsBreakdown current = new ThreatPointsBreakdown();
+        private static Dictionary<ChoiceLetter, ThreatPointsBreakdown> letterAssociations = new Dictionary<ChoiceLetter, ThreatPointsBreakdown>();
         private static Dictionary<IncidentParms, ThreatPointsBreakdown> incidentAssociations = new Dictionary<IncidentParms, ThreatPointsBreakdown>();
         private static Dictionary<QuestPart_Letter, ThreatPointsBreakdown> questAssociations = new Dictionary<QuestPart_Letter, ThreatPointsBreakdown>();
 
@@ -59,9 +60,19 @@ namespace VisibleRaidPoints
 
         public static ThreatPointsBreakdown GetCurrent()
         {
-            ThreatPointsBreakdown result = current;
-            Clear();
-            return result;
+            return current;
+        }
+
+        public static void Associate(ChoiceLetter letter, ThreatPointsBreakdown breakdown)
+        {
+            if (!letterAssociations.ContainsKey(letter))
+            {
+                letterAssociations.Add(letter, breakdown);
+            }
+            else
+            {
+                letterAssociations[letter] = breakdown;
+            }
         }
 
         public static void Associate(IncidentParms parms, ThreatPointsBreakdown breakdown)
@@ -85,6 +96,18 @@ namespace VisibleRaidPoints
             else
             {
                 questAssociations[quest] = breakdown;
+            }
+        }
+
+        public static ThreatPointsBreakdown GetAssociated(ChoiceLetter letter)
+        {
+            if (letterAssociations.ContainsKey(letter))
+            {
+                return letterAssociations[letter];
+            }
+            else
+            {
+                return null;
             }
         }
 
