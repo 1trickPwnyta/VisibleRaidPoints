@@ -86,9 +86,17 @@ namespace VisibleRaidPoints
         public static readonly MethodInfo m_TextGenerator_GetGraceFactorDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetGraceFactorDesc));
         public static readonly MethodInfo m_TextGenerator_GetClampLowDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetClampLowDesc));
         public static readonly MethodInfo m_TextGenerator_GetClampHighDesc = AccessTools.Method(typeof(TextGenerator), nameof(TextGenerator.GetClampHighDesc));
-        public static readonly MethodInfo m_LetterUtility_AssociateWithBreakdown = AccessTools.Method(typeof(LetterUtility), nameof(LetterUtility.AssociateWithBreakdown));
+        public static readonly MethodInfo m_LetterUtility_AssociateWithBreakdown_ChoiceLetter = AccessTools.Method(typeof(LetterUtility), nameof(LetterUtility.AssociateWithBreakdown), new[] { typeof(ChoiceLetter), typeof(IncidentDef), typeof(IncidentParms) });
+        public static readonly MethodInfo m_LetterUtility_AssociateWithBreakdown_ArchivedDialog = AccessTools.Method(typeof(LetterUtility), nameof(LetterUtility.AssociateWithBreakdown), new[] { typeof(ArchivedDialog), typeof(bool) });
+        public static readonly MethodInfo m_LetterUtility_GetModifiedText_ChoiceLetter = AccessTools.Method(typeof(LetterUtility), nameof(LetterUtility.GetModifiedText), new[] { typeof(TaggedString), typeof(ChoiceLetter) });
+        public static readonly MethodInfo m_LetterUtility_GetModifiedText_ArchivedDialog = AccessTools.Method(typeof(LetterUtility), nameof(LetterUtility.GetModifiedText), new[] { typeof(string), typeof(ArchivedDialog) });
+        public static readonly MethodInfo m_Archive_Add = AccessTools.Method(typeof(Archive), nameof(Archive.Add));
+        public static readonly MethodInfo m_Find_get_WindowStack = AccessTools.Method(typeof(Find), "get_WindowStack");
+        public static readonly MethodInfo m_LetterUtility_AddBreakdownOption_bool = AccessTools.Method(typeof(LetterUtility), nameof(LetterUtility.AddBreakdownOption), new[] { typeof(DiaNode), typeof(bool) });
+        public static readonly MethodInfo m_LetterUtility_AddBreakdownOption_ArchivedDialog = AccessTools.Method(typeof(LetterUtility), nameof(LetterUtility.AddBreakdownOption), new[] { typeof(DiaNode), typeof(ArchivedDialog) });
 
         public static readonly FieldInfo f_IncidentParms_points = AccessTools.Field(typeof(IncidentParms), nameof(IncidentParms.points));
+        public static readonly FieldInfo f_IncidentParms_faction = AccessTools.Field(typeof(IncidentParms), nameof(IncidentParms.faction));
         public static readonly FieldInfo f_RaidAgeRestrictionDef_threatPointsFactor = AccessTools.Field(typeof(RaidAgeRestrictionDef), nameof(RaidAgeRestrictionDef.threatPointsFactor));
         public static readonly FieldInfo f_Difficulty_threatScale = AccessTools.Field(typeof(Difficulty), nameof(Difficulty.threatScale));
         public static readonly FieldInfo f_QuestPart_RandomRaid_faction = AccessTools.Field(typeof(QuestPart_RandomRaid), nameof(QuestPart_RandomRaid.faction));
@@ -101,5 +109,9 @@ namespace VisibleRaidPoints
         public static readonly FieldInfo f_VisibleRaidPointsSettings_HateChanters = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.HateChanters));
         public static readonly FieldInfo f_VisibleRaidPointsSettings_FleshbeastAttack = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.FleshbeastAttack));
         public static readonly FieldInfo f_VisibleRaidPointsSettings_AnomalyEndgame = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.AnomalyEndgame));
+        public static readonly FieldInfo f_VisibleRaidPointsSettings_CaravanDemand = AccessTools.Field(typeof(VisibleRaidPointsSettings), nameof(VisibleRaidPointsSettings.CaravanDemand));
+        public static readonly FieldInfo f_ChoiceLetter_text = AccessTools.Field(typeof(ChoiceLetter), "text");
+        public static readonly FieldInfo f_DiaNode_text = AccessTools.Field(typeof(DiaNode), nameof(DiaNode.text));
+        public static readonly FieldInfo f_ArchivedDialog_text = AccessTools.Field(typeof(ArchivedDialog), nameof(ArchivedDialog.text));
     }
 }

@@ -3,37 +3,37 @@ using RimWorld;
 using System;
 using System.Collections.Generic;
 using Verse;
+using HarmonyLib;
 
 namespace VisibleRaidPoints
 {
     public static class CaravanDemandUtility
     {
-        public static TaggedString GenerateCaravanDemandMessageText(IncidentWorker_CaravanDemand instance, Faction enemyFaction, int attackerCount, List<ThingCount> demands, Caravan caravan)
+        public static TaggedString GenerateCaravanDemandMessageText(IncidentWorker_CaravanDemand instance, Faction enemyFaction, int attackerCount, List<ThingCount> demands, Caravan caravan, out TaggedString originalText)
         {
             if (instance is null)
             {
                 throw new ArgumentNullException(nameof(instance));
             }
 
-            TaggedString text = "CaravanDemand".Translate(caravan.Name, enemyFaction.NameColored, attackerCount, GenLabel.ThingsLabel(demands, "  - ", false), enemyFaction.def.pawnsPlural).Resolve().CapitalizeFirst();
+            originalText = (string)typeof(IncidentWorker_CaravanDemand).Method("GenerateMessageText").Invoke(instance, new object[] { enemyFaction, attackerCount, demands, caravan });
+            TaggedString text = originalText;
 
             if (VisibleRaidPointsSettings.CaravanDemand)
             {
                 ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetCurrent();
-                ThreatPointsBreakdown.Clear();
 
-                if (VisibleRaidPointsSettings.ShowInText)
+                if (breakdown != null)
                 {
-                    text += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
-                }
-
-                if (VisibleRaidPointsSettings.ShowBreakdown)
-                {
-                    TaggedString breakdownText = TextGenerator.GetThreatPointsBreakdownText(breakdown);
-
-                    if (breakdownText != null)
+                    if (VisibleRaidPointsSettings.ShowInText)
                     {
-                        text += $"\n\n{breakdownText}";
+                        text += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
+                    }
+
+                    if (VisibleRaidPointsSettings.ShowBreakdown)
+                    {
+                        text += $"\n\n=== {"VisibleRaidPoints_PointsBreakdown".Translate()} ===";
+                        text += $"\n\n{TextGenerator.GetThreatPointsBreakdownText(breakdown)}";
                     }
                 }
             }

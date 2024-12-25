@@ -1,5 +1,4 @@
-﻿using HarmonyLib;
-using RimWorld;
+﻿using RimWorld;
 using System.Collections.Generic;
 using Verse;
 
@@ -9,61 +8,27 @@ namespace VisibleRaidPoints
     {
         public static void ReceiveLetter(LetterStack letterStack, TaggedString label, TaggedString text, LetterDef textLetterDef, LookTargets lookTargets, Faction relatedFaction, Quest quest, List<ThingDef> hyperlinkThingDefs, string debugInfo, int delayTicks, bool playSound, bool incidentEnabled)
         {
+            ChoiceLetter letter = LetterMaker.MakeLetter(label, text, textLetterDef, lookTargets, relatedFaction, quest, hyperlinkThingDefs);
             if (incidentEnabled)
             {
                 ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetCurrent();
                 ThreatPointsBreakdown.Clear();
-
-                if (VisibleRaidPointsSettings.ShowInLabel)
+                if (breakdown != null)
                 {
-                    label = $"({(int)breakdown.GetFinalResult()}) {label}";
-                }
-
-                if (VisibleRaidPointsSettings.ShowInText)
-                {
-                    text += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
-                }
-
-                if (VisibleRaidPointsSettings.ShowBreakdown)
-                {
-                    TaggedString breakdownText = TextGenerator.GetThreatPointsBreakdownText(breakdown);
-
-                    if (breakdownText != null)
-                    {
-                        text += $"\n\n{breakdownText}";
-                    }
+                    ThreatPointsBreakdown.Associate(letter, breakdown);
                 }
             }
-            letterStack.ReceiveLetter(label, text, textLetterDef, lookTargets, relatedFaction, quest, hyperlinkThingDefs, debugInfo, delayTicks, playSound);
+            letterStack.ReceiveLetter(letter, debugInfo, delayTicks, playSound);
         }
 
         public static void InjectThreatPoints(Letter letter, QuestPart_Letter quest)
         {
-            ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated(quest);
-            if (breakdown != null)
+            if (letter is ChoiceLetter)
             {
-                if (VisibleRaidPointsSettings.ShowInLabel)
+                ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated(quest);
+                if (breakdown != null)
                 {
-                    letter.Label = $"({(int)breakdown.GetFinalResult()}) {letter.Label}";
-                }
-
-                ChoiceLetter choiceLetter = letter as ChoiceLetter;
-                if (choiceLetter != null)
-                {
-                    if (VisibleRaidPointsSettings.ShowInText)
-                    {
-                        choiceLetter.Text += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
-                    }
-
-                    if (VisibleRaidPointsSettings.ShowBreakdown)
-                    {
-                        TaggedString breakdownText = TextGenerator.GetThreatPointsBreakdownText(breakdown);
-
-                        if (breakdownText != null)
-                        {
-                            choiceLetter.Text += $"\n\n{breakdownText}";
-                        }
-                    }
+                    ThreatPointsBreakdown.Associate((ChoiceLetter)letter, breakdown);
                 }
             }
         }
@@ -81,28 +46,106 @@ namespace VisibleRaidPoints
                 if (breakdown != null)
                 {
                     ThreatPointsBreakdown.Associate(letter, breakdown);
-                    if (VisibleRaidPointsSettings.ShowInLabel)
-                    {
-                        TaggedString label = (TaggedString)typeof(Letter).Field("label").GetValue(letter);
-                        typeof(Letter).Field("label").SetValue(letter, (TaggedString)$"({(int)breakdown.GetFinalResult()}) {label}");
-                    }
-
-                    TaggedString text = (TaggedString)typeof(ChoiceLetter).Field("text").GetValue(letter);
-                    if (VisibleRaidPointsSettings.ShowInText)
-                    {
-                        text += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
-                    }
-                    if (VisibleRaidPointsSettings.ShowBreakdown)
-                    {
-                        text += $"=== {"VisibleRaidPoints_PointsBreakdown".Translate()} ===\n";
-                        text += $"\n\n{TextGenerator.GetThreatPointsBreakdownText(breakdown)}";
-                    }
-                    typeof(ChoiceLetter).Field("text").SetValue(letter, text);
                 }
                 else
                 {
                     throw new System.Exception("Tried to associate letter with null breakdown.");
                 }
+            }
+        }
+
+        public static void AssociateWithBreakdown(ArchivedDialog dialog, bool enabled)
+        {
+            if (enabled)
+            {
+                ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetCurrent();
+                ThreatPointsBreakdown.Clear();
+                if (breakdown != null)
+                {
+                    ThreatPointsBreakdown.Associate(dialog, breakdown);
+                }
+                else
+                {
+                    throw new System.Exception("Tried to associate dialog with null breakdown.");
+                }
+            }
+        }
+
+        public static string GetModifiedLabel(string label, Letter letter)
+        {
+            if (letter is ChoiceLetter)
+            {
+                ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated((ChoiceLetter)letter);
+                if (breakdown != null)
+                {
+                    if (VisibleRaidPointsSettings.ShowInLabel)
+                    {
+                        label = $"({(int)breakdown.GetFinalResult()}) {label}";
+                    }
+                }
+            }
+            return label;
+        }
+
+        private static TaggedString GetModifiedText(TaggedString text, ThreatPointsBreakdown breakdown)
+        {
+            if (breakdown != null)
+            {
+                if (VisibleRaidPointsSettings.ShowInText)
+                {
+                    text += $"\n\n{TextGenerator.GetThreatPointsIndicatorText(breakdown)}";
+                }
+                if (VisibleRaidPointsSettings.ShowBreakdown)
+                {
+                    text += $"\n\n=== {"VisibleRaidPoints_PointsBreakdown".Translate()} ===";
+                    text += $"\n\n{TextGenerator.GetThreatPointsBreakdownText(breakdown)}";
+                }
+            }
+            return text;
+        }
+
+        public static TaggedString GetModifiedText(TaggedString text, ChoiceLetter letter)
+        {
+            ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated(letter);
+            return GetModifiedText(text, breakdown);
+        }
+
+        public static string GetModifiedText(string text, ArchivedDialog dialog)
+        {
+            ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated(dialog);
+            return GetModifiedText(text, breakdown);
+        }
+
+        public static DiaOption GetBreakdownOption(ThreatPointsBreakdown breakdown)
+        {
+            DiaOption option = new DiaOption("VisibleRaidPoints_PointsBreakdown".Translate());
+            option.action = delegate ()
+            {
+                Find.WindowStack.Add(new Dialog_MessageBox(TextGenerator.GetThreatPointsBreakdownText(breakdown), null, null, null, null, "VisibleRaidPoints_PointsBreakdown".Translate()));
+            };
+            return option;
+        }
+
+        public static void AddBreakdownOption(DiaNode node, bool enabled)
+        {
+            if (enabled)
+            {
+                ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetCurrent();
+                if (breakdown != null && !VisibleRaidPointsSettings.ShowBreakdown)
+                {
+                    DiaOption option = GetBreakdownOption(breakdown);
+                    node.options.Add(option);
+                }
+            }
+        }
+
+        public static void AddBreakdownOption(DiaNode node, ArchivedDialog dialog)
+        {
+            ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated(dialog);
+            if (breakdown != null && !VisibleRaidPointsSettings.ShowBreakdown)
+            {
+                DiaOption option = GetBreakdownOption(breakdown);
+                node.options.Add(option);
             }
         }
     }

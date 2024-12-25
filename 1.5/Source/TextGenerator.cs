@@ -1,5 +1,6 @@
 ﻿using RimWorld;
 using System.Collections.Generic;
+using System.Reflection;
 using Verse;
 
 namespace VisibleRaidPoints
@@ -178,7 +179,7 @@ namespace VisibleRaidPoints
 
         public static TaggedString GetSanguophageHunterPointsDesc()
         {
-            return "VisibleRaidPoints_SanguophageHunterPointsDesc".Translate();
+            return "VisibleRaidPoints_SanguophageHunterPointsDesc".Translate() + $" ({"VisibleRaidPoints_SanguophageHunterPointsExpl".Translate()})".Colorize(ColoredText.SubtleGrayColor);
 		}
 		
         public static TaggedString GetThreatsGeneratorFactorDesc(ThreatsGeneratorParams parms)

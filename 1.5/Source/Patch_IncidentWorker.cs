@@ -19,7 +19,7 @@ namespace VisibleRaidPoints
                     yield return new CodeInstruction(OpCodes.Ldloc_S, 4);
                     yield return new CodeInstruction(OpCodes.Ldarg_S, 5);
                     yield return new CodeInstruction(OpCodes.Ldarg_3);
-                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_LetterUtility_AssociateWithBreakdown);
+                    yield return new CodeInstruction(OpCodes.Call, VisibleRaidPointsRefs.m_LetterUtility_AssociateWithBreakdown_ChoiceLetter);
                 }
 
                 yield return instruction;

@@ -46,6 +46,7 @@ namespace VisibleRaidPoints
         private static Dictionary<ChoiceLetter, ThreatPointsBreakdown> letterAssociations = new Dictionary<ChoiceLetter, ThreatPointsBreakdown>();
         private static Dictionary<IncidentParms, ThreatPointsBreakdown> incidentAssociations = new Dictionary<IncidentParms, ThreatPointsBreakdown>();
         private static Dictionary<QuestPart_Letter, ThreatPointsBreakdown> questAssociations = new Dictionary<QuestPart_Letter, ThreatPointsBreakdown>();
+        private static Dictionary<ArchivedDialog, ThreatPointsBreakdown> dialogAssociations = new Dictionary<ArchivedDialog, ThreatPointsBreakdown>();
 
         public float InitialValue = 0f;
         public List<PointsOperation> Operations = new List<PointsOperation>();
@@ -99,6 +100,18 @@ namespace VisibleRaidPoints
             }
         }
 
+        public static void Associate(ArchivedDialog dialog, ThreatPointsBreakdown breakdown)
+        {
+            if (!dialogAssociations.ContainsKey(dialog))
+            {
+                dialogAssociations.Add(dialog, breakdown);
+            }
+            else
+            {
+                dialogAssociations[dialog] = breakdown;
+            }
+        }
+
         public static ThreatPointsBreakdown GetAssociated(ChoiceLetter letter)
         {
             if (letterAssociations.ContainsKey(letter))
@@ -128,6 +141,18 @@ namespace VisibleRaidPoints
             if (questAssociations.ContainsKey(quest))
             {
                 return questAssociations[quest];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static ThreatPointsBreakdown GetAssociated(ArchivedDialog dialog)
+        {
+            if (dialogAssociations.ContainsKey(dialog))
+            {
+                return dialogAssociations[dialog];
             }
             else
             {
