@@ -3,6 +3,7 @@
 	<name>Visible Raid Points</name>
 	<author>1trickPwnyta</author>
 	<packageId>visibleraidpoints.1trickPwnyta</packageId>
+	<modVersion IgnoreIfNoMatchingField="True">1.7.0</modVersion>
 	<supportedVersions>
 		<li>1.3</li>
 		<li>1.4</li>
@@ -11,7 +12,7 @@
 	<description>
 Ever wondered just how many points the game used to generate a raid? Are you getting the maximum 10,000 point raids yet? Now you'll know because you can see exactly how many raid points are used to generate every raid and many other types of incidents.
 
-For an even more educational experience, you can also enable a threat points breakdown that shows the details of how the points were calculated, line by line. This option must be turned on in the mod settings first and will not work and/or make sense with mods that alter the way threat points are calculated.
+For an even more educational experience, you can also view a threat points breakdown that shows the details of how the points were calculated, line by line. This option will not work and/or make sense with mods that alter the way threat points are calculated.
 
 Spanish translation by Ferchu.
 Korean translation by PenguinsCanFly.
@@ -19,6 +20,7 @@ Korean translation by PenguinsCanFly.
 Note: This mod is now fully compatible with my other mod, Unlimited Threat Scale: https://steamcommunity.com/sharedfiles/filedetails/?id=2562732435 in version 1.5+ of RimWorld. Unlimited Threat Scale must be before this mod in the mod order list.
 
 === Updates ===
+04/09/2025: Add threat points for sanguophage hunters, add link to points breakdown in letter
 11/09/2024: Corrected threat point breakdown for royalty ending raids
 05/22/2024: Added threat points for Anomaly endgame events
 04/22/2024: Added/fixed threat points for events summoned by psychic rituals
