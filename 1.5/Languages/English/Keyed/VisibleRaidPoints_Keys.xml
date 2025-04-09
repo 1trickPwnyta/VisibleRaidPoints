@@ -4,6 +4,7 @@
 	<VisibleRaidPoints_ShowPointsInLetterLabel>Show points in letter label</VisibleRaidPoints_ShowPointsInLetterLabel>
 	<VisibleRaidPoints_ShowPointsInLetterText>Show points in letter text</VisibleRaidPoints_ShowPointsInLetterText>
 	<VisibleRaidPoints_ShowBreakdownInLetterText>Show points breakdown in letter text</VisibleRaidPoints_ShowBreakdownInLetterText>
+	<VisibleRaidPoints_ShowBreakdownLinkInLetter>Add link to points breakdown at bottom of letter</VisibleRaidPoints_ShowBreakdownLinkInLetter>
 	<VisibleRaidPoints_IncidentWorkerTypes>Enabled event types</VisibleRaidPoints_IncidentWorkerTypes>
 	<VisibleRaidPoints_Modify>Modify</VisibleRaidPoints_Modify>
 	<VisibleRaidPoints_EnableAll>Enable all</VisibleRaidPoints_EnableAll>

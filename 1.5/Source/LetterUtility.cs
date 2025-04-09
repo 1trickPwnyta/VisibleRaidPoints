@@ -131,7 +131,7 @@ namespace VisibleRaidPoints
             if (enabled)
             {
                 ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetCurrent();
-                if (breakdown != null && !VisibleRaidPointsSettings.ShowBreakdown)
+                if (breakdown != null && !VisibleRaidPointsSettings.ShowBreakdown && VisibleRaidPointsSettings.ShowBreakdownLink)
                 {
                     DiaOption option = GetBreakdownOption(breakdown);
                     node.options.Add(option);
@@ -142,7 +142,7 @@ namespace VisibleRaidPoints
         public static void AddBreakdownOption(DiaNode node, ArchivedDialog dialog)
         {
             ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated(dialog);
-            if (breakdown != null && !VisibleRaidPointsSettings.ShowBreakdown)
+            if (breakdown != null && !VisibleRaidPointsSettings.ShowBreakdown && VisibleRaidPointsSettings.ShowBreakdownLink)
             {
                 DiaOption option = GetBreakdownOption(breakdown);
                 node.options.Add(option);

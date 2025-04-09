@@ -38,6 +38,7 @@ namespace VisibleRaidPoints
         public static bool ShowInLabel = false;
         public static bool ShowInText = true;
         public static bool ShowBreakdown = false;
+        public static bool ShowBreakdownLink = true;
         public static bool AggressiveAnimals = true;
         public static bool AmbushEnemyFaction = true;
         public static bool AmbushManhunterPack = true;
@@ -106,6 +107,10 @@ namespace VisibleRaidPoints
             listingStandard.CheckboxLabeled("VisibleRaidPoints_ShowPointsInLetterLabel".Translate(), ref ShowInLabel);
             listingStandard.CheckboxLabeled("VisibleRaidPoints_ShowPointsInLetterText".Translate(), ref ShowInText);
             listingStandard.CheckboxLabeled("VisibleRaidPoints_ShowBreakdownInLetterText".Translate(), ref ShowBreakdown);
+            if (!ShowBreakdown)
+            {
+                listingStandard.CheckboxLabeled("VisibleRaidPoints_ShowBreakdownLinkInLetter".Translate(), ref ShowBreakdownLink);
+            }
             if (listingStandard.ButtonTextLabeled("VisibleRaidPoints_IncidentWorkerTypes".Translate(), "VisibleRaidPoints_Modify".Translate()))
             {
                 Find.WindowStack.Add(new Dialog_IncidentWorkerTypes());
@@ -119,6 +124,7 @@ namespace VisibleRaidPoints
             Scribe_Values.Look(ref ShowInLabel, "ShowInLabel", false);
             Scribe_Values.Look(ref ShowInText, "ShowInText", true);
             Scribe_Values.Look(ref ShowBreakdown, "ShowBreakdown", false);
+            Scribe_Values.Look(ref ShowBreakdownLink, "ShowBreakdownLink", true);
             Scribe_Values.Look(ref AggressiveAnimals, "AggressiveAnimals", true);
             Scribe_Values.Look(ref AmbushEnemyFaction, "AmbushEnemyFaction", true);
             Scribe_Values.Look(ref AmbushManhunterPack, "AmbushManhunterPack", true);

@@ -11,7 +11,7 @@ namespace VisibleRaidPoints
         public static void Postfix(StandardLetter __instance, ref IEnumerable<DiaOption> __result)
         {
             ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated(__instance);
-            if (breakdown != null && !VisibleRaidPointsSettings.ShowBreakdown)
+            if (breakdown != null && !VisibleRaidPointsSettings.ShowBreakdown && VisibleRaidPointsSettings.ShowBreakdownLink)
             {
                 DiaOption option = LetterUtility.GetBreakdownOption(breakdown);
                 __result = __result.AddItem(option);
