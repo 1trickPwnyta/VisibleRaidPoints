@@ -35,7 +35,7 @@ namespace VisibleRaidPoints
 
         public static void AssociateWithBreakdown(ChoiceLetter letter, IncidentDef def, IncidentParms parms)
         {
-            if (VisibleRaidPointsSettings.IncidentWorkerTypeEnabled(def.workerClass) && parms.points > 0f)
+            if (def != null && VisibleRaidPointsSettings.IncidentWorkerTypeEnabled(def.workerClass) && parms != null && parms.points > 0f)
             {
                 ThreatPointsBreakdown breakdown = ThreatPointsBreakdown.GetAssociated(parms);
                 if (breakdown == null)
