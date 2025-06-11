@@ -1,4 +1,4 @@
-$path = "D:\Program Files (x86)\Steam\steamapps\common\RimWorld\Mods\$(($PSScriptRoot | gi).Name)"
+$path = "$env:RIMWORLD\Mods\$(($PSScriptRoot | gi).Name)"
 
 Copy-Item "$path\About\PublishedFileId.txt" "$PSScriptRoot\About"
 Remove-Item -Recurse "$path\*"
@@ -19,6 +19,7 @@ mkdir $path
 		"Languages",
 		"Patches",
 		"Songs",
+		"Sounds",
 		"Source",
 		"Textures"
 	) | %{ Copy-Item -Recurse "$PSScriptRoot\$base\$_" "$path\$base\$_" }
